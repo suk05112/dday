@@ -6,3 +6,27 @@
 //
 
 import Foundation
+
+class rcvData: Hashable {
+    var name: String
+    var day: String
+    var dday: Int
+    
+    init(name: String, day: String, dday:Int){
+        self.name = name
+        self.day = day
+        self.dday = dday
+    }
+    
+    static func == (lhs: rcvData, rhs: rcvData) -> Bool {
+        return lhs == rhs
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+        hasher.combine(day)
+        hasher.combine(dday)
+    }
+    
+    
+}

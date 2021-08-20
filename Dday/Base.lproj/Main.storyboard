@@ -9,10 +9,61 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Detail-->
+        <scene sceneID="mYz-30-BWj">
+            <objects>
+                <viewController storyboardIdentifier="DetailVC" id="iCA-6o-hQj" customClass="Detail" customModule="Dday" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iFw-QC-Quj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c67-RO-8DR">
+                                <rect key="frame" x="307" y="20" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="편집"/>
+                                <connections>
+                                    <action selector="edit:" destination="iCA-6o-hQj" eventType="touchUpInside" id="e6F-yW-8q0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06X-pC-lzQ">
+                                <rect key="frame" x="29" y="20" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="삭제"/>
+                                <connections>
+                                    <action selector="remove:" destination="iCA-6o-hQj" eventType="touchUpInside" id="QLL-S7-Sw7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="detail day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuY-qN-bcP">
+                                <rect key="frame" x="150" y="173" width="74" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="datail name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J12-2H-nmy">
+                                <rect key="frame" x="143" y="129" width="88" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5Cm-xl-htu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="detail_dday" destination="OuY-qN-bcP" id="BiD-Ch-Lco"/>
+                        <outlet property="detail_name" destination="J12-2H-nmy" id="Psi-yH-d8q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nzI-JL-iIB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1414" y="596"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Dday" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main" id="BYZ-38-t0r" customClass="ViewController" customModule="Dday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,6 +134,7 @@
                                             <outlet property="day" destination="YFr-g5-tqG" id="Rm2-t4-32v"/>
                                             <outlet property="dday" destination="yZf-9d-jwn" id="pGo-dx-TUU"/>
                                             <outlet property="name" destination="ofX-EB-hvu" id="Hs0-lQ-7Mg"/>
+                                            <segue destination="iCA-6o-hQj" kind="presentation" identifier="DetailVC" id="TMI-dy-Ixj"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -120,46 +172,155 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KA4-8c-bMw">
-                                <rect key="frame" x="171" y="493" width="32" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KA4-8c-bMw">
+                                <rect key="frame" x="171.5" y="567" width="32" height="30"/>
                                 <state key="normal" title="save"/>
                                 <connections>
                                     <action selector="saveDday:" destination="APW-ZH-ptr" eventType="touchUpInside" id="ENq-Nv-Z1B"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yfj-Hh-zXc">
-                                <rect key="frame" x="48" y="76" width="144" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yfj-Hh-zXc">
+                                <rect key="frame" x="123" y="50" width="129" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="ojz-QC-XFG">
-                                <rect key="frame" x="28" y="216" width="332" height="181"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="ojz-QC-XFG">
+                                <rect key="frame" x="27.5" y="140" width="320" height="216"/>
                                 <connections>
                                     <action selector="changeDatePIcker:" destination="APW-ZH-ptr" eventType="valueChanged" id="tfg-9D-wzI"/>
                                 </connections>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="선택시간:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdM-5b-zyY">
-                                <rect key="frame" x="57" y="452" width="261" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="선택날짜" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdM-5b-zyY">
+                                <rect key="frame" x="158" y="104" width="59" height="21"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="38" estimatedRowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JyU-O9-wBl">
+                                <rect key="frame" x="25" y="373" width="325" height="223"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" id="jJh-wU-adx" customClass="HeaderCell" customModule="Dday" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="325" height="38"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jJh-wU-adx" id="GEY-Gu-HLb">
+                                            <rect key="frame" x="0.0" y="0.0" width="325" height="38"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cAM-1H-vpM">
+                                                    <rect key="frame" x="237" y="6" width="49" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </switch>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellSwitch" destination="cAM-1H-vpM" id="5xH-Xo-uD6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Itercell" id="aIb-Pd-c1S" customClass="IterCell" customModule="Dday" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="66" width="325" height="38"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aIb-Pd-c1S" id="GGW-Od-qHs" customClass="IterCell" customModule="Dday" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="325" height="38"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5WH-B4-q6K">
+                                                    <rect key="frame" x="20" y="7" width="39" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Week"/>
+                                                    <connections>
+                                                        <action selector="btn:" destination="bmQ-gJ-h5J" eventType="touchUpInside" id="yId-Rd-c4b"/>
+                                                        <action selector="touchButton:" destination="GGW-Od-qHs" eventType="touchUpInside" id="BBB-AV-fyX"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecj-9R-WRQ">
+                                                    <rect key="frame" x="135" y="7" width="31" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Year"/>
+                                                    <connections>
+                                                        <action selector="btn:" destination="bmQ-gJ-h5J" eventType="touchUpInside" id="dYz-IV-LBz"/>
+                                                        <action selector="touchButton:" destination="GGW-Od-qHs" eventType="touchUpInside" id="in8-dH-yVm"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5e-CW-bdJ">
+                                                    <rect key="frame" x="71" y="7" width="44" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Month"/>
+                                                    <connections>
+                                                        <action selector="btn:" destination="bmQ-gJ-h5J" eventType="touchUpInside" id="rJo-te-ep6"/>
+                                                        <action selector="touchButton:" destination="GGW-Od-qHs" eventType="touchUpInside" id="3Bi-Bn-KBn"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outletCollection property="iterButtons" destination="5WH-B4-q6K" collectionClass="NSMutableArray" id="IUt-hK-A11"/>
+                                            <outletCollection property="iterButtons" destination="i5e-CW-bdJ" collectionClass="NSMutableArray" id="PWM-zz-5nt"/>
+                                            <outletCollection property="iterButtons" destination="ecj-9R-WRQ" collectionClass="NSMutableArray" id="n3m-1c-cBc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="12" reuseIdentifier="AlarmCell" id="OS5-FC-dff" customClass="AlarmCell" customModule="Dday" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="104" width="325" height="38"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OS5-FC-dff" id="6nv-Pr-E0e" customClass="AlarmCell" customModule="Dday" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="325" height="38"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dS-d4-jGN">
+                                                    <rect key="frame" x="21" y="6" width="36" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Dday"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5q8-I9-MRh">
+                                                    <rect key="frame" x="71" y="6" width="65" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="100일마다"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Fv-Gx-ReN">
+                                                    <rect key="frame" x="157" y="6" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="1년마다"/>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outletCollection property="alarmButtons" destination="7dS-d4-jGN" collectionClass="NSMutableArray" id="WYv-fM-hQZ"/>
+                                            <outletCollection property="alarmButtons" destination="5q8-I9-MRh" collectionClass="NSMutableArray" id="fRW-AB-smD"/>
+                                            <outletCollection property="alarmButtons" destination="9Fv-Gx-ReN" collectionClass="NSMutableArray" id="GIT-Lw-C4m"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tCk-Vz-WSy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tCk-Vz-WSy" firstAttribute="trailing" secondItem="JyU-O9-wBl" secondAttribute="trailing" constant="25" id="0Pp-sI-7CV"/>
+                            <constraint firstItem="JyU-O9-wBl" firstAttribute="leading" secondItem="tCk-Vz-WSy" secondAttribute="leading" constant="25" id="CZw-vm-fGS"/>
+                            <constraint firstItem="Yfj-Hh-zXc" firstAttribute="top" secondItem="tCk-Vz-WSy" secondAttribute="top" constant="50" id="Equ-Yu-2ol"/>
+                            <constraint firstItem="tCk-Vz-WSy" firstAttribute="bottom" secondItem="KA4-8c-bMw" secondAttribute="bottom" constant="50" id="Hpy-L8-d5x"/>
+                            <constraint firstItem="GdM-5b-zyY" firstAttribute="top" secondItem="Yfj-Hh-zXc" secondAttribute="bottom" constant="20" id="LAy-mh-Lpi"/>
+                            <constraint firstItem="Yfj-Hh-zXc" firstAttribute="centerX" secondItem="XHf-cg-b37" secondAttribute="centerX" id="Stk-BQ-5iG"/>
+                            <constraint firstItem="ojz-QC-XFG" firstAttribute="top" secondItem="GdM-5b-zyY" secondAttribute="bottom" constant="15" id="X7U-PX-49I"/>
+                            <constraint firstItem="JyU-O9-wBl" firstAttribute="top" secondItem="ojz-QC-XFG" secondAttribute="bottom" constant="20" id="ZNk-ar-SFa"/>
+                            <constraint firstItem="KA4-8c-bMw" firstAttribute="centerX" secondItem="XHf-cg-b37" secondAttribute="centerX" id="fsd-WS-A2R"/>
+                            <constraint firstItem="GdM-5b-zyY" firstAttribute="centerX" secondItem="ojz-QC-XFG" secondAttribute="centerX" id="gyD-fB-BEQ"/>
+                            <constraint firstItem="JyU-O9-wBl" firstAttribute="centerX" secondItem="XHf-cg-b37" secondAttribute="centerX" id="iZJ-02-kqo"/>
+                            <constraint firstItem="ojz-QC-XFG" firstAttribute="centerX" secondItem="XHf-cg-b37" secondAttribute="centerX" id="lHS-IS-Ikp"/>
+                            <constraint firstItem="KA4-8c-bMw" firstAttribute="top" secondItem="JyU-O9-wBl" secondAttribute="bottom" constant="30" id="o93-Td-Jvu"/>
+                            <constraint firstItem="GdM-5b-zyY" firstAttribute="centerX" secondItem="XHf-cg-b37" secondAttribute="centerX" id="yqI-5B-Pat"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="inputname" destination="Yfj-Hh-zXc" id="P7e-za-n3D"/>
                         <outlet property="showPickerTime" destination="GdM-5b-zyY" id="PDZ-kL-uqs"/>
+                        <outlet property="tableView" destination="JyU-O9-wBl" id="NGC-2p-XCd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qps-DJ-DX8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="bmQ-gJ-h5J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="805.60000000000002" y="98.50074962518741"/>
+            <point key="canvasLocation" x="1413.5999999999999" y="-235.23238380809596"/>
         </scene>
     </scenes>
     <resources>

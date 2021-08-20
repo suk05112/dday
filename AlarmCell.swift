@@ -8,7 +8,10 @@
 import UIKit
 
 class AlarmCell: UITableViewCell {
+    
+    @IBOutlet var alarmButtons: [UIButton]!
 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

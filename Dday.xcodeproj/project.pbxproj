@@ -16,6 +16,13 @@
 		036518D426A5B67D00604A55 /* DdayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518D326A5B67D00604A55 /* DdayTests.swift */; };
 		036518DF26A5B67D00604A55 /* DdayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518DE26A5B67D00604A55 /* DdayUITests.swift */; };
 		0367F7C926A900AA004DC581 /* Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F7C826A900AA004DC581 /* Add.swift */; };
+		0367F81B26B7AA69004DC581 /* rcvData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F81A26B7AA69004DC581 /* rcvData.swift */; };
+		0367F82326B7B2DF004DC581 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F82226B7B2DF004DC581 /* Detail.swift */; };
+		0367F82D26BD200B004DC581 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F82C26BD200B004DC581 /* Setting.swift */; };
+		0367F84526BFC766004DC581 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F84426BFC766004DC581 /* HeaderCell.swift */; };
+		0367F84A26BFD079004DC581 /* CustomTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F84926BFD079004DC581 /* CustomTableCell.swift */; };
+		0367F84F26C11C2D004DC581 /* IterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F84E26C11C2D004DC581 /* IterCell.swift */; };
+		0367F85426C11C45004DC581 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F85326C11C45004DC581 /* AlarmCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +57,15 @@
 		036518DA26A5B67D00604A55 /* DdayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DdayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		036518DE26A5B67D00604A55 /* DdayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DdayUITests.swift; sourceTree = "<group>"; };
 		036518E026A5B67D00604A55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0367F7BB26A8FF50004DC581 /* Dday */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Dday; sourceTree = "<group>"; };
+		0367F7BB26A8FF50004DC581 /* Dday */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Dday; sourceTree = "<group>"; };
 		0367F7C826A900AA004DC581 /* Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Add.swift; sourceTree = "<group>"; };
+		0367F81A26B7AA69004DC581 /* rcvData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rcvData.swift; sourceTree = "<group>"; };
+		0367F82226B7B2DF004DC581 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		0367F82C26BD200B004DC581 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		0367F84426BFC766004DC581 /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		0367F84926BFD079004DC581 /* CustomTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableCell.swift; sourceTree = "<group>"; };
+		0367F84E26C11C2D004DC581 /* IterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterCell.swift; sourceTree = "<group>"; };
+		0367F85326C11C45004DC581 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +96,11 @@
 		036518B026A5B67A00604A55 = {
 			isa = PBXGroup;
 			children = (
+				0367F84E26C11C2D004DC581 /* IterCell.swift */,
+				0367F85326C11C45004DC581 /* AlarmCell.swift */,
+				0367F84926BFD079004DC581 /* CustomTableCell.swift */,
+				0367F84426BFC766004DC581 /* HeaderCell.swift */,
+				0367F82226B7B2DF004DC581 /* Detail.swift */,
 				036518BB26A5B67B00604A55 /* Dday */,
 				036518D226A5B67D00604A55 /* DdayTests */,
 				036518DD26A5B67D00604A55 /* DdayUITests */,
@@ -102,12 +121,14 @@
 		036518BB26A5B67B00604A55 /* Dday */ = {
 			isa = PBXGroup;
 			children = (
+				0367F7C826A900AA004DC581 /* Add.swift */,
+				0367F82C26BD200B004DC581 /* Setting.swift */,
+				0367F81A26B7AA69004DC581 /* rcvData.swift */,
 				036518BC26A5B67B00604A55 /* AppDelegate.swift */,
 				036518BE26A5B67B00604A55 /* SceneDelegate.swift */,
 				036518C026A5B67B00604A55 /* ViewController.swift */,
 				0367F7BB26A8FF50004DC581 /* Dday */,
 				036518C226A5B67B00604A55 /* Main.storyboard */,
-				0367F7C826A900AA004DC581 /* Add.swift */,
 				036518C526A5B67D00604A55 /* Assets.xcassets */,
 				036518C726A5B67D00604A55 /* LaunchScreen.storyboard */,
 				036518CA26A5B67D00604A55 /* Info.plist */,
@@ -263,9 +284,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0367F85426C11C45004DC581 /* AlarmCell.swift in Sources */,
 				036518C126A5B67B00604A55 /* ViewController.swift in Sources */,
+				0367F84F26C11C2D004DC581 /* IterCell.swift in Sources */,
 				0367F7C926A900AA004DC581 /* Add.swift in Sources */,
+				0367F84A26BFD079004DC581 /* CustomTableCell.swift in Sources */,
+				0367F82326B7B2DF004DC581 /* Detail.swift in Sources */,
+				0367F81B26B7AA69004DC581 /* rcvData.swift in Sources */,
+				0367F84526BFC766004DC581 /* HeaderCell.swift in Sources */,
 				036518BD26A5B67B00604A55 /* AppDelegate.swift in Sources */,
+				0367F82D26BD200B004DC581 /* Setting.swift in Sources */,
 				036518BF26A5B67B00604A55 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

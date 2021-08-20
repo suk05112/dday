@@ -12,6 +12,9 @@ class Add: UIViewController {
     @IBOutlet var showPickerTime: UILabel!
     @IBOutlet weak var inputname: UITextField!
     @IBOutlet weak var tableView: UITableView!
+
+
+
     
     let headerCellIdentifier = "headerCell"
     let iterIdentifier = "Itercell"
@@ -24,7 +27,7 @@ class Add: UIViewController {
     var alarmBtnPressed:[Bool] = [false, false, false]
     
     let setting:[String] = ["반복", "알림", "설정일을 1일부터 시작", "위젯"]
-    var arm: [Alarm: Bool] = [.none: false, .dday: false, .hundred: false, .year: false]
+//    var arm: [Alarm: Bool] = [.none: false, .dday: false, .hundred: false, .year: false]
 
 //    let sortedArm = arm.sorted {$0.rawValue<$1.rawValue}
     var setValue = Setting(iter: .none,
@@ -43,6 +46,9 @@ class Add: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.alwaysBounceVertical = false
+        
+        tableView.estimatedRowHeight = 50.0
+        tableView.rowHeight = UITableView.automaticDimension
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd EEE"
@@ -190,6 +196,7 @@ extension Add: UITableViewDelegate, UITableViewDataSource{
         if(indexPath.section == 0){
             let cell = tableView.dequeueReusableCell(withIdentifier: self.iterIdentifier, for: indexPath) as! IterCell
             cell.selectionStyle = .none
+            
             
             for i in 0...2{
                 cell.iterButtons[i].tag = i

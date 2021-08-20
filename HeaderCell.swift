@@ -8,7 +8,10 @@
 import UIKit
 
 class HeaderCell: UITableViewCell {
+    
 
+    @IBOutlet weak var cellSwitch: UISwitch!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -9,6 +9,10 @@ import UIKit
 
 class CustomTableCell: UITableViewCell {
 
+
+    @IBAction func btn(_ sender: Any) {
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
