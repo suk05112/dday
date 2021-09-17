@@ -8,7 +8,7 @@
 import UIKit
 
 class IterCell: UITableViewCell {
-    
+
 
     @IBOutlet var iterButtons: [UIButton]!
     

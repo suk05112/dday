@@ -10,13 +10,11 @@ import Foundation
 class Setting {
 
     var iter: Iter = .none
-    var alarm: [(arm: Alarm, on: Bool)] = [(arm:.none, on:false), (arm:.dday, on:false), (arm:.hundred, on:false), (arm:.year, on:false)]
     var set1: Bool //true, false
     var widget: Bool //true, false
     
-    init(iter: Iter, alarm: [(arm: Alarm, on: Bool)], set1: Bool, widget: Bool){
+    init(iter: Iter, set1: Bool, widget: Bool){
         self.iter = iter
-        self.alarm = alarm
         self.set1 = set1
         self.widget = widget
     }
@@ -27,6 +25,19 @@ enum Iter: Int{
     case week
     case month
     case year
+
+    func description() -> String {
+        switch self {
+        case .none:
+          return "none"
+        case .week:
+          return "week"
+        case .month:
+          return "month"
+        case .year:
+          return "year"
+        }
+    }
 }
 
 enum Alarm: Int{

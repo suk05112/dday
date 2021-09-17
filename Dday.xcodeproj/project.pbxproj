@@ -7,11 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0319197426D4C36A00E7B7E5 /* DdayModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0319197226D4C36A00E7B7E5 /* DdayModel.xcdatamodeld */; };
+		0319197C26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319197A26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift */; };
+		0319197E26D4C5F100E7B7E5 /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319197B26D4C5F100E7B7E5 /* Entity+CoreDataProperties.swift */; };
+		03191A6826D4DC1A00E7B7E5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0319193126CFB47B00E7B7E5 /* WidgetKit.framework */; };
+		03191A6926D4DC1A00E7B7E5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0319193326CFB47B00E7B7E5 /* SwiftUI.framework */; };
+		03191A6C26D4DC1A00E7B7E5 /* widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191A6B26D4DC1A00E7B7E5 /* widget.swift */; };
+		03191A7126D4DC1C00E7B7E5 /* widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 03191A6D26D4DC1A00E7B7E5 /* widget.intentdefinition */; };
+		03191A7226D4DC1C00E7B7E5 /* widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 03191A6D26D4DC1A00E7B7E5 /* widget.intentdefinition */; };
+		03191A7526D4DC1D00E7B7E5 /* widgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 03191A6726D4DC1A00E7B7E5 /* widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		03191A7D26D4DE9800E7B7E5 /* DdayModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0319197226D4C36A00E7B7E5 /* DdayModel.xcdatamodeld */; };
+		03191A9526D791CD00E7B7E5 /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319197B26D4C5F100E7B7E5 /* Entity+CoreDataProperties.swift */; };
+		03191A9A26D795B200E7B7E5 /* Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319197A26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift */; };
+		03191AD526DB74FD00E7B7E5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191AD426DB74FD00E7B7E5 /* CoreDataStack.swift */; };
+		03191AD626DB74FD00E7B7E5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191AD426DB74FD00E7B7E5 /* CoreDataStack.swift */; };
+		03191B4326E8EB0F00E7B7E5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191B4226E8EB0F00E7B7E5 /* CoreDataManager.swift */; };
+		03191B5A26ECA1FC00E7B7E5 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03191B5926ECA1FC00E7B7E5 /* Model.xcmappingmodel */; };
+		03191B5B26ECA1FC00E7B7E5 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03191B5926ECA1FC00E7B7E5 /* Model.xcmappingmodel */; };
 		036518BD26A5B67B00604A55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518BC26A5B67B00604A55 /* AppDelegate.swift */; };
 		036518BF26A5B67B00604A55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518BE26A5B67B00604A55 /* SceneDelegate.swift */; };
 		036518C126A5B67B00604A55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518C026A5B67B00604A55 /* ViewController.swift */; };
 		036518C426A5B67B00604A55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036518C226A5B67B00604A55 /* Main.storyboard */; };
-		036518C626A5B67D00604A55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 036518C526A5B67D00604A55 /* Assets.xcassets */; };
 		036518C926A5B67D00604A55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036518C726A5B67D00604A55 /* LaunchScreen.storyboard */; };
 		036518D426A5B67D00604A55 /* DdayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518D326A5B67D00604A55 /* DdayTests.swift */; };
 		036518DF26A5B67D00604A55 /* DdayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518DE26A5B67D00604A55 /* DdayUITests.swift */; };
@@ -23,9 +39,17 @@
 		0367F84A26BFD079004DC581 /* CustomTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F84926BFD079004DC581 /* CustomTableCell.swift */; };
 		0367F84F26C11C2D004DC581 /* IterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F84E26C11C2D004DC581 /* IterCell.swift */; };
 		0367F85426C11C45004DC581 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F85326C11C45004DC581 /* AlarmCell.swift */; };
+		0399EF0326EF8469009E868E /* CalculateDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399EF0226EF8469009E868E /* CalculateDay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		03191A7326D4DC1C00E7B7E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 036518B126A5B67B00604A55 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03191A6626D4DC1A00E7B7E5;
+			remoteInfo = widgetExtension;
+		};
 		036518D026A5B67D00604A55 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 036518B126A5B67B00604A55 /* Project object */;
@@ -42,7 +66,37 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0319194126CFB47E00E7B7E5 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				03191A7526D4DC1D00E7B7E5 /* widgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0319193126CFB47B00E7B7E5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		0319193326CFB47B00E7B7E5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		0319197326D4C36A00E7B7E5 /* DdayModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DdayModel.xcdatamodel; sourceTree = "<group>"; };
+		0319197A26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0319197B26D4C5F100E7B7E5 /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		03191A6726D4DC1A00E7B7E5 /* widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = widgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		03191A6B26D4DC1A00E7B7E5 /* widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = widget.swift; sourceTree = "<group>"; };
+		03191A6D26D4DC1A00E7B7E5 /* widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = widget.intentdefinition; sourceTree = "<group>"; };
+		03191A6E26D4DC1C00E7B7E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		03191A7026D4DC1C00E7B7E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03191A8226D4DF4C00E7B7E5 /* widgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = widgetExtension.entitlements; sourceTree = "<group>"; };
+		03191A8726D788C200E7B7E5 /* Dday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dday.entitlements; sourceTree = "<group>"; };
+		03191AD426DB74FD00E7B7E5 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		03191B4226E8EB0F00E7B7E5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		03191B5826ECA14F00E7B7E5 /* DdayModel v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DdayModel v2.xcdatamodel"; sourceTree = "<group>"; };
+		03191B5926ECA1FC00E7B7E5 /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model.xcmappingmodel; sourceTree = "<group>"; };
 		036518B926A5B67B00604A55 /* Dday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		036518BC26A5B67B00604A55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		036518BE26A5B67B00604A55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,9 +120,20 @@
 		0367F84926BFD079004DC581 /* CustomTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableCell.swift; sourceTree = "<group>"; };
 		0367F84E26C11C2D004DC581 /* IterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterCell.swift; sourceTree = "<group>"; };
 		0367F85326C11C45004DC581 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
+		0399EF0226EF8469009E868E /* CalculateDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateDay.swift; sourceTree = "<group>"; };
+		0399EF2A26F4DF23009E868E /* DdayModel v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DdayModel v3.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		03191A6426D4DC1A00E7B7E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03191A6926D4DC1A00E7B7E5 /* SwiftUI.framework in Frameworks */,
+				03191A6826D4DC1A00E7B7E5 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		036518B626A5B67B00604A55 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -93,17 +158,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0319193026CFB47B00E7B7E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0319193126CFB47B00E7B7E5 /* WidgetKit.framework */,
+				0319193326CFB47B00E7B7E5 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		03191A6A26D4DC1A00E7B7E5 /* widget */ = {
+			isa = PBXGroup;
+			children = (
+				03191A6B26D4DC1A00E7B7E5 /* widget.swift */,
+				03191A6D26D4DC1A00E7B7E5 /* widget.intentdefinition */,
+				03191A6E26D4DC1C00E7B7E5 /* Assets.xcassets */,
+				03191A7026D4DC1C00E7B7E5 /* Info.plist */,
+			);
+			path = widget;
+			sourceTree = "<group>";
+		};
 		036518B026A5B67A00604A55 = {
 			isa = PBXGroup;
 			children = (
+				03191AD426DB74FD00E7B7E5 /* CoreDataStack.swift */,
+				03191A8226D4DF4C00E7B7E5 /* widgetExtension.entitlements */,
+				0319197A26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift */,
+				0319197B26D4C5F100E7B7E5 /* Entity+CoreDataProperties.swift */,
+				03191B5926ECA1FC00E7B7E5 /* Model.xcmappingmodel */,
+				0319197226D4C36A00E7B7E5 /* DdayModel.xcdatamodeld */,
 				0367F84E26C11C2D004DC581 /* IterCell.swift */,
 				0367F85326C11C45004DC581 /* AlarmCell.swift */,
 				0367F84926BFD079004DC581 /* CustomTableCell.swift */,
 				0367F84426BFC766004DC581 /* HeaderCell.swift */,
-				0367F82226B7B2DF004DC581 /* Detail.swift */,
 				036518BB26A5B67B00604A55 /* Dday */,
 				036518D226A5B67D00604A55 /* DdayTests */,
 				036518DD26A5B67D00604A55 /* DdayUITests */,
+				03191A6A26D4DC1A00E7B7E5 /* widget */,
+				0319193026CFB47B00E7B7E5 /* Frameworks */,
 				036518BA26A5B67B00604A55 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,6 +206,7 @@
 				036518B926A5B67B00604A55 /* Dday.app */,
 				036518CF26A5B67D00604A55 /* DdayTests.xctest */,
 				036518DA26A5B67D00604A55 /* DdayUITests.xctest */,
+				03191A6726D4DC1A00E7B7E5 /* widgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,9 +214,12 @@
 		036518BB26A5B67B00604A55 /* Dday */ = {
 			isa = PBXGroup;
 			children = (
-				0367F7C826A900AA004DC581 /* Add.swift */,
-				0367F82C26BD200B004DC581 /* Setting.swift */,
+				03191B4226E8EB0F00E7B7E5 /* CoreDataManager.swift */,
 				0367F81A26B7AA69004DC581 /* rcvData.swift */,
+				0367F82226B7B2DF004DC581 /* Detail.swift */,
+				03191A8726D788C200E7B7E5 /* Dday.entitlements */,
+				0367F82C26BD200B004DC581 /* Setting.swift */,
+				0367F7C826A900AA004DC581 /* Add.swift */,
 				036518BC26A5B67B00604A55 /* AppDelegate.swift */,
 				036518BE26A5B67B00604A55 /* SceneDelegate.swift */,
 				036518C026A5B67B00604A55 /* ViewController.swift */,
@@ -132,6 +228,7 @@
 				036518C526A5B67D00604A55 /* Assets.xcassets */,
 				036518C726A5B67D00604A55 /* LaunchScreen.storyboard */,
 				036518CA26A5B67D00604A55 /* Info.plist */,
+				0399EF0226EF8469009E868E /* CalculateDay.swift */,
 			);
 			path = Dday;
 			sourceTree = "<group>";
@@ -157,6 +254,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		03191A6626D4DC1A00E7B7E5 /* widgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03191A7626D4DC1D00E7B7E5 /* Build configuration list for PBXNativeTarget "widgetExtension" */;
+			buildPhases = (
+				03191A6326D4DC1A00E7B7E5 /* Sources */,
+				03191A6426D4DC1A00E7B7E5 /* Frameworks */,
+				03191A6526D4DC1A00E7B7E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = widgetExtension;
+			productName = widgetExtension;
+			productReference = 03191A6726D4DC1A00E7B7E5 /* widgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		036518B826A5B67B00604A55 /* Dday */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 036518E326A5B67D00604A55 /* Build configuration list for PBXNativeTarget "Dday" */;
@@ -164,10 +278,12 @@
 				036518B526A5B67B00604A55 /* Sources */,
 				036518B626A5B67B00604A55 /* Frameworks */,
 				036518B726A5B67B00604A55 /* Resources */,
+				0319194126CFB47E00E7B7E5 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				03191A7426D4DC1C00E7B7E5 /* PBXTargetDependency */,
 			);
 			name = Dday;
 			productName = Dday;
@@ -219,6 +335,9 @@
 				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
+					03191A6626D4DC1A00E7B7E5 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					036518B826A5B67B00604A55 = {
 						CreatedOnToolsVersion = 12.3;
 					};
@@ -248,17 +367,24 @@
 				036518B826A5B67B00604A55 /* Dday */,
 				036518CE26A5B67D00604A55 /* DdayTests */,
 				036518D926A5B67D00604A55 /* DdayUITests */,
+				03191A6626D4DC1A00E7B7E5 /* widgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		03191A6526D4DC1A00E7B7E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		036518B726A5B67B00604A55 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				036518C926A5B67D00604A55 /* LaunchScreen.storyboard in Resources */,
-				036518C626A5B67D00604A55 /* Assets.xcassets in Resources */,
 				036518C426A5B67B00604A55 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,21 +406,43 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		03191A6326D4DC1A00E7B7E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03191A7126D4DC1C00E7B7E5 /* widget.intentdefinition in Sources */,
+				03191A6C26D4DC1A00E7B7E5 /* widget.swift in Sources */,
+				03191A9526D791CD00E7B7E5 /* Entity+CoreDataProperties.swift in Sources */,
+				03191AD626DB74FD00E7B7E5 /* CoreDataStack.swift in Sources */,
+				03191A9A26D795B200E7B7E5 /* Entity+CoreDataClass.swift in Sources */,
+				03191A7D26D4DE9800E7B7E5 /* DdayModel.xcdatamodeld in Sources */,
+				03191B5B26ECA1FC00E7B7E5 /* Model.xcmappingmodel in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		036518B526A5B67B00604A55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0367F85426C11C45004DC581 /* AlarmCell.swift in Sources */,
 				036518C126A5B67B00604A55 /* ViewController.swift in Sources */,
+				0319197E26D4C5F100E7B7E5 /* Entity+CoreDataProperties.swift in Sources */,
 				0367F84F26C11C2D004DC581 /* IterCell.swift in Sources */,
+				03191A7226D4DC1C00E7B7E5 /* widget.intentdefinition in Sources */,
 				0367F7C926A900AA004DC581 /* Add.swift in Sources */,
+				03191B4326E8EB0F00E7B7E5 /* CoreDataManager.swift in Sources */,
 				0367F84A26BFD079004DC581 /* CustomTableCell.swift in Sources */,
+				0399EF0326EF8469009E868E /* CalculateDay.swift in Sources */,
 				0367F82326B7B2DF004DC581 /* Detail.swift in Sources */,
 				0367F81B26B7AA69004DC581 /* rcvData.swift in Sources */,
 				0367F84526BFC766004DC581 /* HeaderCell.swift in Sources */,
+				0319197C26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift in Sources */,
 				036518BD26A5B67B00604A55 /* AppDelegate.swift in Sources */,
+				03191AD526DB74FD00E7B7E5 /* CoreDataStack.swift in Sources */,
+				0319197426D4C36A00E7B7E5 /* DdayModel.xcdatamodeld in Sources */,
 				0367F82D26BD200B004DC581 /* Setting.swift in Sources */,
 				036518BF26A5B67B00604A55 /* SceneDelegate.swift in Sources */,
+				03191B5A26ECA1FC00E7B7E5 /* Model.xcmappingmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +465,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		03191A7426D4DC1C00E7B7E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03191A6626D4DC1A00E7B7E5 /* widgetExtension */;
+			targetProxy = 03191A7326D4DC1C00E7B7E5 /* PBXContainerItemProxy */;
+		};
 		036518D126A5B67D00604A55 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 036518B826A5B67B00604A55 /* Dday */;
@@ -349,6 +502,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		03191A7726D4DC1D00E7B7E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = widgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F2YB4PBTB4;
+				INFOPLIST_FILE = widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sujin.Dday.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		03191A7826D4DC1D00E7B7E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = widgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F2YB4PBTB4;
+				INFOPLIST_FILE = widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sujin.Dday.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		036518E126A5B67D00604A55 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -384,6 +583,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -404,6 +604,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -445,6 +646,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -458,6 +660,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -468,8 +671,10 @@
 		036518E426A5B67D00604A55 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Dday/Dday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F2YB4PBTB4;
 				INFOPLIST_FILE = Dday/Info.plist;
@@ -487,8 +692,10 @@
 		036518E526A5B67D00604A55 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Dday/Dday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F2YB4PBTB4;
 				INFOPLIST_FILE = Dday/Info.plist;
@@ -586,6 +793,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		03191A7626D4DC1D00E7B7E5 /* Build configuration list for PBXNativeTarget "widgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03191A7726D4DC1D00E7B7E5 /* Debug */,
+				03191A7826D4DC1D00E7B7E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		036518B426A5B67B00604A55 /* Build configuration list for PBXProject "Dday" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -623,6 +839,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0319197226D4C36A00E7B7E5 /* DdayModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0399EF2A26F4DF23009E868E /* DdayModel v3.xcdatamodel */,
+				03191B5826ECA14F00E7B7E5 /* DdayModel v2.xcdatamodel */,
+				0319197326D4C36A00E7B7E5 /* DdayModel.xcdatamodel */,
+			);
+			currentVersion = 0399EF2A26F4DF23009E868E /* DdayModel v3.xcdatamodel */;
+			path = DdayModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 036518B126A5B67B00604A55 /* Project object */;
 }
