@@ -21,8 +21,23 @@ class CoreDataManager {
     func getEntity(key: String, idx: Int) ->String{
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        let results = try! context?.fetch(request)
+        var results = try! context?.fetch(request)
+        
+        if(UserDefaults.standard.bool(forKey: "sort")){
+            results = sortbyDday()
+        }
+
         let record = results?[idx]
+        
+        let myrequest: NSFetchRequest<Entity> = Entity.fetchRequest()
+
+        let myrecord = try! context?.fetch(myrequest)
+        
+//        print("get entity")
+//
+//        myrecord?.forEach{
+//            print($0.name)
+//        }
         
         if(key != "dday"){
             return (record as AnyObject).value(forKey: key) as! String
@@ -58,7 +73,7 @@ class CoreDataManager {
     }
     
     
-    func saveEntity(data: rcvData) {
+    func saveEntity(data: rcvData, idx: Int) {
         if let context = context,
             let entity: NSEntityDescription
             = NSEntityDescription.entity(forEntityName: entityName, in: context) {
@@ -67,6 +82,8 @@ class CoreDataManager {
                 myentity.setValue(data.name, forKey: "name")
                 myentity.setValue(data.day, forKey: "day")
                 myentity.setValue(data.dday, forKey: "dday")
+                myentity.setValue(idx, forKey: "idx")
+
             }
             
             do {
@@ -161,7 +178,7 @@ extension CoreDataManager {
                }
         
         myresult[idx].setValue(setting.iter.rawValue, forKeyPath: "iter")
-        myresult[idx].setValue(2, forKeyPath: "iter")
+//        myresult[idx].setValue(2, forKeyPath: "iter")
 
         myresult[idx].setValue(setting.set1, forKeyPath: "set1")
         myresult[idx].setValue(setting.widget, forKeyPath: "widget")
@@ -218,4 +235,25 @@ extension CoreDataManager {
             return -1
         }
     }
+    
+    func sortbyDday()->Array<Entity>{
+        let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+        let sort = NSSortDescriptor(key: #keyPath(Entity.dday) , ascending: true)
+        request.sortDescriptors = [sort]
+        do {
+            print("sort")
+            try context?.save()
+            let record = try context?.fetch(request)
+            print(type(of: record))
+
+            record?.forEach{
+                print($0.name)
+            }
+            return record!
+        } catch {
+            print("Cannot fetch Expenses")
+            return []
+        }
+    }
+    
 }

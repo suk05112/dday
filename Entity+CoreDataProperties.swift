@@ -19,6 +19,8 @@ extension Entity {
     @NSManaged public var name: String?
     @NSManaged public var day: String?
     @NSManaged public var dday: Int
+    @NSManaged public var idx: Int
+
 
 }
 
@@ -31,7 +33,7 @@ extension MySetting{
         return NSFetchRequest<MySetting>(entityName: "MySetting")
     }
 
-    @NSManaged public var iter: [Bool]
+    @NSManaged public var iter: Int
     @NSManaged public var set1: Bool
     @NSManaged public var widget: Bool
 

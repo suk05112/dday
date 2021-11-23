@@ -58,6 +58,7 @@ class Add: UIViewController {
         
         if(dele!.mode == "UPDATE"){
             let idx = (dele?.updateIdx)!
+            indexOfOneAndOnly = CoreDataManager.shared.getSetting(idx: idx).iter.rawValue - 1
             print("update mode")
             inputname.text = CoreDataManager.shared.getEntity(key: "name", idx: idx )
             let dateFormatter = DateFormatter()
@@ -127,7 +128,7 @@ class Add: UIViewController {
 
         }
         updateDelegate?.sendUpdate(date: selectDate, name: inputname.text!, setting: setValue)
-        delegate?.send(date: selectDate, name: inputname.text!, setting: setValue)
+        delegate?.send(date: selectDate, name: inputname.text!, setting: setValue, idx: CoreDataManager.shared.getCount())
         
 
         NotificationCenter.default.post(name: DidDismissPostCommentViewController, object: nil, userInfo: nil)
@@ -166,7 +167,8 @@ class Add: UIViewController {
     
     @objc func iterBtnClicked(_ sender: UIButton){
         
-        if indexOfOneAndOnly != nil{ //하나라도 선택되어있을 때
+        if (indexOfOneAndOnly != nil) && indexOfOneAndOnly != -1{ //하나라도 선택되어있을 때
+            print("sender: ", sender.tag, sender.isSelected)
             if !sender.isSelected{ //다른게 눌려져있으면
                 for index in iterBtnPressed.indices{ //전부다 false로 만들고
                     iterBtnPressed[index] = false
@@ -196,7 +198,7 @@ class Add: UIViewController {
 }
 
 protocol SendProtocol{
-    func send(date: Date, name: String, setting: Setting)
+    func send(date: Date, name: String, setting: Setting, idx: Int)
 }
 protocol SendUpdateProtocol{
     func sendUpdate(date: Date, name: String, setting: Setting)
@@ -210,7 +212,6 @@ extension Add: UITableViewDelegate, UITableViewDataSource{
     
     //section별로 몇개의 row가 있어야하는지
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print("numberOfsectionRow")
         if(section == 0) {
             return isPressed[section] ? 1:0
         }
@@ -226,7 +227,6 @@ extension Add: UITableViewDelegate, UITableViewDataSource{
         cell.cellSwitch.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
         
         cell.cellSwitch.setOn(isPressed[section], animated: true)
-        print("talbe view")
         
         return cell
     }
@@ -235,6 +235,15 @@ extension Add: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
+    
+    //footer 없애기
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        tableView.sectionFooterHeight = .leastNonzeroMagnitude
+
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
+
     
     //tableview에 넣을 cell을 직접적으로 요청하는 함수
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

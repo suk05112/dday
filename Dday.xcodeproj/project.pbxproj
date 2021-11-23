@@ -22,8 +22,6 @@
 		03191AD526DB74FD00E7B7E5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191AD426DB74FD00E7B7E5 /* CoreDataStack.swift */; };
 		03191AD626DB74FD00E7B7E5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191AD426DB74FD00E7B7E5 /* CoreDataStack.swift */; };
 		03191B4326E8EB0F00E7B7E5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191B4226E8EB0F00E7B7E5 /* CoreDataManager.swift */; };
-		03191B5A26ECA1FC00E7B7E5 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03191B5926ECA1FC00E7B7E5 /* Model.xcmappingmodel */; };
-		03191B5B26ECA1FC00E7B7E5 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03191B5926ECA1FC00E7B7E5 /* Model.xcmappingmodel */; };
 		036518BD26A5B67B00604A55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518BC26A5B67B00604A55 /* AppDelegate.swift */; };
 		036518BF26A5B67B00604A55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518BE26A5B67B00604A55 /* SceneDelegate.swift */; };
 		036518C126A5B67B00604A55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518C026A5B67B00604A55 /* ViewController.swift */; };
@@ -39,7 +37,17 @@
 		0367F84A26BFD079004DC581 /* CustomTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F84926BFD079004DC581 /* CustomTableCell.swift */; };
 		0367F84F26C11C2D004DC581 /* IterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F84E26C11C2D004DC581 /* IterCell.swift */; };
 		0367F85426C11C45004DC581 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F85326C11C45004DC581 /* AlarmCell.swift */; };
+		0370DF5126FC4E30000D1DA7 /* screenUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF5026FC4E30000D1DA7 /* screenUD.swift */; };
+		0370DF5226FC4E30000D1DA7 /* screenUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF5026FC4E30000D1DA7 /* screenUD.swift */; };
+		0370DF6726FD60C1000D1DA7 /* screenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6626FD60C1000D1DA7 /* screenCell.swift */; };
+		0370DF6826FD60C1000D1DA7 /* screenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6626FD60C1000D1DA7 /* screenCell.swift */; };
+		0370DF6F2701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */; };
+		0370DF702701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */; };
 		0399EF0326EF8469009E868E /* CalculateDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399EF0226EF8469009E868E /* CalculateDay.swift */; };
+		03BCDBB826F86BA5005FC05A /* Model2-1.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBB726F86BA5005FC05A /* Model2-1.xcmappingmodel */; };
+		03BCDBB926F86BA5005FC05A /* Model2-1.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBB726F86BA5005FC05A /* Model2-1.xcmappingmodel */; };
+		03BCDBBF26F87EB4005FC05A /* screenSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBBE26F87EB4005FC05A /* screenSetting.swift */; };
+		03BCDBC026F87EB4005FC05A /* screenSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBBE26F87EB4005FC05A /* screenSetting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +89,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03132FC926F86A6700A086AE /* DdayModel v2-1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DdayModel v2-1.xcdatamodel"; sourceTree = "<group>"; };
 		0319193126CFB47B00E7B7E5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		0319193326CFB47B00E7B7E5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		0319197326D4C36A00E7B7E5 /* DdayModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DdayModel.xcdatamodel; sourceTree = "<group>"; };
@@ -96,7 +105,6 @@
 		03191AD426DB74FD00E7B7E5 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		03191B4226E8EB0F00E7B7E5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		03191B5826ECA14F00E7B7E5 /* DdayModel v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DdayModel v2.xcdatamodel"; sourceTree = "<group>"; };
-		03191B5926ECA1FC00E7B7E5 /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model.xcmappingmodel; sourceTree = "<group>"; };
 		036518B926A5B67B00604A55 /* Dday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		036518BC26A5B67B00604A55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		036518BE26A5B67B00604A55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,8 +128,14 @@
 		0367F84926BFD079004DC581 /* CustomTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableCell.swift; sourceTree = "<group>"; };
 		0367F84E26C11C2D004DC581 /* IterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterCell.swift; sourceTree = "<group>"; };
 		0367F85326C11C45004DC581 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
+		0370DF5026FC4E30000D1DA7 /* screenUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = screenUD.swift; sourceTree = "<group>"; };
+		0370DF6626FD60C1000D1DA7 /* screenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = screenCell.swift; sourceTree = "<group>"; };
+		0370DF6D2701AAC3000D1DA7 /* DdayModel_idx_version.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DdayModel_idx_version.xcdatamodel; sourceTree = "<group>"; };
+		0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model.xcmappingmodel; sourceTree = "<group>"; };
 		0399EF0226EF8469009E868E /* CalculateDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateDay.swift; sourceTree = "<group>"; };
 		0399EF2A26F4DF23009E868E /* DdayModel v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DdayModel v3.xcdatamodel"; sourceTree = "<group>"; };
+		03BCDBB726F86BA5005FC05A /* Model2-1.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = "Model2-1.xcmappingmodel"; sourceTree = "<group>"; };
+		03BCDBBE26F87EB4005FC05A /* screenSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = screenSetting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,11 +195,13 @@
 		036518B026A5B67A00604A55 = {
 			isa = PBXGroup;
 			children = (
+				0370DF6626FD60C1000D1DA7 /* screenCell.swift */,
+				03BCDBB726F86BA5005FC05A /* Model2-1.xcmappingmodel */,
 				03191AD426DB74FD00E7B7E5 /* CoreDataStack.swift */,
 				03191A8226D4DF4C00E7B7E5 /* widgetExtension.entitlements */,
 				0319197A26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift */,
+				0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */,
 				0319197B26D4C5F100E7B7E5 /* Entity+CoreDataProperties.swift */,
-				03191B5926ECA1FC00E7B7E5 /* Model.xcmappingmodel */,
 				0319197226D4C36A00E7B7E5 /* DdayModel.xcdatamodeld */,
 				0367F84E26C11C2D004DC581 /* IterCell.swift */,
 				0367F85326C11C45004DC581 /* AlarmCell.swift */,
@@ -214,21 +230,23 @@
 		036518BB26A5B67B00604A55 /* Dday */ = {
 			isa = PBXGroup;
 			children = (
+				03191A8726D788C200E7B7E5 /* Dday.entitlements */,
+				036518C026A5B67B00604A55 /* ViewController.swift */,
+				0370DF5026FC4E30000D1DA7 /* screenUD.swift */,
 				03191B4226E8EB0F00E7B7E5 /* CoreDataManager.swift */,
 				0367F81A26B7AA69004DC581 /* rcvData.swift */,
 				0367F82226B7B2DF004DC581 /* Detail.swift */,
-				03191A8726D788C200E7B7E5 /* Dday.entitlements */,
 				0367F82C26BD200B004DC581 /* Setting.swift */,
 				0367F7C826A900AA004DC581 /* Add.swift */,
 				036518BC26A5B67B00604A55 /* AppDelegate.swift */,
 				036518BE26A5B67B00604A55 /* SceneDelegate.swift */,
-				036518C026A5B67B00604A55 /* ViewController.swift */,
 				0367F7BB26A8FF50004DC581 /* Dday */,
 				036518C226A5B67B00604A55 /* Main.storyboard */,
 				036518C526A5B67D00604A55 /* Assets.xcassets */,
 				036518C726A5B67D00604A55 /* LaunchScreen.storyboard */,
 				036518CA26A5B67D00604A55 /* Info.plist */,
 				0399EF0226EF8469009E868E /* CalculateDay.swift */,
+				03BCDBBE26F87EB4005FC05A /* screenSetting.swift */,
 			);
 			path = Dday;
 			sourceTree = "<group>";
@@ -410,13 +428,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0370DF5226FC4E30000D1DA7 /* screenUD.swift in Sources */,
 				03191A7126D4DC1C00E7B7E5 /* widget.intentdefinition in Sources */,
 				03191A6C26D4DC1A00E7B7E5 /* widget.swift in Sources */,
 				03191A9526D791CD00E7B7E5 /* Entity+CoreDataProperties.swift in Sources */,
 				03191AD626DB74FD00E7B7E5 /* CoreDataStack.swift in Sources */,
 				03191A9A26D795B200E7B7E5 /* Entity+CoreDataClass.swift in Sources */,
+				0370DF6826FD60C1000D1DA7 /* screenCell.swift in Sources */,
 				03191A7D26D4DE9800E7B7E5 /* DdayModel.xcdatamodeld in Sources */,
-				03191B5B26ECA1FC00E7B7E5 /* Model.xcmappingmodel in Sources */,
+				0370DF702701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */,
+				03BCDBB926F86BA5005FC05A /* Model2-1.xcmappingmodel in Sources */,
+				03BCDBC026F87EB4005FC05A /* screenSetting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,15 +456,19 @@
 				0367F84A26BFD079004DC581 /* CustomTableCell.swift in Sources */,
 				0399EF0326EF8469009E868E /* CalculateDay.swift in Sources */,
 				0367F82326B7B2DF004DC581 /* Detail.swift in Sources */,
+				0370DF6726FD60C1000D1DA7 /* screenCell.swift in Sources */,
 				0367F81B26B7AA69004DC581 /* rcvData.swift in Sources */,
 				0367F84526BFC766004DC581 /* HeaderCell.swift in Sources */,
 				0319197C26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift in Sources */,
 				036518BD26A5B67B00604A55 /* AppDelegate.swift in Sources */,
 				03191AD526DB74FD00E7B7E5 /* CoreDataStack.swift in Sources */,
 				0319197426D4C36A00E7B7E5 /* DdayModel.xcdatamodeld in Sources */,
+				0370DF6F2701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */,
 				0367F82D26BD200B004DC581 /* Setting.swift in Sources */,
+				03BCDBBF26F87EB4005FC05A /* screenSetting.swift in Sources */,
 				036518BF26A5B67B00604A55 /* SceneDelegate.swift in Sources */,
-				03191B5A26ECA1FC00E7B7E5 /* Model.xcmappingmodel in Sources */,
+				03BCDBB826F86BA5005FC05A /* Model2-1.xcmappingmodel in Sources */,
+				0370DF5126FC4E30000D1DA7 /* screenUD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,11 +870,13 @@
 		0319197226D4C36A00E7B7E5 /* DdayModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				0370DF6D2701AAC3000D1DA7 /* DdayModel_idx_version.xcdatamodel */,
+				03132FC926F86A6700A086AE /* DdayModel v2-1.xcdatamodel */,
 				0399EF2A26F4DF23009E868E /* DdayModel v3.xcdatamodel */,
 				03191B5826ECA14F00E7B7E5 /* DdayModel v2.xcdatamodel */,
 				0319197326D4C36A00E7B7E5 /* DdayModel.xcdatamodel */,
 			);
-			currentVersion = 0399EF2A26F4DF23009E868E /* DdayModel v3.xcdatamodel */;
+			currentVersion = 0370DF6D2701AAC3000D1DA7 /* DdayModel_idx_version.xcdatamodel */;
 			path = DdayModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

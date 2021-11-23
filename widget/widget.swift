@@ -13,9 +13,23 @@ import CoreData
 struct Provider: IntentTimelineProvider {
 //    var moc = PersistenceController.shared.managedObjectContext
 
+    func usrDefault(){
+        UserDefaults.standard.dictionaryRepresentation().forEach { (key, value) in
+            UserDefaults.shared.set(value, forKey: "hide")
+        }
+        UserDefaults.standard.dictionaryRepresentation().forEach { (key, value) in
+            UserDefaults.shared.set(value, forKey: "sort")
+        }
+        UserDefaults.standard.dictionaryRepresentation().forEach { (key, value) in
+            UserDefaults.shared.set(value, forKey: "noti")
+        }
+        print("usrDefault", UserDefaults.standard.bool(forKey: "hide"))
+        print("usrDefault", UserDefaults.standard.bool(forKey: "sort"))
+        print("usrDefault", UserDefaults.standard.bool(forKey: "noti"))
+    }
     func placeholder(in context: Context) -> SimpleEntry {
         print("place holder")
-        
+        usrDefault()
         let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.sujin.Dday")!
         let storeURL = containerURL.appendingPathComponent("DdayModel.sqlite")
         let description = NSPersistentStoreDescription(url: storeURL)
@@ -34,6 +48,8 @@ struct Provider: IntentTimelineProvider {
         results.forEach{
             print($0)
         }
+
+
         print("end place holder")
 
         return SimpleEntry(date: Date(), configuration: ConfigurationIntent())
@@ -41,6 +57,7 @@ struct Provider: IntentTimelineProvider {
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let entry = SimpleEntry(date: Date(), configuration: configuration)
+        usrDefault()
         /*
         print("in snap")
         
@@ -78,6 +95,7 @@ struct Provider: IntentTimelineProvider {
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        usrDefault()
         /*
         print("in timeline")
 
@@ -175,4 +193,11 @@ struct widget_Previews: PreviewProvider {
                preconditionFailure("Expected a valid app group container")
            }
        }()
+}
+
+extension UserDefaults {
+    static var shared: UserDefaults {
+        let appGroupId = "group.com.sujin.Dday"
+        return UserDefaults(suiteName: appGroupId)!
+    }
 }

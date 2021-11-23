@@ -43,10 +43,7 @@ class Detail: UIViewController {
         loadData()
 
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//
-//        loadData()
-//    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "edit" {
@@ -63,17 +60,31 @@ class Detail: UIViewController {
         self.detail_day.text = CoreDataManager.shared.getEntity(key: "day", idx: idx.row)
         
         let dday = CoreDataManager.shared.getEntity(key: "dday", idx: idx.row)
+        let set1 = CoreDataManager.shared.getSetting(idx: idx.row).set1
         
-        if (Int(dday)!<0){
-            self.detail_dday.text = "D" + String(dday)
-        }
-        else if(data.dday == 0){
-            self.detail_dday.text = "D-day"
-        }
-        else{
-            self.detail_dday.text = "D+" + String(dday)
+        if(set1){
+            if (Int(dday)!<0){
+                self.detail_dday.text = String(abs(Int(dday)!)) + "일 전"
+            }
+            else{
+                self.detail_dday.text = String(dday) + "일"
+
+            }
 
         }
+        else{
+            if (Int(dday)!<0){
+                self.detail_dday.text = "D" + String(dday)
+            }
+            else if(data.dday == 0){
+                self.detail_dday.text = "D-day"
+            }
+            else{
+                self.detail_dday.text = "D+" + String(dday)
+
+            }
+        }
+
         
         switch setting.iter {
         case .week:
