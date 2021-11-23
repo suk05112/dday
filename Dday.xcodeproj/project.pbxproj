@@ -48,6 +48,7 @@
 		03BCDBB926F86BA5005FC05A /* Model2-1.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBB726F86BA5005FC05A /* Model2-1.xcmappingmodel */; };
 		03BCDBBF26F87EB4005FC05A /* screenSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBBE26F87EB4005FC05A /* screenSetting.swift */; };
 		03BCDBC026F87EB4005FC05A /* screenSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBBE26F87EB4005FC05A /* screenSetting.swift */; };
+		03FDF9F7274D159F00ACD257 /* DdayNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDF9F6274D159F00ACD257 /* DdayNotificationCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		0399EF2A26F4DF23009E868E /* DdayModel v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DdayModel v3.xcdatamodel"; sourceTree = "<group>"; };
 		03BCDBB726F86BA5005FC05A /* Model2-1.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = "Model2-1.xcmappingmodel"; sourceTree = "<group>"; };
 		03BCDBBE26F87EB4005FC05A /* screenSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = screenSetting.swift; sourceTree = "<group>"; };
+		03FDF9F6274D159F00ACD257 /* DdayNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DdayNotificationCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 			children = (
 				03191A8726D788C200E7B7E5 /* Dday.entitlements */,
 				036518C026A5B67B00604A55 /* ViewController.swift */,
+				03FDF9F6274D159F00ACD257 /* DdayNotificationCenter.swift */,
 				0370DF5026FC4E30000D1DA7 /* screenUD.swift */,
 				03191B4226E8EB0F00E7B7E5 /* CoreDataManager.swift */,
 				0367F81A26B7AA69004DC581 /* rcvData.swift */,
@@ -463,6 +466,7 @@
 				036518BD26A5B67B00604A55 /* AppDelegate.swift in Sources */,
 				03191AD526DB74FD00E7B7E5 /* CoreDataStack.swift in Sources */,
 				0319197426D4C36A00E7B7E5 /* DdayModel.xcdatamodeld in Sources */,
+				03FDF9F7274D159F00ACD257 /* DdayNotificationCenter.swift in Sources */,
 				0370DF6F2701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */,
 				0367F82D26BD200B004DC581 /* Setting.swift in Sources */,
 				03BCDBBF26F87EB4005FC05A /* screenSetting.swift in Sources */,

@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     
     let delegate = UIApplication.shared.delegate as? AppDelegate
     let DidDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
-    let userNotificationCenter = UNUserNotificationCenter.current()
+    let ddayNoti = DdayNotificationCenter()
 
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -37,8 +37,7 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         formatter.dateFormat = "yyyy-MM-dd"
         
-        requestAuthorization()
-
+        ddayNoti.initNotification()
         NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPostCommentNotification(_:)), name: DidDismissPostCommentViewController, object: nil)
 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]){
@@ -48,21 +47,9 @@ class ViewController: UIViewController {
         //1분 60초
         //1시간 3600초
         //하루한번씩 체크는 86400
-
+        
     }
     
-    func requestAuthorization() {
-        let options = UNAuthorizationOptions(arrayLiteral: .alert, .badge, .sound)
-        userNotificationCenter.requestAuthorization(options: options) { success, error in
-            if success {
-                print("인증 요청 성공")
-//                self.testnoti(seconds: 3)
-            }
-            if let error = error {
-                print(error)
-            }
-        }
-    }
     
     @objc func didDismissPostCommentNotification(_ noti: Notification) {
         print("함수 안!!")
@@ -112,11 +99,10 @@ class ViewController: UIViewController {
             for i in 0...(CoreDataManager.shared.getCount()-1){
                 if Int(CoreDataManager.shared.getEntity(key: "dday", idx: i)) == 0  { // 디데이에 도달하면
                     print("dday~~~~")
-
-                    ringAlarm(idx: i, today: true)
+                    ddayNoti.ringAlarm(idx: i, today: true)
                 }
                 else if Int(CoreDataManager.shared.getEntity(key: "dday", idx: i)) == -1 { //디데이 전날
-                    ringAlarm(idx: i, today: false)
+                    ddayNoti.ringAlarm(idx: i, today: false)
 
                 }
             }
@@ -137,37 +123,7 @@ class ViewController: UIViewController {
         rcvIdx = [-1, -1]
     }
 
-    func ringAlarm(idx: Int, today: Bool){
-        
-        let content = UNMutableNotificationContent()
-        content.title = CoreDataManager.shared.getEntity(key: "name", idx: idx)
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd HH:mm"
-        dateFormatter.locale = Locale(identifier: "ko_kr")
-        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
 
-        var dateComponents = DateComponents(hour: 21, minute: 13) //8시로 설정
-        print("comp", dateComponents)
-        
-        if today{
-            content.body = "dday입니다!!!"
-        }
-        else{
-            content.body = "dday 전날입니다~~"
-        }
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        let request = UNNotificationRequest(identifier: "test", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
-        userNotificationCenter.add(request) { error in
-            if let error = error {
-                print("Notification Error: ", error)
-            }
-        }
-        
-    }
  
 }
 
