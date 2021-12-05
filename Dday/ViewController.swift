@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() { //1
         super.viewDidLoad()
 
-//        CoreDataManager.shared.deleteAll()
+        CoreDataManager.shared.deleteAll()
         numberOfCell = CoreDataManager.shared.getCount()
         if (rcvIdx.row != -1){
             removeData(indexPath: rcvIdx)
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]){
             (result, error) in print(result)
         }
-        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(updatetime), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(updatetime), userInfo: nil, repeats: true)
         //1분 60초
         //1시간 3600초
         //하루한번씩 체크는 86400
@@ -102,6 +102,7 @@ class ViewController: UIViewController {
                     ddayNoti.ringAlarm(idx: i, today: true)
                 }
                 else if Int(CoreDataManager.shared.getEntity(key: "dday", idx: i)) == -1 { //디데이 전날
+                    print("dday 전날")
                     ddayNoti.ringAlarm(idx: i, today: false)
 
                 }
@@ -122,8 +123,6 @@ class ViewController: UIViewController {
         self.numberOfCell -= 1
         rcvIdx = [-1, -1]
     }
-
-
  
 }
 
@@ -150,11 +149,11 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
         cell.name.text = CoreDataManager.shared.getEntity(key: "name", idx: indexPath.row)
 
         let cellDday = CoreDataManager.shared.getEntity(key: "dday", idx: indexPath.row)
-        let set1 = CoreDataManager.shared.getSetting(idx: indexPath.row).set1
+        let setting = CoreDataManager.shared.getSetting(idx: indexPath.row)
         
-        if(set1){
+        if(setting.set1 && setting.iter == .none){
             if (Int(cellDday)!<0){
-                cell.dday.text =  String(abs(Int(cellDday)!)) + "전"
+                cell.dday.text =  String(abs(Int(cellDday)!)) + "일 전"
             }
             else{
                 cell.dday.text = String(cellDday) + "일"
@@ -214,37 +213,3 @@ extension ViewController: SendProtocol{
     }
     
 }
-
-/*
-extension ViewController: UNUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        completionHandler()
-    }
-
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.list, .badge, .sound, .banner])
-        //        completionHandler([.alert, .badge, .sound])
-    }
-}
-*/
-/*
-
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse,
-                                withCompletionHandler completionHandler: @escaping () -> Void) {
-        completionHandler()
-        
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                willPresent noti: UNNotification,
-                                withCompletionHandler completionHandler:
-                                @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.list, .banner])
-        
-    }
-    
-}
- */
-

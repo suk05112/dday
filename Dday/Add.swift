@@ -108,6 +108,9 @@ class Add: UIViewController {
     
     
     @IBAction func saveDday(_ sender: UIButton){
+        if(inputname.text == ""){
+            inputname.text = "이름 없음"
+        }
         if(dele!.mode == "UPDATE"){
             print("update mode~~~~~~~`")
             let formatter = DateFormatter()
@@ -200,9 +203,11 @@ class Add: UIViewController {
 protocol SendProtocol{
     func send(date: Date, name: String, setting: Setting, idx: Int)
 }
+
 protocol SendUpdateProtocol{
     func sendUpdate(date: Date, name: String, setting: Setting)
 }
+
 extension Add: UITableViewDelegate, UITableViewDataSource{
     
     //table에 몇개의 section이 있을건지 알려줌

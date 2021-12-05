@@ -62,7 +62,7 @@ class CalculateDay{
                 let dday_week = cal.dateComponents([.weekday], from: d_day).weekday!
                 let todayWeek = cal.dateComponents([.weekday], from: today).weekday!
                
-                return 6-Int((todayWeek - dday_week).magnitude)
+                return (7-Int((todayWeek - dday_week).magnitude))%7
                 
             case .month:
                 
@@ -104,7 +104,12 @@ class CalculateDay{
     }
     
     func set1(settingDay: Int) -> Int{
-        return settingDay + 1
+        if(settingDay > -1){
+            return settingDay + 1
+        }
+        else{
+            return settingDay
+        }
     }
     
     func lastDay(ofMonth m: Int, year y: Int) -> Int {

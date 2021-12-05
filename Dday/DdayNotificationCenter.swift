@@ -31,15 +31,8 @@ class DdayNotificationCenter{
     func ringAlarm(idx: Int, today: Bool){
         
         let content = setContent(idx: idx, today: today)
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd HH:mm"
-        dateFormatter.locale = Locale(identifier: "ko_kr")
-        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
-
-        let dateComponents = DateComponents(hour: 21, minute: 39) //8시로 설정
+        let dateComponents = DateComponents(hour: 22, minute: 06) //8시로 설정
         print("comp", dateComponents)
-        
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         let request = UNNotificationRequest(identifier: "test", content: content, trigger: trigger)
