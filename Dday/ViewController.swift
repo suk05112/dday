@@ -208,8 +208,20 @@ extension ViewController: SendProtocol{
         let formatter = DateFormatter()
         let result = CalculateDay.shared.calculateDday(d_day: date, setting: setting)
         formatter.dateFormat = "yyyy.MM.dd EEE"
+        
+        var target_date: Date
+        
+        if(result < 0){
+            target_date = Calendar.current.date(byAdding: .day, value: Int(result.magnitude), to: Date())!
+        }else{
+            target_date = date
+        }
+
 //        CoreDataManager.shared.saveSetting(setting: setting)
-        add(data: rcvData(name: name, day: formatter.string(from: date), dday: result), setting: setting, idx: idx)
+        add(data: rcvData(name: name,
+                          day: formatter.string(from: target_date),
+                          dday: result),
+            setting: setting, idx: idx)
     }
     
 }

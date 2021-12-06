@@ -273,7 +273,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KA4-8c-bMw">
-                                <rect key="frame" x="171.5" y="467" width="32" height="30"/>
+                                <rect key="frame" x="171.5" y="587" width="32" height="30"/>
                                 <state key="normal" title="save"/>
                                 <connections>
                                     <action selector="saveDday:" destination="APW-ZH-ptr" eventType="touchUpInside" id="ENq-Nv-Z1B"/>
@@ -298,7 +298,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="38" estimatedRowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JyU-O9-wBl">
-                                <rect key="frame" x="45" y="406" width="285" height="56"/>
+                                <rect key="frame" x="45" y="406" width="285" height="161"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" id="jJh-wU-adx" customClass="HeaderCell" customModule="Dday" customModuleProvider="target">
@@ -369,7 +369,7 @@
                             <constraint firstItem="Yfj-Hh-zXc" firstAttribute="centerX" secondItem="XHf-cg-b37" secondAttribute="centerX" id="5CJ-ce-BHe"/>
                             <constraint firstItem="GdM-5b-zyY" firstAttribute="top" secondItem="Yfj-Hh-zXc" secondAttribute="bottom" constant="20" id="8F2-al-gWN"/>
                             <constraint firstItem="JyU-O9-wBl" firstAttribute="leading" secondItem="tCk-Vz-WSy" secondAttribute="leading" constant="45" id="8qj-wc-ltd"/>
-                            <constraint firstItem="KA4-8c-bMw" firstAttribute="top" secondItem="JyU-O9-wBl" secondAttribute="bottom" constant="5" id="9b2-HH-VAZ"/>
+                            <constraint firstItem="KA4-8c-bMw" firstAttribute="top" secondItem="JyU-O9-wBl" secondAttribute="bottom" constant="20" id="9b2-HH-VAZ"/>
                             <constraint firstItem="tCk-Vz-WSy" firstAttribute="trailing" secondItem="JyU-O9-wBl" secondAttribute="trailing" constant="45" id="Gx9-Pj-7MB"/>
                             <constraint firstItem="KA4-8c-bMw" firstAttribute="centerX" secondItem="XHf-cg-b37" secondAttribute="centerX" id="IH8-Ot-vf3"/>
                             <constraint firstItem="JyU-O9-wBl" firstAttribute="centerX" secondItem="XHf-cg-b37" secondAttribute="centerX" id="JUD-mH-Pxr"/>
@@ -377,7 +377,7 @@
                             <constraint firstItem="GdM-5b-zyY" firstAttribute="centerX" secondItem="XHf-cg-b37" secondAttribute="centerX" id="OpW-go-VNl"/>
                             <constraint firstItem="Yfj-Hh-zXc" firstAttribute="leading" secondItem="tCk-Vz-WSy" secondAttribute="leading" constant="123" id="U1a-Yn-gxF"/>
                             <constraint firstItem="tCk-Vz-WSy" firstAttribute="trailing" secondItem="Yfj-Hh-zXc" secondAttribute="trailing" constant="123" id="cul-Mg-cUD"/>
-                            <constraint firstItem="tCk-Vz-WSy" firstAttribute="bottom" secondItem="KA4-8c-bMw" secondAttribute="bottom" constant="150" id="fuS-kf-CMH"/>
+                            <constraint firstItem="tCk-Vz-WSy" firstAttribute="bottom" secondItem="KA4-8c-bMw" secondAttribute="bottom" constant="30" id="fuS-kf-CMH"/>
                             <constraint firstItem="ojz-QC-XFG" firstAttribute="centerX" secondItem="XHf-cg-b37" secondAttribute="centerX" id="gyn-wc-FO6"/>
                             <constraint firstItem="Yfj-Hh-zXc" firstAttribute="top" secondItem="tCk-Vz-WSy" secondAttribute="top" constant="70" id="mLs-Fk-y6R"/>
                             <constraint firstItem="JyU-O9-wBl" firstAttribute="top" secondItem="ojz-QC-XFG" secondAttribute="bottom" constant="30" id="oBb-Dm-yer"/>

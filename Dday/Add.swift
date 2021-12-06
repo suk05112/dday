@@ -115,10 +115,12 @@ class Add: UIViewController {
             print("update mode~~~~~~~`")
             let formatter = DateFormatter()
             let result = CalculateDay.shared.calculateDday(d_day: selectDate, setting: setValue)
+
             formatter.dateFormat = "yyyy.MM.dd EEE"
             CoreDataManager.shared.updateEntity(data: rcvData(name: inputname.text!,
                                                               day: formatter.string(from: selectDate),
-                                                              dday: result), idx: dele!.updateIdx)
+                                                              dday: result),
+                                                idx: dele!.updateIdx)
             
             if(isPressed[0]==false){
                 setValue.iter = .none
