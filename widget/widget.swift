@@ -11,130 +11,19 @@ import Intents
 import CoreData
 
 struct Provider: IntentTimelineProvider {
-//    var moc = PersistenceController.shared.managedObjectContext
 
-    func usrDefault(){
-        UserDefaults.standard.dictionaryRepresentation().forEach { (key, value) in
-            UserDefaults.shared.set(value, forKey: "hide")
-        }
-        UserDefaults.standard.dictionaryRepresentation().forEach { (key, value) in
-            UserDefaults.shared.set(value, forKey: "sort")
-        }
-        UserDefaults.standard.dictionaryRepresentation().forEach { (key, value) in
-            UserDefaults.shared.set(value, forKey: "noti")
-        }
-        print("usrDefault", UserDefaults.standard.bool(forKey: "hide"))
-        print("usrDefault", UserDefaults.standard.bool(forKey: "sort"))
-        print("usrDefault", UserDefaults.standard.bool(forKey: "noti"))
-    }
     func placeholder(in context: Context) -> SimpleEntry {
-        print("place holder")
-        usrDefault()
-        let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.sujin.Dday")!
-        let storeURL = containerURL.appendingPathComponent("DdayModel.sqlite")
-        let description = NSPersistentStoreDescription(url: storeURL)
-
-        let container = NSPersistentContainer(name: "DdayModel")
-        container.persistentStoreDescriptions = [description]
-        container.loadPersistentStores { description, error in
-            if let error = error {
-                fatalError("Unable to load persistent stores: \(error)")
-            }
-            
-        }
-        let moc = CoreDataStack.shared.managedObjectContext
-        let request = NSFetchRequest<Entity>(entityName: "Entity")
-        let results = try! moc.fetch(request)
-        results.forEach{
-            print($0)
-        }
-
-
-        print("end place holder")
 
         return SimpleEntry(date: Date(), configuration: ConfigurationIntent())
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let entry = SimpleEntry(date: Date(), configuration: configuration)
-        usrDefault()
-        /*
-        print("in snap")
-        
-        let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.sujin.Dday")!
-        let storeURL = containerURL.appendingPathComponent("DdayModel.sqlite")
-        let description = NSPersistentStoreDescription(url: storeURL)
-
-        let container = NSPersistentContainer(name: "DdayModel")
-        container.persistentStoreDescriptions = [description]
-        container.loadPersistentStores { description, error in
-            if let error = error {
-                fatalError("Unable to load persistent stores: \(error)")
-            }
-            
-        }
-        let context = CoreDataStack.shared.managedObjectContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Entity")
-        let results = try! context.fetch(request)
-        results.forEach{
-            print($0)
-        }
-        print("end in snap")
-        */
-
-//        let moc = CoreDataStack.shared.managedObjectContext
-
-//        let predicate = NSPredicate(format: "name == %@", "name")
-//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Entity")
-//        let results = try! container.fetch(request)
-//        let request = NSFetchRequest<Entity>(entityName: "Entity")
-//        let result = try! moc.fetch(request)
-
-
         completion(entry)
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        usrDefault()
-        /*
-        print("in timeline")
 
-        
-        let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.sujin.Dday")!
-        let storeURL = containerURL.appendingPathComponent("DdayModel.sqlite")
-        let description = NSPersistentStoreDescription(url: storeURL)
-
-        let container = NSPersistentContainer(name: "DdayModel")
-        container.persistentStoreDescriptions = [description]
-        container.loadPersistentStores { description, error in
-            if let error = error {
-                fatalError("Unable to load persistent stores: \(error)")
-            }
-            
-        }
-        let moc = CoreDataStack.shared.managedObjectContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Entity")
-        let results = try! moc.fetch(request)
-        results.forEach{
-            print($0)
-        }
-        print("end in timeline")
-*/
-//        let record = yourResult![0]
-//
-//        print(record.value(forKey: "day") ?? -1)
-//        print(record.value(forKey: "name") ?? -1)
-//        print(record.value(forKey: "dday") ?? -1)
-/*
-         
-        request.predicate = NSPredicate(format: "attribute1 == %@", "test")
-                do {
-                    yourResult = try context.fetch(request) as? [Entity]
-                    completion(yourResult)
-                } catch let error as NSError{
-                    print(error.localizedDescription)
-                }
-        */
         var entries: [SimpleEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
@@ -159,13 +48,23 @@ struct widgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        Text(UserDefaults.shared.string(forKey: "test")!)
+//        print(UserDefaults.standard.string(forKey: "test")!)
+//        Text(entry.date, style: .time)
     }
+}
+func getCoredata(){
+    let storeURL = AppGroup.facts.containerURL.appendingPathComponent("Dday.sqlite")
+    let description = NSPersistentStoreDescription(url: storeURL)
+
+    let container = NSPersistentContainer(name: "Dday")
+    container.persistentStoreDescriptions = [description]
 }
 
 @main
 struct widget: Widget { //위젯 추가하는 화면
     let kind: String = "widget"
+
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
@@ -177,7 +76,6 @@ struct widget: Widget { //위젯 추가하는 화면
 }
 
 struct widget_Previews: PreviewProvider {
-    
     
     static var previews: some View {
         widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))

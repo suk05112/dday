@@ -26,6 +26,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() { //1
         super.viewDidLoad()
+        UserDefaults.shared.set("this is widget test", forKey: "test")
 
         CoreDataManager.shared.deleteAll()
         numberOfCell = CoreDataManager.shared.getCount()
@@ -43,7 +44,7 @@ class ViewController: UIViewController {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]){
             (result, error) in print(result)
         }
-        Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(updatetime), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(updatetime), userInfo: nil, repeats: true)
         //1분 60초
         //1시간 3600초
         //하루한번씩 체크는 86400
@@ -103,7 +104,11 @@ class ViewController: UIViewController {
                 }
                 else if Int(CoreDataManager.shared.getEntity(key: "dday", idx: i)) == -1 { //디데이 전날
                     print("dday 전날")
-                    ddayNoti.ringAlarm(idx: i, today: false)
+
+                    if(UserDefaults.standard.bool(forKey: "noti")){
+                        ddayNoti.ringAlarm(idx: i, today: false)
+
+                    }
 
                 }
             }
@@ -224,4 +229,16 @@ extension ViewController: SendProtocol{
             setting: setting, idx: idx)
     }
     
+}
+
+extension UserDefaults {
+    static var shared: UserDefaults {
+        // ✅ App Groups Identifier 를 저장하는 변수
+        let appGroupID = "group.com.sujin.Dday"
+
+        // ✅ 파라미터로 전달되는 이름의 기본값으로 초기화된 UserDefaults 개체를 만든다.
+        // ✅ 이전까지 사용했던 standard UserDefaults 와 다르다. 공유되는 App Group Container 에 있는 저장소를 사용한다.
+        // ✅ suitename : The domain identifier of the search list.
+        return UserDefaults(suiteName: appGroupID)!
+    }
 }

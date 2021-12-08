@@ -20,7 +20,6 @@ class DdayNotificationCenter{
         userNotificationCenter.requestAuthorization(options: options) { success, error in
             if success {
                 print("인증 요청 성공")
-//                self.testnoti(seconds: 3)
             }
             if let error = error {
                 print(error)
@@ -31,7 +30,7 @@ class DdayNotificationCenter{
     func ringAlarm(idx: Int, today: Bool){
         
         let content = setContent(idx: idx, today: today)
-        let dateComponents = DateComponents(hour: 22, minute: 06) //8시로 설정
+        let dateComponents = DateComponents(hour: 21, minute: 12) //8시로 설정
         print("comp", dateComponents)
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
