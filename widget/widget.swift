@@ -19,6 +19,8 @@ struct Provider: IntentTimelineProvider {
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let entry = SimpleEntry(date: Date(), configuration: configuration)
+        getUserdata()
+
         completion(entry)
     }
 
@@ -36,6 +38,7 @@ struct Provider: IntentTimelineProvider {
 
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
+        
     }
 }
 
@@ -44,15 +47,61 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationIntent
 }
 
+struct Data: Identifiable{
+    var id: String = "1"
+    let data: WidgetData
+    
+}
+
+struct DataEntry: TimelineEntry {
+    var date: Date
+    let widget_data : [WidgetData]
+}
+
+func getWidgetData(data:[WidgetData], i:Int) -> String{
+    print("in getwidgetData")
+    return data[i].name
+//    myData.widget_data.forEach{
+//        Text($0.name)
+//        Divider()
+//    }
+    
+}
+
 struct widgetEntryView : View {
     var entry: Provider.Entry
-
+    var myData = DataEntry(date: Date(), widget_data: getUserdata())
+    
     var body: some View {
-        Text(UserDefaults.shared.string(forKey: "test")!)
+        VStack{
+            ForEach(0..<getUserdata().count) { index in
+                Text(getWidgetData(data:getUserdata(), i:index))
+                Divider()
+            }
+            
+        }
+//        Text(UserDefaults.shared.string(forKey: "test")!)
 //        print(UserDefaults.standard.string(forKey: "test")!)
-//        Text(entry.date, style: .time)
     }
 }
+
+func getUserdata() -> [WidgetData]{
+    print("in getUser")
+    guard let orderData = UserDefaults.shared.data(forKey: "data") else { return [] }
+    print("widget data", try!JSONDecoder().decode([WidgetData].self, from: orderData))
+    return try!JSONDecoder().decode([WidgetData].self, from: orderData)
+    /*
+    if let data1 = UserDefaults.standard.object(forKey: "data") as? Data{
+        if let decode = try? JSONDecoder().decode([WidgetData].self, from: data1){
+            return decode
+
+        }
+    }
+*/
+//    else { return [WidgetData(name: "", dday: "")] }
+//    return decode
+}
+
 func getCoredata(){
     let storeURL = AppGroup.facts.containerURL.appendingPathComponent("Dday.sqlite")
     let description = NSPersistentStoreDescription(url: storeURL)

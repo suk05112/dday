@@ -26,9 +26,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() { //1
         super.viewDidLoad()
+        save_widgetData()
+        getUserdata()
+        
         UserDefaults.shared.set("this is widget test", forKey: "test")
 
-        CoreDataManager.shared.deleteAll()
+//        CoreDataManager.shared.deleteAll()
         numberOfCell = CoreDataManager.shared.getCount()
         if (rcvIdx.row != -1){
             removeData(indexPath: rcvIdx)
@@ -51,6 +54,14 @@ class ViewController: UIViewController {
         
     }
     
+    func getUserdata(){
+        print("widget true인 값")
+        guard
+            var data = UserDefaults.shared.object(forKey: "data") as? Data,
+            let decode = try? JSONDecoder().decode([WidgetData].self, from: data)
+        else { return }
+        print(decode)
+    }
     
     @objc func didDismissPostCommentNotification(_ noti: Notification) {
         print("함수 안!!")
@@ -113,6 +124,25 @@ class ViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func save_widgetData(){
+        var collectData:[WidgetData] = []
+        
+        for i in 0..<CoreDataManager.shared.getCount(){
+            if(CoreDataManager.shared.getSetting(idx: i).widget){
+                let name = CoreDataManager.shared.getEntity(key: "name", idx: i)
+                let dday = CoreDataManager.shared.getEntity(key: "dday", idx: i)
+
+                collectData.append(WidgetData(name: name, dday: dday))
+            }
+
+        }
+        
+        if let encoded_data = try? JSONEncoder().encode(collectData){
+            UserDefaults.shared.setValue(encoded_data, forKey: "data")
+        }
+        
     }
     
     func add(data: rcvData, setting: Setting, idx: Int){

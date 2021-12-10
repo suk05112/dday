@@ -43,6 +43,8 @@
 		0370DF6826FD60C1000D1DA7 /* screenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6626FD60C1000D1DA7 /* screenCell.swift */; };
 		0370DF6F2701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */; };
 		0370DF702701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */; };
+		038E95ED276369DC00B7BE6C /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038E95EC276369DC00B7BE6C /* WidgetData.swift */; };
+		038E95EE276369DC00B7BE6C /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038E95EC276369DC00B7BE6C /* WidgetData.swift */; };
 		039492E42760E4C2005630A8 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039492E32760E4C2005630A8 /* AppGroup.swift */; };
 		039492E52760E4C2005630A8 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039492E32760E4C2005630A8 /* AppGroup.swift */; };
 		0399EF0326EF8469009E868E /* CalculateDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399EF0226EF8469009E868E /* CalculateDay.swift */; };
@@ -135,6 +137,7 @@
 		0370DF6626FD60C1000D1DA7 /* screenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = screenCell.swift; sourceTree = "<group>"; };
 		0370DF6D2701AAC3000D1DA7 /* DdayModel_idx_version.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DdayModel_idx_version.xcdatamodel; sourceTree = "<group>"; };
 		0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model.xcmappingmodel; sourceTree = "<group>"; };
+		038E95EC276369DC00B7BE6C /* WidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetData.swift; sourceTree = "<group>"; };
 		039492E32760E4C2005630A8 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		0399EF0226EF8469009E868E /* CalculateDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateDay.swift; sourceTree = "<group>"; };
 		0399EF2A26F4DF23009E868E /* DdayModel v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DdayModel v3.xcdatamodel"; sourceTree = "<group>"; };
@@ -200,6 +203,7 @@
 		036518B026A5B67A00604A55 = {
 			isa = PBXGroup;
 			children = (
+				038E95EC276369DC00B7BE6C /* WidgetData.swift */,
 				039492E32760E4C2005630A8 /* AppGroup.swift */,
 				0370DF6626FD60C1000D1DA7 /* screenCell.swift */,
 				03BCDBB726F86BA5005FC05A /* Model2-1.xcmappingmodel */,
@@ -447,6 +451,7 @@
 				0370DF702701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */,
 				03BCDBB926F86BA5005FC05A /* Model2-1.xcmappingmodel in Sources */,
 				03BCDBC026F87EB4005FC05A /* screenSetting.swift in Sources */,
+				038E95EE276369DC00B7BE6C /* WidgetData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +484,7 @@
 				036518BF26A5B67B00604A55 /* SceneDelegate.swift in Sources */,
 				03BCDBB826F86BA5005FC05A /* Model2-1.xcmappingmodel in Sources */,
 				0370DF5126FC4E30000D1DA7 /* screenUD.swift in Sources */,
+				038E95ED276369DC00B7BE6C /* WidgetData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
