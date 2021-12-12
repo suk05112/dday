@@ -182,7 +182,8 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
         
         cell.day.text = CoreDataManager.shared.getEntity(key: "day", idx: indexPath.row)
         cell.name.text = CoreDataManager.shared.getEntity(key: "name", idx: indexPath.row)
-
+        cell.dday.textAlignment = .left
+        
         let cellDday = CoreDataManager.shared.getEntity(key: "dday", idx: indexPath.row)
         let setting = CoreDataManager.shared.getSetting(idx: indexPath.row)
         
@@ -209,6 +210,8 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         cell.contentView.isUserInteractionEnabled = true
+//        cell.layer.borderColor = UIColor.systemPink.cgColor
+//        cell.layer.borderWidth = 1
 
 
         print("setting value")

@@ -61,45 +61,107 @@ struct DataEntry: TimelineEntry {
 func getWidgetData(data:[WidgetData], i:Int) -> String{
     print("in getwidgetData")
     return data[i].name
-//    myData.widget_data.forEach{
-//        Text($0.name)
-//        Divider()
-//    }
-    
+
+}
+func getDayOfWidgetData(data:[WidgetData], i:Int) -> String{
+    print("in getwidgetData")
+    return data[i].dday
+
 }
 
 struct widgetEntryView : View {
     var entry: Provider.Entry
     var myData = DataEntry(date: Date(), widget_data: getUserdata())
     
-    var body: some View {
-        VStack{
-            ForEach(0..<getUserdata().count) { index in
-                Text(getWidgetData(data:getUserdata(), i:index))
-                Divider()
+    @Environment(\.widgetFamily) var family
+        
+        var maxCount: Int {
+            switch family {
+            case .systemMedium:
+                return 1
+            default:
+                return 5
             }
-            
         }
-//        Text(UserDefaults.shared.string(forKey: "test")!)
-//        print(UserDefaults.standard.string(forKey: "test")!)
+    
+    var body: some View {
+        
+        ZStack{
+            Color.green.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .leading).opacity(0.4)
+
+            HStack{
+                Text("디데이 위젯")
+                    .font(.system(size: 25, weight: .regular))
+                    .foregroundColor(.black)
+                    .padding(EdgeInsets(top: 5, leading: 20, bottom: 0, trailing: 0))
+                    .frame(alignment: .leading)
+                
+                Spacer()
+
+            }
+
+        }
+//        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 40, alignment: .leading)
+//        .background(Color.green, opacity(0.8))
+//        .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+        
+        VStack{
+
+            ForEach(0..<3) { index in
+                HStack{
+                    Text(getWidgetData(data:getUserdata(), i:index))
+                        .font(.body)
+                        .foregroundColor(.black)
+                        .frame(alignment: .leading)
+
+                    Spacer()
+                    
+                    Text(getDayOfWidgetData(data:getUserdata(), i:index))
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(.black)
+                        .frame(alignment: .center)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 25))
+                    
+
+                }
+
+                Divider()
+
+            }
+            .frame(alignment: .center)
+
+            Spacer()
+
+        }
+        .padding(EdgeInsets(top: 0, leading: 20, bottom: 3, trailing: 0))
+
+//        .frame(height: 20)
+//        .background(Color.blue)
+
+
     }
 }
 
-func getUserdata() -> [WidgetData]{
-    print("in getUser")
-    guard let orderData = UserDefaults.shared.data(forKey: "data") else { return [] }
-    print("widget data", try!JSONDecoder().decode([WidgetData].self, from: orderData))
-    return try!JSONDecoder().decode([WidgetData].self, from: orderData)
-    /*
-    if let data1 = UserDefaults.standard.object(forKey: "data") as? Data{
-        if let decode = try? JSONDecoder().decode([WidgetData].self, from: data1){
-            return decode
-
+struct DdayView : View {
+    var myData = DataEntry(date: Date(), widget_data: getUserdata())
+    
+    var body: some View {
+        VStack(alignment: .leading){
+            ForEach(0..<getUserdata().count) { index in
+                Text(getDayOfWidgetData(data:getUserdata(), i:index))
+                Text("dday view")
+                Divider()
+            }.frame(height: 20)
+            
         }
     }
-*/
-//    else { return [WidgetData(name: "", dday: "")] }
-//    return decode
+}
+func getUserdata() -> [WidgetData]{
+    guard let orderData = UserDefaults.shared.data(forKey: "data") else { return [] }
+    print("widget data", try!JSONDecoder().decode([WidgetData].self, from: orderData))
+    
+    return try!JSONDecoder().decode([WidgetData].self, from: orderData)
+
 }
 
 func getCoredata(){
@@ -119,16 +181,40 @@ struct widget: Widget { //위젯 추가하는 화면
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             widgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("디데이 위젯")
+        .description("위젯표시를 설정한 디데이들을 확인할 수 있습니다.")
+        .supportedFamilies([.systemMedium, .systemLarge])
+        
     }
+    
 }
 
 struct widget_Previews: PreviewProvider {
+
+    @Environment(\.widgetFamily) var family
+        
+    var maxCount: Int {
+        switch family {
+        case .systemMedium:
+            return 3
+        default:
+            return 5
+        }
+    }
     
     static var previews: some View {
-        widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        
+        Group{
+            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+                .environment(\.sizeCategory, .medium)
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+            DdayView()
+                .environment(\.sizeCategory, .medium)
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+
+        }
+
+
     }
     
     static let sharedDataFileURL: URL = {
