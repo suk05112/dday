@@ -30,14 +30,7 @@ class CoreDataManager {
         let record = results?[idx]
         
         let myrequest: NSFetchRequest<Entity> = Entity.fetchRequest()
-
         let myrecord = try! context?.fetch(myrequest)
-        
-//        print("get entity")
-//
-//        myrecord?.forEach{
-//            print($0.name)
-//        }
         
         if(key != "dday"){
             return (record as AnyObject).value(forKey: key) as! String
@@ -129,6 +122,25 @@ class CoreDataManager {
             print(error.localizedDescription)
         }
 
+    }
+    
+    func updateDday(dday:Int, idx:Int){
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Entity")
+        var myresult = [NSManagedObject]()
+        let records = try! context!.fetch(request)
+        
+        if let records = records as? [NSManagedObject] {
+            myresult = records
+               }
+        
+        myresult[idx].setValue(dday, forKeyPath: "dday")
+
+        do {
+            try context?.save()
+        } catch {
+            context?.rollback()
+            print(error.localizedDescription)
+        }
     }
 
 }

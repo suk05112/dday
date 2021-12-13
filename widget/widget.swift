@@ -91,7 +91,7 @@ struct widgetEntryView : View {
 
             HStack{
                 Text("디데이 위젯")
-                    .font(.system(size: 25, weight: .regular))
+                    .font(.system(size: 20, weight: .regular))
                     .foregroundColor(.black)
                     .padding(EdgeInsets(top: 5, leading: 20, bottom: 0, trailing: 0))
                     .frame(alignment: .leading)
@@ -101,9 +101,6 @@ struct widgetEntryView : View {
             }
 
         }
-//        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 40, alignment: .leading)
-//        .background(Color.green, opacity(0.8))
-//        .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
         
         VStack{
 
@@ -117,12 +114,10 @@ struct widgetEntryView : View {
                     Spacer()
                     
                     Text(getDayOfWidgetData(data:getUserdata(), i:index))
-                        .font(.system(size: 20, weight: .semibold))
+                        .font(.body)
                         .foregroundColor(.black)
                         .frame(alignment: .center)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 25))
-                    
-
                 }
 
                 Divider()

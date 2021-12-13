@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         save_widgetData()
         getUserdata()
+        updateDday()
         
         UserDefaults.shared.set("this is widget test", forKey: "test")
 
@@ -52,6 +53,20 @@ class ViewController: UIViewController {
         //1시간 3600초
         //하루한번씩 체크는 86400
         
+    }
+    
+    func updateDday(){
+        for i in 0..<CoreDataManager.shared.getCount(){
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd EEE"
+
+            let targetDay = formatter.date(from: CoreDataManager.shared.getEntity(key: "day", idx: i))
+            print("target day = ", CoreDataManager.shared.getEntity(key: "day", idx: i))
+            let updateDday = CalculateDay.shared.calculateDday(d_day: targetDay!,
+                                                               setting: CoreDataManager.shared.getSetting(idx: i))
+            CoreDataManager.shared.updateDday(dday: updateDday, idx: i)
+
+        }
     }
     
     func getUserdata(){
@@ -206,12 +221,12 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
                 cell.dday.text = "D+" + String(cellDday)
             }
         }
-        
-        cell.layer.cornerRadius = 10
-        cell.layer.masksToBounds = true
+        setCeelColor(idx: indexPath.row, cell: cell)
+        setViewShadow(backView: cell)
+//        cell.layer.cornerRadius = 10
+//        cell.layer.masksToBounds = true
         cell.contentView.isUserInteractionEnabled = true
-//        cell.layer.borderColor = UIColor.systemPink.cgColor
-//        cell.layer.borderWidth = 1
+      
 
 
         print("setting value")
@@ -229,12 +244,54 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
             UserDefaults.standard.bool(forKey: "hide")){
             return CGSize(width: 350, height: 0)
         }else{
-            let width = (self.view.frame.size.width - 30) //some width
-            let height = width * 0.3 //ratio
-            return CGSize(width: 350, height: 116)
+
+            return CGSize(width: 350, height: 80)
 
         }
 
+    }
+    
+    //행 사이 간격 최소 간격을 반환
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5.0
+    }
+    
+//    //셀 사이의 최소간격을 반환
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 0.0
+//    }
+    
+    func setCeelColor(idx: Int, cell: UIView){
+        
+        switch(idx%4){
+            
+            case 0:
+                cell.backgroundColor = UIColor(red: CGFloat(255)/255.0, green: CGFloat(231)/255.0, blue: CGFloat(231)/255.0, alpha: 1.0)
+
+            case 1:
+                cell.backgroundColor = UIColor(red: CGFloat(250)/255.0, green: CGFloat(205)/255.0, blue: CGFloat(205)/255.0, alpha: 1.0)
+            
+            case 2:
+                cell.backgroundColor = UIColor(red: CGFloat(248)/255.0, green: CGFloat(151)/255.0, blue: CGFloat(151)/255.0, alpha: 1.0)
+
+            case 3:
+                cell.backgroundColor = UIColor(red: CGFloat(255)/255.0, green: CGFloat(121)/255.0, blue: CGFloat(121)/255.0, alpha: 1.0)
+
+            default:
+                cell.backgroundColor = UIColor(red: CGFloat(0)/0.0, green: CGFloat(255)/255.0, blue: CGFloat(255)/255.0, alpha: 1.0)
+
+        }
+    }
+    
+    func setViewShadow(backView: UIView) {
+        backView.layer.masksToBounds = true
+        backView.layer.cornerRadius = 10
+        
+        backView.layer.masksToBounds = false
+        backView.layer.shadowOpacity = 0.3
+        backView.layer.shadowOffset = CGSize(width: -2, height: 2)
+        backView.layer.shadowRadius = 3
     }
     
 }
@@ -275,3 +332,4 @@ extension UserDefaults {
         return UserDefaults(suiteName: appGroupID)!
     }
 }
+
