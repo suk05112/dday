@@ -95,22 +95,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSC-CL-YhS">
-                                <rect key="frame" x="305" y="10" width="30" height="30"/>
-                                <state key="normal" title="add"/>
-                                <connections>
-                                    <segue destination="APW-ZH-ptr" kind="presentation" identifier="show" modalTransitionStyle="crossDissolve" id="cMQ-zD-Ch6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1HI-tY-wbY">
-                                <rect key="frame" x="40" y="10" width="48" height="30"/>
-                                <state key="normal" title="setting"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1HI-tY-wbY">
+                                <rect key="frame" x="37" y="16" width="72" height="22"/>
+                                <state key="normal" title="setting" image="menu"/>
                                 <connections>
                                     <segue destination="rSi-hJ-WbC" kind="presentation" id="j9N-2p-I3Z"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mP0-AR-QFa">
-                                <rect key="frame" x="10" y="59" width="354" height="588"/>
+                                <rect key="frame" x="10" y="56" width="354" height="591"/>
                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ekH-LS-f5r">
                                     <size key="itemSize" width="336" height="75"/>
@@ -172,19 +165,26 @@
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="15k-jB-9QC"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSC-CL-YhS">
+                                <rect key="frame" x="321" y="16" width="17" height="23"/>
+                                <state key="normal" title="add" image="add"/>
+                                <connections>
+                                    <segue destination="APW-ZH-ptr" kind="presentation" identifier="show" modalTransitionStyle="crossDissolve" id="cMQ-zD-Ch6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="mP0-AR-QFa" firstAttribute="top" secondItem="KSC-CL-YhS" secondAttribute="bottom" constant="19" id="1Px-RF-Cgy"/>
+                            <constraint firstItem="mP0-AR-QFa" firstAttribute="top" secondItem="KSC-CL-YhS" secondAttribute="bottom" constant="18" id="1Px-RF-Cgy"/>
                             <constraint firstItem="KSC-CL-YhS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1HI-tY-wbY" secondAttribute="trailing" constant="8" symbolic="YES" id="AHc-e2-iW2"/>
-                            <constraint firstItem="KSC-CL-YhS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="J4C-Lc-kFE"/>
+                            <constraint firstItem="KSC-CL-YhS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="J4C-Lc-kFE"/>
                             <constraint firstItem="KSC-CL-YhS" firstAttribute="firstBaseline" secondItem="1HI-tY-wbY" secondAttribute="firstBaseline" id="Rbs-3w-94S"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mP0-AR-QFa" secondAttribute="trailing" constant="11" id="SUM-SZ-5zJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mP0-AR-QFa" secondAttribute="bottom" constant="20" id="YNU-Ct-be9"/>
                             <constraint firstItem="mP0-AR-QFa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="elo-K8-M6d"/>
-                            <constraint firstItem="1HI-tY-wbY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="k5F-No-AI3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KSC-CL-YhS" secondAttribute="trailing" constant="40" id="vkD-JD-Ujv"/>
+                            <constraint firstItem="1HI-tY-wbY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="37" id="k5F-No-AI3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KSC-CL-YhS" secondAttribute="trailing" constant="37" id="vkD-JD-Ujv"/>
                         </constraints>
                     </view>
                     <connections>
@@ -389,6 +389,8 @@
         <segue reference="cMQ-zD-Ch6"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="add" width="16" height="16"/>
+        <image name="menu" width="16" height="16"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

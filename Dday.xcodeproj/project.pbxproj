@@ -37,6 +37,7 @@
 		0367F84A26BFD079004DC581 /* CustomTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F84926BFD079004DC581 /* CustomTableCell.swift */; };
 		0367F84F26C11C2D004DC581 /* IterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F84E26C11C2D004DC581 /* IterCell.swift */; };
 		0367F85426C11C45004DC581 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F85326C11C45004DC581 /* AlarmCell.swift */; };
+		036FFDF527676F26000BDBD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 036518C526A5B67D00604A55 /* Assets.xcassets */; };
 		0370DF5126FC4E30000D1DA7 /* screenUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF5026FC4E30000D1DA7 /* screenUD.swift */; };
 		0370DF5226FC4E30000D1DA7 /* screenUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF5026FC4E30000D1DA7 /* screenUD.swift */; };
 		0370DF6726FD60C1000D1DA7 /* screenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6626FD60C1000D1DA7 /* screenCell.swift */; };
@@ -418,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				036518C926A5B67D00604A55 /* LaunchScreen.storyboard in Resources */,
+				036FFDF527676F26000BDBD7 /* Assets.xcassets in Resources */,
 				036518C426A5B67B00604A55 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -718,6 +720,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Dday/Dday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -738,6 +741,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Dday/Dday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
