@@ -27,7 +27,7 @@ class Add: UIViewController {
     var alarmBtnPressed:[Bool] = [false, false, false]
     var isPressed:[Bool] = [false, false, false] //각 스위치 버튼 눌려있는지
 
-    let setting:[String] = ["반복", "설정일을 1일부터 시작", "위젯"] //tableview 안내문구
+    let setting:[String] = ["  반복", "  설정일을 1일부터 시작", "  위젯"] //tableview 안내문구
     var setValue = Setting(iter: .none, set1: false, widget: false) //최종적으로 저장할 데이터
 
     var delegate : SendProtocol?
@@ -39,6 +39,7 @@ class Add: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.alwaysBounceVertical = false
@@ -170,28 +171,32 @@ class Add: UIViewController {
         tableView.reloadData()
     }
     
+    
     @objc func iterBtnClicked(_ sender: UIButton){
-        
+        print("sender: ", sender.tag, sender.isSelected)
+
         if (indexOfOneAndOnly != nil) && indexOfOneAndOnly != -1{ //하나라도 선택되어있을 때
-            print("sender: ", sender.tag, sender.isSelected)
-            if !sender.isSelected{ //다른게 눌려져있으면
+            if !iterBtnPressed[sender.tag]{ //다른게 눌려져있으면
+                print("이미 선택되있는 거 있는데 다른거 누름")
                 for index in iterBtnPressed.indices{ //전부다 false로 만들고
                     iterBtnPressed[index] = false
                 }
-                sender.isSelected = true //선택한 것을 true로 만든다
+//                sender.isSelected = true //선택한 것을 true로 만든다
                 iterBtnPressed[sender.tag] = true
                 indexOfOneAndOnly = sender.tag
                 setValue.iter = Iter(rawValue: sender.tag + 1)!
 
             }else{ //누른게 자기자신이라면
-                sender.isSelected = false
+                print("이미 선택되있는 거 있는데 자기 자신 누름")
+//                sender.isSelected = false
                 iterBtnPressed[sender.tag] = false
                 indexOfOneAndOnly = nil
                 setValue.iter = Iter.none
             }
 
         }else{ //하나도 선택되어있지 않을 때
-            sender.isSelected = true
+            print("하나도 선택되어있지 않을 때 누름")
+//            sender.isSelected = true
             iterBtnPressed[sender.tag] = true
             indexOfOneAndOnly = sender.tag
             setValue.iter = Iter(rawValue: sender.tag + 1)!
@@ -264,6 +269,7 @@ extension Add: UITableViewDelegate, UITableViewDataSource{
             cell.iterButtons[i].addTarget(self, action: #selector(self.iterBtnClicked(_:)), for: .touchUpInside)
             cell.iterButtons[i].isSelected = iterBtnPressed[i]
         }
+        print("버튼 값", iterBtnPressed)
 
         return cell
         

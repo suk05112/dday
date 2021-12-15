@@ -204,7 +204,7 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
         
         if(setting.set1 && setting.iter == .none){
             if (Int(cellDday)!<0){
-                cell.dday.text =  String(abs(Int(cellDday)!)) + "일 전"
+                cell.dday.text =  "D-" + String(abs(Int(cellDday)!))
             }
             else{
                 cell.dday.text = String(cellDday) + "일"
