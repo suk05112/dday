@@ -26,13 +26,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() { //1
         super.viewDidLoad()
+        CoreDataManager.shared.deleteAll()
+
         save_widgetData()
         getUserdata()
+        print("개수", CoreDataManager.shared.getCount())
+
         updateDday()
+        
         
         UserDefaults.shared.set("this is widget test", forKey: "test")
 
-//        CoreDataManager.shared.deleteAll()
         numberOfCell = CoreDataManager.shared.getCount()
         if (rcvIdx.row != -1){
             removeData(indexPath: rcvIdx)
@@ -40,7 +44,6 @@ class ViewController: UIViewController {
 
         collectionView.dataSource = self
         collectionView.delegate = self
-        formatter.dateFormat = "yyyy-MM-dd"
         
         ddayNoti.initNotification()
         NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPostCommentNotification(_:)), name: DidDismissPostCommentViewController, object: nil)
@@ -59,10 +62,13 @@ class ViewController: UIViewController {
         for i in 0..<CoreDataManager.shared.getCount(){
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd EEE"
+            formatter.locale = Locale(identifier: "ko_KR")
+            formatter.timeZone = TimeZone(abbreviation: "KST")
 
-            let targetDay = formatter.date(from: CoreDataManager.shared.getEntity(key: "day", idx: i))
+
+            let selectDate = formatter.date(from: CoreDataManager.shared.getEntity(key: "day", idx: i))
             print("target day = ", CoreDataManager.shared.getEntity(key: "day", idx: i))
-            let updateDday = CalculateDay.shared.calculateDday(d_day: targetDay!,
+            let updateDday = CalculateDay.shared.calculateDday(select_day: selectDate!,
                                                                setting: CoreDataManager.shared.getSetting(idx: i))
             CoreDataManager.shared.updateDday(dday: updateDday, idx: i)
 
@@ -121,7 +127,10 @@ class ViewController: UIViewController {
         print("in update")
         let formatter = DateFormatter() // 특정 포맷으로 날짜를 보여주기 위한 변수 선언
         formatter.dateFormat = "yyyy-MM-dd HH:mm" // 날짜 포맷 지정
-        
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+
+
         if CoreDataManager.shared.getCount() > 0{
             for i in 0...(CoreDataManager.shared.getCount()-1){
                 if Int(CoreDataManager.shared.getEntity(key: "dday", idx: i)) == 0  { // 디데이에 도달하면
@@ -301,25 +310,31 @@ extension ViewController: SendProtocol{
     
     func send(date: Date, name: String, setting: Setting, idx: Int) { //5
         let formatter = DateFormatter()
-        let result = CalculateDay.shared.calculateDday(d_day: date, setting: setting)
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+
+        let result = CalculateDay.shared.calculateDday(select_day: date, setting: setting)
         print("result 받은 직후", result)
         formatter.dateFormat = "yyyy.MM.dd EEE"
         
-        var target_date: Date
-        
-        if(result < 0){
-            target_date = Calendar.current.date(byAdding: .day, value: Int(result.magnitude), to: Date())!
-        }else{
-            target_date = date
-        }
+//        var target_date: Date
+//
+//        if(result < 0){
+//            target_date = Calendar.current.date(byAdding: .day, value: Int(result.magnitude), to: Date())!
+//        }else{
+//            target_date = date
+//        }
 
         add(data: rcvData(name: name,
-                          day: formatter.string(from: target_date),
+                          day: formatter.string(from: date),
                           dday: result),
             setting: setting, idx: idx)
     }
     
 }
+
+//extension ViewController: Se
+
 
 extension UserDefaults {
     static var shared: UserDefaults {

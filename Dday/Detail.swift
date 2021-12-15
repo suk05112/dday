@@ -64,7 +64,7 @@ class Detail: UIViewController {
         
         if(set1){
             if (Int(dday)!<0){
-                self.detail_dday.text = String(abs(Int(dday)!)) + "일 전"
+                self.detail_dday.text = "D-" + String(abs(Int(dday)!))
             }
             else{
                 self.detail_dday.text = String(dday) + "일"
@@ -148,7 +148,7 @@ extension Detail: SendUpdateProtocol{
     func sendUpdate(date: Date, name: String, setting: Setting) {
         print("detail sendProtocol")
         let formatter = DateFormatter()
-        let result = CalculateDay.shared.calculateDday(d_day: date, setting: setting)
+        let result = CalculateDay.shared.calculateDday(select_day: date, setting: setting)
         formatter.dateFormat = "yyyy.MM.dd EEE"
         //코어데이터 업데이트
 //        CoreDataManager.shared.updateSetting(setting: setting)

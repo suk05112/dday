@@ -364,14 +364,16 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KA4-8c-bMw">
                                 <rect key="frame" x="151" y="587" width="73" height="30"/>
-                                <state key="normal" title="save"/>
+                                <state key="normal" title="save">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="saveDday:" destination="APW-ZH-ptr" eventType="touchUpInside" id="ENq-Nv-Z1B"/>
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="ojz-QC-XFG">
                                 <rect key="frame" x="60" y="190" width="255" height="266.5"/>
-                                <locale key="locale" localeIdentifier="ko_KR"/>
+                                <locale key="locale" localeIdentifier="ko"/>
                                 <connections>
                                     <action selector="changeDatePIcker:" destination="APW-ZH-ptr" eventType="valueChanged" id="tfg-9D-wzI"/>
                                 </connections>
@@ -415,7 +417,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cMQ-zD-Ch6"/>
+        <segue reference="N5K-kP-1yZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="add" width="16" height="16"/>

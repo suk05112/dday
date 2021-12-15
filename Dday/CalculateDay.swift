@@ -12,12 +12,11 @@ class CalculateDay{
     private init() { }
     let cal = Calendar(identifier: .gregorian)
 
-    func calculateDday(d_day: Date, setting: Setting) -> Int{
-        
-        var returnDay:Int = 0
-        
+    func calculateDday(select_day: Date, setting: Setting) -> Int{
+
         //보여질 디데이 계산
-        returnDay = iterCalculator(setting: setting, d_day: d_day)
+        var calculatedDday = iterCalculator(setting: setting, d_day: select_day)
+        var targetDay = getTargetDay(dday: calculatedDday)
         
         //위젯인 경우
         if setting.widget == true{
@@ -25,48 +24,64 @@ class CalculateDay{
         }
         
         //set1 설정
-        if setting.iter == .none { //기념일같이 오늘날짜가 디데이를 넘었을 때, 반복없고 기념일인데 디데이에서 오늘날짜를 넘었을 때(이건 없데이트의 문제)
-            returnDay = setting.set1 ? set1(settingDay: returnDay) : returnDay
-            return Date() < d_day ? -returnDay : returnDay
-        }else{ //반복있을 때는 무조건 음수
-            return -returnDay
+        if setting.set1{
+            calculatedDday = set1(settingDay: calculatedDday)
         }
+        
+        return calculatedDday
+        
+//        if setting.iter == .none { //기념일같이 오늘날짜가 디데이를 넘었을 때, 반복없고 기념일인데 디데이에서 오늘날짜를 넘었을 때(이건 없데이트의 문제)
+//
+//            return Date() < select_day ? -calculatedDday : calculatedDday
+//        }else{ //반복있을 때는 무조건 음수, set1 무시
+//            return -calculatedDday
+//        }
     }
     
     func iterCalculator(setting: Setting, d_day: Date)->Int{
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-                
-        let today = Date()
-        guard let distanceSecond = Calendar.current.dateComponents([.hour], from: d_day, to: today).hour else { return 0 }
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+
+        var today = Date()
+        let nowDateStr = formatter.string(from: today)
+        let nowDate = formatter.date(from: nowDateStr)!
+        
+        let myDdayStr = formatter.string(from: d_day)
+        var myDday = formatter.date(from: myDdayStr)! // 시간을 제외한 목표날짜
+        
+        today = nowDate
+
+//        guard let distance = Calendar.current.dateComponents([.hour], from: d_day, to: today).hour else { return 0 }
+        var distance = Calendar.current.dateComponents([.day], from: myDday, to: today).day!
 
         
         switch setting.iter {
 
             case .none:
-                if formatter.string(from: d_day) == formatter.string(from: today){ //today == dday
-                    print("같음")
-                    return 0
-                }
-                else if ceil(Double(distanceSecond/24)) <= 0 { //before dday
-                    print("before")
-                    return Int(((distanceSecond/24) - 1).magnitude)
+                if ceil(Double(distance)) < 0 { //before dday
+                    return -Int(((distance) - 1).magnitude)
                 }
                 else{ //after dday
-                    print("after")
-                    return Int((distanceSecond/24).magnitude)
+                    return Int((distance).magnitude)
                 }
                 
             case .week:
-                let dday_week = cal.dateComponents([.weekday], from: d_day).weekday!
+                let dday_week = cal.dateComponents([.weekday], from: myDday).weekday!
                 let todayWeek = cal.dateComponents([.weekday], from: today).weekday!
-               
-                return (7-Int((todayWeek - dday_week).magnitude))%7
+
+                if todayWeek<dday_week{
+                    return todayWeek - dday_week
+                }
+                else{
+                    return todayWeek-dday_week-7
+                }
                 
             case .month:
                 
-                let dday_offsetComps = cal.dateComponents([.year,.month,.day], from:d_day)
+                let dday_offsetComps = cal.dateComponents([.year,.month,.day], from:myDday)
                 let today_offsetComps = cal.dateComponents([.year,.month,.day], from:today)
 
                 let lastday = lastDay(ofMonth: dday_offsetComps.month!, year: dday_offsetComps.year!)
@@ -75,7 +90,7 @@ class CalculateDay{
                              
                 if today_offsetComps.day! < iter_month{ //오늘 날짜가 반복 날짜보다 작을경우
                     print("작을 경우")
-                    return iter_month - today_offsetComps.day!
+                    return -iter_month + today_offsetComps.day!
                 }
                 else if today_offsetComps.day! > iter_month{ //오늘 날짜가 반복날짜를 지났을 경우(다음달이 디데이인경우)
                     print("클 경우")
@@ -89,17 +104,33 @@ class CalculateDay{
                                             String(dday_offsetComps.day!)
 
                     }
-                    print("월 반복", Int(formatter.date(from: returnIterMonth)!.timeIntervalSince(today) / 86400))
-                    return Int((formatter.date(from: returnIterMonth)!.timeIntervalSince(today) / 86400).magnitude)
+
+                    return -Int((formatter.date(from: returnIterMonth)!.timeIntervalSince(today) / 86400).magnitude)
                 }
-                else{ //} if today_offsetComps.day! == iter_month{ //dday
+                else{
                     print("같을 경우")
                     return 0
                 }
                 
             case .year:
-                print("연 반복", -(distanceSecond/24)%365)
-                return 365-(distanceSecond/24)%365
+
+                var targetDay = myDday
+                var distance_year: Int
+                
+                let this_year = Calendar.current.dateComponents([.year], from: Date()).year!
+                let target_year = Calendar.current.dateComponents([.year], from: targetDay).year!
+            
+                targetDay = Calendar.current.date(byAdding: .year, value: this_year - target_year, to: myDday)!
+                
+                if targetDay > today{
+                    targetDay = Calendar.current.date(byAdding: .year, value: 1, to: targetDay)!
+                }
+
+                distance_year = Calendar.current.dateComponents([.day], from: targetDay, to: today).day!
+                let result = (Int(distance_year)%365)
+
+                return result>0 ? (result-365):result
+            
 
         }
     }
@@ -120,5 +151,10 @@ class CalculateDay{
         comps.setValue(0, for: .day)
         let date = cal.date(from: comps)!
         return cal.component(.day, from: date)
+    }
+    
+    func getTargetDay(dday: Int) -> Date{
+        
+        return Calendar.current.date(byAdding: .day, value: -dday, to: Date())!
     }
 }

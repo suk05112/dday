@@ -49,6 +49,9 @@ class Add: UIViewController {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd EEE"
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+
         showPickerTime.text = formatter.string(from: selectDate)
 
         loadData()
@@ -64,6 +67,9 @@ class Add: UIViewController {
             inputname.text = CoreDataManager.shared.getEntity(key: "name", idx: idx )
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat =  "yyyy.MM.dd"
+            dateFormatter.locale = Locale(identifier: "ko_KR")
+            dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+
 
             datePicker.date = dateFormatter.date(from: CoreDataManager.shared.getEntity(key: "day", idx: idx).components(separatedBy: " ")[0])!
             showPickerTime.text = CoreDataManager.shared.getEntity(key: "day", idx: idx)
@@ -103,19 +109,38 @@ class Add: UIViewController {
         let datePickerView = sender
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd EEE"
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+
+
         showPickerTime.text = formatter.string(from: datePickerView.date)
         selectDate = formatter.date(from: formatter.string(from: datePickerView.date))!
     }
     
     
+    
     @IBAction func saveDday(_ sender: UIButton){
+        var targetDay: Date = Date()
+        let result = CalculateDay.shared.calculateDday(select_day: selectDate, setting: setValue) //dday
+        
+        if(setValue.set1){
+            targetDay = selectDate
+        }
+        else{
+            targetDay = CalculateDay.shared.getTargetDay(dday: result)
+        }
+        
+
         if(inputname.text == ""){
             inputname.text = "이름 없음"
         }
+        
         if(dele!.mode == "UPDATE"){
             print("update mode~~~~~~~`")
             let formatter = DateFormatter()
-            let result = CalculateDay.shared.calculateDday(d_day: selectDate, setting: setValue)
+            formatter.locale = Locale(identifier: "ko_KR")
+            formatter.timeZone = TimeZone(abbreviation: "KST")
+
 
             formatter.dateFormat = "yyyy.MM.dd EEE"
             CoreDataManager.shared.updateEntity(data: rcvData(name: inputname.text!,
@@ -129,8 +154,7 @@ class Add: UIViewController {
             CoreDataManager.shared.updateSetting(setting: setValue, idx: dele!.updateIdx)
             print("저장 후 저장된 값")
             print(CoreDataManager.shared.getSetting(idx: dele!.updateIdx).iter)
-            print(CoreDataManager.shared.getSetting(idx: dele!.updateIdx).set1)
-            print(CoreDataManager.shared.getSetting(idx: dele!.updateIdx).widget)
+
 
         }
         updateDelegate?.sendUpdate(date: selectDate, name: inputname.text!, setting: setValue)
@@ -177,26 +201,21 @@ class Add: UIViewController {
 
         if (indexOfOneAndOnly != nil) && indexOfOneAndOnly != -1{ //하나라도 선택되어있을 때
             if !iterBtnPressed[sender.tag]{ //다른게 눌려져있으면
-                print("이미 선택되있는 거 있는데 다른거 누름")
                 for index in iterBtnPressed.indices{ //전부다 false로 만들고
                     iterBtnPressed[index] = false
                 }
-//                sender.isSelected = true //선택한 것을 true로 만든다
+                
                 iterBtnPressed[sender.tag] = true
                 indexOfOneAndOnly = sender.tag
                 setValue.iter = Iter(rawValue: sender.tag + 1)!
 
             }else{ //누른게 자기자신이라면
-                print("이미 선택되있는 거 있는데 자기 자신 누름")
-//                sender.isSelected = false
                 iterBtnPressed[sender.tag] = false
                 indexOfOneAndOnly = nil
                 setValue.iter = Iter.none
             }
 
         }else{ //하나도 선택되어있지 않을 때
-            print("하나도 선택되어있지 않을 때 누름")
-//            sender.isSelected = true
             iterBtnPressed[sender.tag] = true
             indexOfOneAndOnly = sender.tag
             setValue.iter = Iter(rawValue: sender.tag + 1)!
