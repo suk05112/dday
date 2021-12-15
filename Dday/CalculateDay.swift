@@ -99,7 +99,7 @@ class CalculateDay{
                 
             case .year:
                 print("연 반복", -(distanceSecond/24)%365)
-                return -(distanceSecond/24)%365
+                return 365-(distanceSecond/24)%365
 
         }
     }

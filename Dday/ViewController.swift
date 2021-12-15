@@ -162,6 +162,7 @@ class ViewController: UIViewController {
     
     func add(data: rcvData, setting: Setting, idx: Int){
         collectionView.reloadData()
+        print("추가하는 함수 안에서 넘어온 Dday", data.dday)
         CoreDataManager.shared.saveEntity(data: data, idx: idx)
         CoreDataManager.shared.saveSetting(setting: setting)
         self.numberOfCell += 1
@@ -299,9 +300,9 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
 extension ViewController: SendProtocol{
     
     func send(date: Date, name: String, setting: Setting, idx: Int) { //5
-        print("in main 저장 프로토콜")
         let formatter = DateFormatter()
         let result = CalculateDay.shared.calculateDday(d_day: date, setting: setting)
+        print("result 받은 직후", result)
         formatter.dateFormat = "yyyy.MM.dd EEE"
         
         var target_date: Date
@@ -312,7 +313,6 @@ extension ViewController: SendProtocol{
             target_date = date
         }
 
-//        CoreDataManager.shared.saveSetting(setting: setting)
         add(data: rcvData(name: name,
                           day: formatter.string(from: target_date),
                           dday: result),
