@@ -56,11 +56,6 @@ class Add: UIViewController {
         
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-         self.view.endEditing(true)
-
-   }
-    
     func loadData(){
         
         if(dele!.mode == "UPDATE"){
@@ -123,7 +118,6 @@ class Add: UIViewController {
         if(inputname.text == ""){ inputname.text = "이름 없음" }
         
         if(dele!.mode == "UPDATE"){
-            updateDday()
             updateDelegate?.sendUpdate(date: selectDate, name: inputname.text!, setting: setValue)
             
         }
