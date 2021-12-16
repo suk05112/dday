@@ -18,11 +18,6 @@ class CalculateDay{
         //보여질 디데이 계산
         var calculatedDday = iterCalculator(setting: setting, d_day: select_day)
         
-        //위젯인 경우
-        if setting.widget == true{
-            
-        }
-        
         //set1 설정
         if setting.set1{
             calculatedDday = set1(settingDay: calculatedDday)

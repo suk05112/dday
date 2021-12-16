@@ -24,18 +24,17 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    override func viewDidLoad() { //1
+    override func viewDidLoad() {
         super.viewDidLoad()
 //        CoreDataManager.shared.deleteAll()
 
-//        save_widgetData()
-//        getUserdata()
         
-
         print("개수", CoreDataManager.shared.getCount())
 
         if CoreDataManager.shared.getCount() != 0 {
             updateDday()
+            save_widgetData()
+
         }
         
         
@@ -83,15 +82,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func getUserdata(){
-        print("widget true인 값")
-        guard
-            var data = UserDefaults.shared.object(forKey: "data") as? Data,
-            let decode = try? JSONDecoder().decode([WidgetData].self, from: data)
-        else { return }
-        print(decode)
-    }
-    
+
     @objc func didDismissPostCommentNotification(_ noti: Notification) {
         print("함수 안!!")
         collectionView.reloadData()
@@ -182,6 +173,11 @@ class ViewController: UIViewController {
         CoreDataManager.shared.saveEntity(data: data, idx: idx)
         CoreDataManager.shared.saveSetting(setting: setting)
         self.numberOfCell += 1
+        
+        print("add 된 후 get setting",        CoreDataManager.shared.getSetting(idx: idx).widget
+ )
+        
+        save_widgetData()
     }
     
     func removeData(indexPath: IndexPath) {
@@ -256,7 +252,7 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
 
         print("setting value")
         print(CoreDataManager.shared.getEntity(key: "name", idx: indexPath.row))
-        print(CoreDataManager.shared.getSetting(idx: indexPath.row).iter, "\n")
+        print(CoreDataManager.shared.getSetting(idx: indexPath.row).widget, "\n")
 
         
         return cell
