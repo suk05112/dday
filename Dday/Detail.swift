@@ -13,18 +13,22 @@ class Detail: UIViewController {
     @IBOutlet weak var detail_dday: UILabel!
     @IBOutlet weak var detail_day: UILabel!
     @IBOutlet weak var iterSet: UILabel!
+    
 
     var data: rcvData = rcvData.init(name: "init name", day: "init day", dday: 0)
     var idx:IndexPath = [-1, -1]
     var setting: Setting = Setting(iter: .none, set1: false, widget: false)
     let delegate = UIApplication.shared.delegate as? AppDelegate
     
+    
     let DidDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setting = CoreDataManager.shared.getSetting(idx: idx.row)
         loadData()
+        
         print(CoreDataManager.shared.getSetting(idx: idx.row).iter)
         print(CoreDataManager.shared.getSetting(idx: idx.row).set1)
         print(CoreDataManager.shared.getSetting(idx: idx.row).widget)

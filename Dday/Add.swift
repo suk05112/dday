@@ -118,52 +118,45 @@ class Add: UIViewController {
     }
     
     
-    
     @IBAction func saveDday(_ sender: UIButton){
-        var targetDay: Date = Date()
-        let result = CalculateDay.shared.calculateDday(select_day: selectDate, setting: setValue) //dday
-        
-        if(setValue.set1){
-            targetDay = selectDate
-        }
-        else{
-            targetDay = CalculateDay.shared.getTargetDay(dday: result)
-        }
-        
 
-        if(inputname.text == ""){
-            inputname.text = "이름 없음"
-        }
+        if(inputname.text == ""){ inputname.text = "이름 없음" }
         
         if(dele!.mode == "UPDATE"){
-            print("update mode~~~~~~~`")
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "ko_KR")
-            formatter.timeZone = TimeZone(abbreviation: "KST")
-
-
-            formatter.dateFormat = "yyyy.MM.dd EEE"
-            CoreDataManager.shared.updateEntity(data: rcvData(name: inputname.text!,
-                                                              day: formatter.string(from: selectDate),
-                                                              dday: result),
-                                                idx: dele!.updateIdx)
+            updateDelegate?.sendUpdate(date: selectDate, name: inputname.text!, setting: setValue)
             
-            if(isPressed[0]==false){
-                setValue.iter = .none
-            }
-            CoreDataManager.shared.updateSetting(setting: setValue, idx: dele!.updateIdx)
-            print("저장 후 저장된 값")
-            print(CoreDataManager.shared.getSetting(idx: dele!.updateIdx).iter)
-
-
         }
-        updateDelegate?.sendUpdate(date: selectDate, name: inputname.text!, setting: setValue)
-        delegate?.send(date: selectDate, name: inputname.text!, setting: setValue, idx: CoreDataManager.shared.getCount())
+        else{
+            delegate?.send(date: selectDate, name: inputname.text!, setting: setValue, idx: CoreDataManager.shared.getCount())
+        }
         
 
         NotificationCenter.default.post(name: DidDismissPostCommentViewController, object: nil, userInfo: nil)
         self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+    }
+    
+    func updateDday(){
+
+        let calculatedDday = CalculateDay.shared.calculateDday(select_day: selectDate, setting: setValue) //dday
+
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+        formatter.dateFormat = "yyyy.MM.dd EEE"
+        
+        CoreDataManager.shared.updateEntity(data: rcvData(name: inputname.text!,
+                                                          day: formatter.string(from: selectDate),
+                                                          dday: calculatedDday),
+                                            idx: dele!.updateIdx)
+        
+        if(isPressed[0]==false){
+            setValue.iter = .none
+        }
+        
+        CoreDataManager.shared.updateSetting(setting: setValue, idx: dele!.updateIdx)
+        print("저장 후 저장된 값")
+        print(CoreDataManager.shared.getSetting(idx: dele!.updateIdx).iter)
     }
     
     //option + cmd + 화살표

@@ -16,7 +16,8 @@ class ViewController: UIViewController {
     var rcvIdx: IndexPath = [-1, -1]
     
     let cal = Calendar(identifier: .gregorian)
-    let formatter = DateFormatter()
+    let formatter = DdayDateFormmater()
+    
     
     let delegate = UIApplication.shared.delegate as? AppDelegate
     let DidDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
@@ -30,6 +31,11 @@ class ViewController: UIViewController {
 
         save_widgetData()
         getUserdata()
+        
+        print("formatter locale", formatter.formatter.locale! )
+        print("formatter locale", formatter.formatter.timeZone! )
+        print("formatter locale", formatter.formatter.dateFormat! )
+
         print("개수", CoreDataManager.shared.getCount())
 
         updateDday()
@@ -205,19 +211,25 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
             return UICollectionViewCell()
         }
         
-        cell.day.text = CoreDataManager.shared.getEntity(key: "day", idx: indexPath.row)
+        let cellDday = CoreDataManager.shared.getEntity(key: "dday", idx: indexPath.row)
+        let setting = CoreDataManager.shared.getSetting(idx: indexPath.row)
+        var targetDay: Date
+        targetDay = CalculateDay.shared.getTargetDay(dday: Int(cellDday)!, set1: setting.set1)
+        cell.day.text = formatter.toString(date: targetDay)
+        
+        
+//        cell.day.text = CoreDataManager.shared.getEntity(key: "day", idx: indexPath.row)
         cell.name.text = CoreDataManager.shared.getEntity(key: "name", idx: indexPath.row)
         cell.dday.textAlignment = .left
         
-        let cellDday = CoreDataManager.shared.getEntity(key: "dday", idx: indexPath.row)
-        let setting = CoreDataManager.shared.getSetting(idx: indexPath.row)
+        
         
         if(setting.set1 && setting.iter == .none){
             if (Int(cellDday)!<0){
                 cell.dday.text =  "D-" + String(abs(Int(cellDday)!))
             }
             else{
-                cell.dday.text = String(cellDday) + "일"
+                cell.dday.text = cellDday + "일"
             }
 
         }else{
@@ -231,13 +243,13 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
                 cell.dday.text = "D+" + String(cellDday)
             }
         }
+
+        
         setCeelColor(idx: indexPath.row, cell: cell)
         setViewShadow(backView: cell)
-//        cell.layer.cornerRadius = 10
-//        cell.layer.masksToBounds = true
+
         cell.contentView.isUserInteractionEnabled = true
       
-
 
         print("setting value")
         print(CoreDataManager.shared.getEntity(key: "name", idx: indexPath.row))
@@ -260,17 +272,10 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
         }
 
     }
-    
-    //행 사이 간격 최소 간격을 반환
-    
+        
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5.0
     }
-    
-//    //셀 사이의 최소간격을 반환
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0.0
-//    }
     
     func setCeelColor(idx: Int, cell: UIView){
         
@@ -313,27 +318,18 @@ extension ViewController: SendProtocol{
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.timeZone = TimeZone(abbreviation: "KST")
 
-        let result = CalculateDay.shared.calculateDday(select_day: date, setting: setting)
-        print("result 받은 직후", result)
+        let calculatedDday = CalculateDay.shared.calculateDday(select_day: date, setting: setting)
+        print("result 받은 직후", calculatedDday)
         formatter.dateFormat = "yyyy.MM.dd EEE"
         
-//        var target_date: Date
-//
-//        if(result < 0){
-//            target_date = Calendar.current.date(byAdding: .day, value: Int(result.magnitude), to: Date())!
-//        }else{
-//            target_date = date
-//        }
 
         add(data: rcvData(name: name,
                           day: formatter.string(from: date),
-                          dday: result),
+                          dday: calculatedDday),
             setting: setting, idx: idx)
     }
     
 }
-
-//extension ViewController: Se
 
 
 extension UserDefaults {

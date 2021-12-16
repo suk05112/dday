@@ -11,12 +11,14 @@ class CalculateDay{
     static let shared = CalculateDay()
     private init() { }
     let cal = Calendar(identifier: .gregorian)
+    let formatter = DdayDateFormmater()
 
     func calculateDday(select_day: Date, setting: Setting) -> Int{
+        
 
         //보여질 디데이 계산
         var calculatedDday = iterCalculator(setting: setting, d_day: select_day)
-        var targetDay = getTargetDay(dday: calculatedDday)
+        var targetDay = getTargetDay(dday: calculatedDday, set1: setting.set1)
         
         //위젯인 경우
         if setting.widget == true{
@@ -30,27 +32,16 @@ class CalculateDay{
         
         return calculatedDday
         
-//        if setting.iter == .none { //기념일같이 오늘날짜가 디데이를 넘었을 때, 반복없고 기념일인데 디데이에서 오늘날짜를 넘었을 때(이건 없데이트의 문제)
-//
-//            return Date() < select_day ? -calculatedDday : calculatedDday
-//        }else{ //반복있을 때는 무조건 음수, set1 무시
-//            return -calculatedDday
-//        }
     }
     
     func iterCalculator(setting: Setting, d_day: Date)->Int{
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.timeZone = TimeZone(abbreviation: "KST")
-
         var today = Date()
-        let nowDateStr = formatter.string(from: today)
-        let nowDate = formatter.date(from: nowDateStr)!
+        let nowDateStr = formatter.toString(date: today)
+        let nowDate = formatter.toDate(str: nowDateStr)
         
-        let myDdayStr = formatter.string(from: d_day)
-        var myDday = formatter.date(from: myDdayStr)! // 시간을 제외한 목표날짜
+        let myDdayStr = formatter.toString(date: d_day)
+        var myDday = formatter.toDate(str: myDdayStr) // 시간을 제외한 목표날짜
         
         today = nowDate
 
@@ -62,7 +53,7 @@ class CalculateDay{
 
             case .none:
                 if ceil(Double(distance)) < 0 { //before dday
-                    return -Int(((distance) - 1).magnitude)
+                    return -Int(((distance)).magnitude)
                 }
                 else{ //after dday
                     return Int((distance).magnitude)
@@ -105,7 +96,7 @@ class CalculateDay{
 
                     }
 
-                    return -Int((formatter.date(from: returnIterMonth)!.timeIntervalSince(today) / 86400).magnitude)
+                    return -Int((formatter.toDate(str: returnIterMonth).timeIntervalSince(today) / 86400).magnitude)
                 }
                 else{
                     print("같을 경우")
@@ -153,8 +144,16 @@ class CalculateDay{
         return cal.component(.day, from: date)
     }
     
-    func getTargetDay(dday: Int) -> Date{
+    func getTargetDay(dday: Int, set1: Bool) -> Date{
         
-        return Calendar.current.date(byAdding: .day, value: -dday, to: Date())!
+        if set1 && (dday>0){
+            return Calendar.current.date(byAdding: .day, value: (-dday+1), to: Date())!
+            
+        }
+        else{
+            return Calendar.current.date(byAdding: .day, value: -dday, to: Date())!
+
+        }
+        
     }
 }
