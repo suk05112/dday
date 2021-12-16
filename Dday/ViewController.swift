@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     let cal = Calendar(identifier: .gregorian)
     let formatter = DdayDateFormmater()
     
-    
     let delegate = UIApplication.shared.delegate as? AppDelegate
     let DidDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
     let ddayNoti = DdayNotificationCenter()
@@ -27,23 +26,21 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() { //1
         super.viewDidLoad()
-        CoreDataManager.shared.deleteAll()
+//        CoreDataManager.shared.deleteAll()
 
-        save_widgetData()
-        getUserdata()
+//        save_widgetData()
+//        getUserdata()
         
-        print("formatter locale", formatter.formatter.locale! )
-        print("formatter locale", formatter.formatter.timeZone! )
-        print("formatter locale", formatter.formatter.dateFormat! )
 
         print("개수", CoreDataManager.shared.getCount())
 
-        updateDday()
+        if CoreDataManager.shared.getCount() != 0 {
+            updateDday()
+        }
         
         
-        UserDefaults.shared.set("this is widget test", forKey: "test")
-
         numberOfCell = CoreDataManager.shared.getCount()
+        
         if (rcvIdx.row != -1){
             removeData(indexPath: rcvIdx)
         }
@@ -52,11 +49,14 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         
         ddayNoti.initNotification()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPostCommentNotification(_:)), name: DidDismissPostCommentViewController, object: nil)
 
+        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]){
             (result, error) in print(result)
         }
+        
         Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(updatetime), userInfo: nil, repeats: true)
         //1분 60초
         //1시간 3600초
@@ -65,7 +65,9 @@ class ViewController: UIViewController {
     }
     
     func updateDday(){
+        
         for i in 0..<CoreDataManager.shared.getCount(){
+            
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd EEE"
             formatter.locale = Locale(identifier: "ko_KR")
@@ -177,15 +179,18 @@ class ViewController: UIViewController {
     
     func add(data: rcvData, setting: Setting, idx: Int){
         collectionView.reloadData()
-        print("추가하는 함수 안에서 넘어온 Dday", data.dday)
         CoreDataManager.shared.saveEntity(data: data, idx: idx)
         CoreDataManager.shared.saveSetting(setting: setting)
         self.numberOfCell += 1
     }
     
     func removeData(indexPath: IndexPath) {
-        CoreDataManager.shared.deleteEntity(idx: indexPath.row)
         collectionView.deleteItems(at: [indexPath])
+        
+        CoreDataManager.shared.deleteEntity(idx: indexPath.row)
+        CoreDataManager.shared.deleteSetting(idx: indexPath.row)
+
+        
         self.numberOfCell -= 1
         rcvIdx = [-1, -1]
     }
@@ -201,7 +206,7 @@ class data: UICollectionViewCell{
 extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate ,UICollectionViewDelegateFlowLayout{
     
     //지정된 섹션에 표시할 항목의 개수를 묻는 메서드
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { //2
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.numberOfCell
     }
     
@@ -215,10 +220,8 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
         let setting = CoreDataManager.shared.getSetting(idx: indexPath.row)
         var targetDay: Date
         targetDay = CalculateDay.shared.getTargetDay(dday: Int(cellDday)!, set1: setting.set1)
+        
         cell.day.text = formatter.toString(date: targetDay)
-        
-        
-//        cell.day.text = CoreDataManager.shared.getEntity(key: "day", idx: indexPath.row)
         cell.name.text = CoreDataManager.shared.getEntity(key: "name", idx: indexPath.row)
         cell.dday.textAlignment = .left
         

@@ -30,7 +30,7 @@ class DdayNotificationCenter{
     func ringAlarm(idx: Int, today: Bool){
         
         let content = setContent(idx: idx, today: today)
-        let dateComponents = DateComponents(hour: 21, minute: 12) //8시로 설정
+        let dateComponents = DateComponents(hour: 21, minute: 55) //8시로 설정
         print("comp", dateComponents)
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)

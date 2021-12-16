@@ -19,7 +19,8 @@ class Detail: UIViewController {
     var idx:IndexPath = [-1, -1]
     var setting: Setting = Setting(iter: .none, set1: false, widget: false)
     let delegate = UIApplication.shared.delegate as? AppDelegate
-    
+    let formatter = DdayDateFormmater()
+
     
     let DidDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
 
@@ -55,18 +56,19 @@ class Detail: UIViewController {
 //            viewController.delegate = self
             viewController.updateDelegate = self
             
-            print("edit show")
         }
     }
 
     func loadData(){
-        self.detail_name.text = CoreDataManager.shared.getEntity(key: "name", idx: idx.row)
-        self.detail_day.text = CoreDataManager.shared.getEntity(key: "day", idx: idx.row)
-        
+
         let dday = CoreDataManager.shared.getEntity(key: "dday", idx: idx.row)
+        var targetDay = CalculateDay.shared.getTargetDay(dday: Int(dday)!, set1: setting.set1)
         let set1 = CoreDataManager.shared.getSetting(idx: idx.row).set1
         
-        if(set1){
+        self.detail_name.text = CoreDataManager.shared.getEntity(key: "name", idx: idx.row)
+        self.detail_day.text = formatter.toString(date: targetDay)
+        
+        if(set1 && setting.iter == .none){
             if (Int(dday)!<0){
                 self.detail_dday.text = "D-" + String(abs(Int(dday)!))
             }
@@ -119,6 +121,7 @@ class Detail: UIViewController {
         let okAction = UIAlertAction(title: "네", style: .default) { (action) in
             print("say yes")
             let mainVC = self.presentingViewController
+            
             guard let vc = mainVC as? ViewController else {return}
             vc.rcvIdx = self.idx
             self.dismiss(animated: true) {

@@ -180,7 +180,6 @@ extension CoreDataManager {
         }
     
     func updateSetting(setting: Setting, idx: Int){
-        print("update Setting!!")
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "MySetting")
         var myresult = [NSManagedObject]()
         let records = try! context!.fetch(request)
@@ -190,8 +189,6 @@ extension CoreDataManager {
                }
         
         myresult[idx].setValue(setting.iter.rawValue, forKeyPath: "iter")
-//        myresult[idx].setValue(2, forKeyPath: "iter")
-
         myresult[idx].setValue(setting.set1, forKeyPath: "set1")
         myresult[idx].setValue(setting.widget, forKeyPath: "widget")
 
