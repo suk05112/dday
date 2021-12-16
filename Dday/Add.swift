@@ -35,6 +35,9 @@ class Add: UIViewController {
     var selectDate =  Date()
     let dele =  UIApplication.shared.delegate as? AppDelegate
     
+    let formatter = DdayDateFormmater()
+
+    
     let DidDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
 
     override func viewDidLoad() {
@@ -47,21 +50,11 @@ class Add: UIViewController {
         tableView.estimatedRowHeight = 50.0
         tableView.rowHeight = UITableView.automaticDimension
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd EEE"
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.timeZone = TimeZone(abbreviation: "KST")
-
-        showPickerTime.text = formatter.string(from: selectDate)
+        showPickerTime.text = formatter.toString(date: selectDate)
 
         loadData()
         
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-         self.view.endEditing(true)
-
-   }
     
     func loadData(){
         
@@ -69,14 +62,10 @@ class Add: UIViewController {
             let idx = (dele?.updateIdx)!
             indexOfOneAndOnly = CoreDataManager.shared.getSetting(idx: idx).iter.rawValue - 1
             print("update mode")
-            inputname.text = CoreDataManager.shared.getEntity(key: "name", idx: idx )
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat =  "yyyy.MM.dd"
-            dateFormatter.locale = Locale(identifier: "ko_KR")
-            dateFormatter.timeZone = TimeZone(abbreviation: "KST")
-
-
-            datePicker.date = dateFormatter.date(from: CoreDataManager.shared.getEntity(key: "day", idx: idx).components(separatedBy: " ")[0])!
+            print(CoreDataManager.shared.getEntity(key: "day", idx: idx).components(separatedBy: " ")[0])
+            inputname.text = CoreDataManager.shared.getEntity(key: "name", idx: idx)
+            datePicker.date = formatter.toDate(str: CoreDataManager.shared.getEntity(key: "day", idx: idx))
+            
             showPickerTime.text = CoreDataManager.shared.getEntity(key: "day", idx: idx)
             
             if (CoreDataManager.shared.getSetting(idx: idx).iter == .none){
@@ -103,6 +92,7 @@ class Add: UIViewController {
                     iterBtnPressed = [false, false, false]
 
                 }
+                
                 setValue = Setting(iter: CoreDataManager.shared.getSetting(idx: idx).iter, set1: isPressed[1], widget: isPressed[2])
 
             }
@@ -128,7 +118,6 @@ class Add: UIViewController {
         if(inputname.text == ""){ inputname.text = "이름 없음" }
         
         if(dele!.mode == "UPDATE"){
-            updateDday()
             updateDelegate?.sendUpdate(date: selectDate, name: inputname.text!, setting: setValue)
             
         }
@@ -145,14 +134,9 @@ class Add: UIViewController {
     func updateDday(){
 
         let calculatedDday = CalculateDay.shared.calculateDday(select_day: selectDate, setting: setValue) //dday
-
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.timeZone = TimeZone(abbreviation: "KST")
-        formatter.dateFormat = "yyyy.MM.dd EEE"
         
         CoreDataManager.shared.updateEntity(data: rcvData(name: inputname.text!,
-                                                          day: formatter.string(from: selectDate),
+                                                          day: formatter.toString(date: selectDate),
                                                           dday: calculatedDday),
                                             idx: dele!.updateIdx)
         
@@ -161,8 +145,8 @@ class Add: UIViewController {
         }
         
         CoreDataManager.shared.updateSetting(setting: setValue, idx: dele!.updateIdx)
-        print("저장 후 저장된 값")
-        print(CoreDataManager.shared.getSetting(idx: dele!.updateIdx).iter)
+//        print("저장 후 저장된 값")
+//        print(CoreDataManager.shared.getSetting(idx: dele!.updateIdx).iter)
     }
     
     //option + cmd + 화살표
@@ -190,6 +174,7 @@ class Add: UIViewController {
             setValue.widget = false
         }
         
+        print( "변경된 switch", sender.tag)
         isPressed[sender.tag] = !isPressed[sender.tag]
         tableView.reloadData()
     }
@@ -252,6 +237,8 @@ extension Add: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.headerCellIdentifier) as! HeaderCell
         let text = setting[section]
+        
+        print(section)
         cell.textLabel?.text = text
         cell.cellSwitch.tag = section // for detect which row switch Changed
         cell.cellSwitch.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)

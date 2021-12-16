@@ -15,13 +15,20 @@ class CalculateDay{
 
     func calculateDday(select_day: Date, setting: Setting) -> Int{
         
+
         //보여질 디데이 계산
         var calculatedDday = iterCalculator(setting: setting, d_day: select_day)
+        var targetDay = getTargetDay(dday: calculatedDday, set1: setting.set1)
+        /*
+<<<<<<< HEAD
+=======
         
         //위젯인 경우
         if setting.widget == true{
             
         }
+>>>>>>> parent of b2dca7b (삭제오류 해결)
+         */
         
         //set1 설정
         if setting.set1{
@@ -39,12 +46,12 @@ class CalculateDay{
         let nowDate = formatter.toDate(str: nowDateStr)
         
         let myDdayStr = formatter.toString(date: d_day)
-        let myDday = formatter.toDate(str: myDdayStr) // 시간을 제외한 목표날짜
+        var myDday = formatter.toDate(str: myDdayStr) // 시간을 제외한 목표날짜
         
         today = nowDate
 
 //        guard let distance = Calendar.current.dateComponents([.hour], from: d_day, to: today).hour else { return 0 }
-        let distance = Calendar.current.dateComponents([.day], from: myDday, to: today).day!
+        var distance = Calendar.current.dateComponents([.day], from: myDday, to: today).day!
 
         
         switch setting.iter {

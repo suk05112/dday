@@ -59,13 +59,24 @@ struct DataEntry: TimelineEntry {
 }
 
 func getWidgetData(data:[WidgetData], i:Int) -> String{
-    print("in getwidgetData")
-    return data[i].name
-
+    print("in getwidgetData", i)
+    if i<data.count{
+        return data[i].name
+    }
+    else{
+        return "none"
+    }
 }
 func getDayOfWidgetData(data:[WidgetData], i:Int) -> String{
-    print("in getwidgetData")
-    return data[i].dday
+    print("in getwidgetData", i)
+    
+    if i<data.count{
+        return data[i].dday
+    }
+
+    else{
+        return " "
+    }
 
 }
 
@@ -74,26 +85,30 @@ struct widgetEntryView : View {
     var myData = DataEntry(date: Date(), widget_data: getUserdata())
     
     @Environment(\.widgetFamily) var family
-        
-        var maxCount: Int {
-            switch family {
-            case .systemMedium:
-                return 1
-            default:
-                return 5
-            }
-        }
     
+    var maxCount: Int {
+        switch family {
+        case .systemMedium:
+            return 3
+        case .systemLarge:
+            return 5
+        default:
+            return 6
+        }
+    }
+
+
     var body: some View {
         
         ZStack{
-            Color.green.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .leading).opacity(0.4)
+            Color(red: CGFloat(250)/255.0, green: CGFloat(205)/255.0, blue: CGFloat(205)/255.0, opacity: 0.4).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .leading)
+//            Color.green.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .leading).opacity(0.4)
 
             HStack{
-                Text("디데이 위젯")
-                    .font(.system(size: 20, weight: .regular))
+                Text("Post Day")
+                    .font(.system(size: 15, weight: .semibold ))
                     .foregroundColor(.black)
-                    .padding(EdgeInsets(top: 5, leading: 20, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top: 13, leading: 20, bottom: 0, trailing: 0))
                     .frame(alignment: .leading)
                 
                 Spacer()
@@ -104,12 +119,14 @@ struct widgetEntryView : View {
         
         VStack{
 
-            ForEach(0..<3) { index in
+            ForEach(0..<maxCount) { index in
                 HStack{
                     Text(getWidgetData(data:getUserdata(), i:index))
                         .font(.body)
                         .foregroundColor(.black)
                         .frame(alignment: .leading)
+                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+
 
                     Spacer()
                     
@@ -117,7 +134,7 @@ struct widgetEntryView : View {
                         .font(.body)
                         .foregroundColor(.black)
                         .frame(alignment: .center)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 25))
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                 }
 
                 Divider()
@@ -128,7 +145,7 @@ struct widgetEntryView : View {
             Spacer()
 
         }
-        .padding(EdgeInsets(top: 0, leading: 20, bottom: 3, trailing: 0))
+        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
 
 //        .frame(height: 20)
 //        .background(Color.blue)
@@ -187,15 +204,18 @@ struct widget: Widget { //위젯 추가하는 화면
 struct widget_Previews: PreviewProvider {
 
     @Environment(\.widgetFamily) var family
-        
+    
     var maxCount: Int {
         switch family {
         case .systemMedium:
             return 3
+        case .systemLarge:
+            return 5
         default:
             return 5
         }
     }
+
     
     static var previews: some View {
         
