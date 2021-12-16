@@ -29,6 +29,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         CoreDataManager.shared.deleteAll()
         /*
+<<<<<<< HEAD
+        /*
 
 <<<<<<< HEAD
 =======
@@ -44,7 +46,10 @@ class ViewController: UIViewController {
         updateDday()
 >>>>>>> parent of b2dca7b (삭제오류 해결)
         */
-        
+=======
+
+>>>>>>> 2984e8819501ff75de16c4aeab461221a191b870
+        */
         
         UserDefaults.shared.set("this is widget test", forKey: "test")
 

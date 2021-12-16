@@ -21,6 +21,8 @@ class CalculateDay{
         var targetDay = getTargetDay(dday: calculatedDday, set1: setting.set1)
         /*
 <<<<<<< HEAD
+        /*
+<<<<<<< HEAD
 =======
         
         //위젯인 경우
@@ -28,6 +30,9 @@ class CalculateDay{
             
         }
 >>>>>>> parent of b2dca7b (삭제오류 해결)
+         */
+=======
+>>>>>>> 2984e8819501ff75de16c4aeab461221a191b870
          */
         
         //set1 설정
