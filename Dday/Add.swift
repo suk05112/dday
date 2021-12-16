@@ -126,7 +126,12 @@ class Add: UIViewController {
 
         if(inputname.text == ""){ inputname.text = "이름 없음" }
         
+        if(isPressed[0]==false){
+            setValue.iter = .none
+        }
+        
         if(dele!.mode == "UPDATE"){
+            updateDday()
             updateDelegate?.sendUpdate(date: selectDate, name: inputname.text!, setting: setValue)
             
         }
@@ -149,10 +154,7 @@ class Add: UIViewController {
                                                           dday: calculatedDday),
                                             idx: dele!.updateIdx)
         
-        if(isPressed[0]==false){
-            setValue.iter = .none
-        }
-        
+
         CoreDataManager.shared.updateSetting(setting: setValue, idx: dele!.updateIdx)
 //        print("저장 후 저장된 값")
 //        print(CoreDataManager.shared.getSetting(idx: dele!.updateIdx).iter)

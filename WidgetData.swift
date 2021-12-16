@@ -10,4 +10,5 @@ import Foundation
 struct WidgetData: Codable {
     var name: String
     var dday: String
+    var set1: Bool
 }

@@ -23,6 +23,7 @@
 		03191AD626DB74FD00E7B7E5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191AD426DB74FD00E7B7E5 /* CoreDataStack.swift */; };
 		03191B4326E8EB0F00E7B7E5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191B4226E8EB0F00E7B7E5 /* CoreDataManager.swift */; };
 		03218E19276B37890075ECF0 /* DdayDateFormmater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03218E18276B37890075ECF0 /* DdayDateFormmater.swift */; };
+		032F89A1276BCBDE00A124A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03191A6E26D4DC1C00E7B7E5 /* Assets.xcassets */; };
 		036518BD26A5B67B00604A55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518BC26A5B67B00604A55 /* AppDelegate.swift */; };
 		036518BF26A5B67B00604A55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518BE26A5B67B00604A55 /* SceneDelegate.swift */; };
 		036518C126A5B67B00604A55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518C026A5B67B00604A55 /* ViewController.swift */; };
@@ -413,6 +414,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				032F89A1276BCBDE00A124A2 /* Assets.xcassets in Resources */,
 				038E95F32764DAD600B7BE6C /* WidgetInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

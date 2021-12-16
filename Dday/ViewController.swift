@@ -8,6 +8,7 @@
 import UIKit
 import UserNotifications
 import CoreData
+import WidgetKit
 
 class ViewController: UIViewController {
 
@@ -27,12 +28,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        CoreDataManager.shared.deleteAll()
+//        CoreDataManager.shared.deleteAll()
         
-//        save_widgetData()
-//        print("개수", CoreDataManager.shared.getCount())
-//        updateDday()
-
         UserDefaults.shared.set("this is widget test", forKey: "test")
 
         numberOfCell = CoreDataManager.shared.getCount()
@@ -44,6 +41,9 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         
         ddayNoti.initNotification()
+        
+        save_widgetData()
+
         NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPostCommentNotification(_:)), name: DidDismissPostCommentViewController, object: nil)
 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]){
@@ -71,6 +71,8 @@ class ViewController: UIViewController {
             CoreDataManager.shared.updateDday(dday: updateDday, idx: i)
 
         }
+//        WidgetCenter.shared.reloadAllTimelines()
+
     }
     
 
@@ -147,8 +149,9 @@ class ViewController: UIViewController {
             if(CoreDataManager.shared.getSetting(idx: i).widget){
                 let name = CoreDataManager.shared.getEntity(key: "name", idx: i)
                 let dday = CoreDataManager.shared.getEntity(key: "dday", idx: i)
+                let set1 = CoreDataManager.shared.getSetting(idx: i).set1
 
-                collectData.append(WidgetData(name: name, dday: dday))
+                collectData.append(WidgetData(name: name, dday: dday, set1: set1))
             }
 
         }
@@ -156,6 +159,8 @@ class ViewController: UIViewController {
         if let encoded_data = try? JSONEncoder().encode(collectData){
             UserDefaults.shared.setValue(encoded_data, forKey: "data")
         }
+        WidgetCenter.shared.reloadAllTimelines()
+
         
     }
     
@@ -166,17 +171,20 @@ class ViewController: UIViewController {
         CoreDataManager.shared.saveSetting(setting: setting)
         self.numberOfCell += 1
         
-        print("add 된 후 get setting",        CoreDataManager.shared.getSetting(idx: idx).widget
- )
-        
         save_widgetData()
+
     }
     
     func removeData(indexPath: IndexPath) {
-        CoreDataManager.shared.deleteEntity(idx: indexPath.row)
         collectionView.deleteItems(at: [indexPath])
+
+        CoreDataManager.shared.deleteEntity(idx: indexPath.row)
+        CoreDataManager.shared.deleteSetting(idx: indexPath.row)
+        save_widgetData()
+
         self.numberOfCell -= 1
         rcvIdx = [-1, -1]
+
     }
  
 }

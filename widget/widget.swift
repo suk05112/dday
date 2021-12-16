@@ -19,7 +19,6 @@ struct Provider: IntentTimelineProvider {
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let entry = SimpleEntry(date: Date(), configuration: configuration)
-        getUserdata()
 
         completion(entry)
     }
@@ -69,9 +68,36 @@ func getWidgetData(data:[WidgetData], i:Int) -> String{
 }
 func getDayOfWidgetData(data:[WidgetData], i:Int) -> String{
     print("in getwidgetData", i)
-    
+   
+
     if i<data.count{
-        return data[i].dday
+        
+        let dday = data[i].dday
+        let set1 = getUserdata()[i].set1
+        
+        if(set1){
+            if (Int(dday)!<0){
+                return "D-" + String(abs(Int(dday)!))
+            }
+            else{
+                return String(dday) + "일"
+
+            }
+
+        }
+        else{
+            if (Int(dday)!<0){
+                return "D" + String(dday)
+            }
+            else if(Int(dday) == 0){
+                return"D-day"
+            }
+            else{
+                return "D+" + String(dday)
+
+            }
+        }
+        
     }
 
     else{
@@ -79,6 +105,15 @@ func getDayOfWidgetData(data:[WidgetData], i:Int) -> String{
     }
 
 }
+
+func getImage(name: String, type: String = "png") -> UIImage? {
+        guard let plugins = Bundle.main.builtInPlugInsPath,
+              let bundle = Bundle(url: URL(fileURLWithPath:
+                           plugins).appendingPathComponent("sujin.Dday.widget")),
+              let path = bundle.path(forResource: name, ofType: type)
+              else { return nil }
+        return UIImage(contentsOfFile: path)
+    }
 
 struct widgetEntryView : View {
     var entry: Provider.Entry
@@ -91,9 +126,9 @@ struct widgetEntryView : View {
         case .systemMedium:
             return 3
         case .systemLarge:
-            return 5
+            return 7
         default:
-            return 6
+            return 5
         }
     }
 
@@ -102,13 +137,18 @@ struct widgetEntryView : View {
         
         ZStack{
             Color(red: CGFloat(250)/255.0, green: CGFloat(205)/255.0, blue: CGFloat(205)/255.0, opacity: 0.4).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .leading)
-//            Color.green.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .leading).opacity(0.4)
 
             HStack{
+                Image("postit")
+                    .resizable()
+                    .frame(width: 20, height: 20, alignment: .center)
+                    .padding(EdgeInsets(top: 13, leading: 20, bottom: 0, trailing: 0))
+
+                
                 Text("Post Day")
                     .font(.system(size: 15, weight: .semibold ))
                     .foregroundColor(.black)
-                    .padding(EdgeInsets(top: 13, leading: 20, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top: 13, leading: 0, bottom: 0, trailing: 0))
                     .frame(alignment: .leading)
                 
                 Spacer()
@@ -146,10 +186,6 @@ struct widgetEntryView : View {
 
         }
         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-
-//        .frame(height: 20)
-//        .background(Color.blue)
-
 
     }
 }
@@ -203,20 +239,6 @@ struct widget: Widget { //위젯 추가하는 화면
 
 struct widget_Previews: PreviewProvider {
 
-    @Environment(\.widgetFamily) var family
-    
-    var maxCount: Int {
-        switch family {
-        case .systemMedium:
-            return 3
-        case .systemLarge:
-            return 5
-        default:
-            return 5
-        }
-    }
-
-    
     static var previews: some View {
         
         Group{
