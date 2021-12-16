@@ -42,7 +42,7 @@ class Add: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.alwaysBounceVertical = false
@@ -56,6 +56,11 @@ class Add: UIViewController {
         
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+         self.view.endEditing(true)
+
+   }
     func loadData(){
         
         if(dele!.mode == "UPDATE"){
@@ -98,6 +103,10 @@ class Add: UIViewController {
             }
 
         }
+    }
+    
+    @IBAction func textDidChanged(_ sender: Any){
+        checkMaxLength(textField: inputname, maxLength: 10)
     }
     
     @IBAction func changeDatePIcker(_ sender: UIDatePicker) {
@@ -281,4 +290,16 @@ extension Add: UITableViewDelegate, UITableViewDataSource{
 
     }
     
+}
+
+extension Add: UITextFieldDelegate{
+
+    func checkMaxLength(textField: UITextField!, maxLength: Int) {
+        inputname.delegate = self
+
+        if ((textField.text?.count)! > 10) {
+            textField.deleteBackward()
+        }
+    }
+
 }

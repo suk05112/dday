@@ -36,7 +36,8 @@ class Detail: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPostCommentNotification(_:)), name: DidDismissPostCommentViewController, object: nil)
 
     }
-    
+
+
     override func viewDidDisappear(_ animated: Bool) {
         print("disappear")
 

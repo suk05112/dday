@@ -28,29 +28,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         CoreDataManager.shared.deleteAll()
-        /*
-<<<<<<< HEAD
-        /*
-
-<<<<<<< HEAD
-=======
-        save_widgetData()
-        getUserdata()
         
-        print("formatter locale", formatter.formatter.locale! )
-        print("formatter locale", formatter.formatter.timeZone! )
-        print("formatter locale", formatter.formatter.dateFormat! )
+//        save_widgetData()
+//        print("개수", CoreDataManager.shared.getCount())
+//        updateDday()
 
-        print("개수", CoreDataManager.shared.getCount())
-
-        updateDday()
->>>>>>> parent of b2dca7b (삭제오류 해결)
-        */
-=======
-
->>>>>>> 2984e8819501ff75de16c4aeab461221a191b870
-        */
-        
         UserDefaults.shared.set("this is widget test", forKey: "test")
 
         numberOfCell = CoreDataManager.shared.getCount()
