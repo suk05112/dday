@@ -29,13 +29,19 @@ struct Provider: IntentTimelineProvider {
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
+        
+        let year = Calendar.current.dateComponents([.year], from: currentDate).year
+        let month = Calendar.current.dateComponents([.month], from: currentDate).month
+        let day = Calendar.current.dateComponents([.day], from: currentDate).day
+        
+        let dateComponents = DateComponents(year: year, month: month, day: day, hour: 0, minute: 0)
+        let refreshDate = Calendar.current.date(from: dateComponents)!
 
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        let entry = SimpleEntry(date: currentDate, configuration: configuration)
+        entries.append(entry)
+
+
+        let timeline = Timeline(entries: entries, policy: .after(refreshDate))
         completion(timeline)
         
     }
@@ -59,12 +65,28 @@ struct DataEntry: TimelineEntry {
 
 func getWidgetData(data:[WidgetData], i:Int) -> String{
     print("in getwidgetData", i)
+    
     if i<data.count{
         return data[i].name
     }
     else{
-        return "none"
+        return ""
     }
+    
+    
+    let date = Date()
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "mm" // 2020-08-13 16:30
+            
+            
+    let myDateFormatter = DateFormatter()
+    myDateFormatter.dateFormat = "yyyy년 MM월 dd일 a hh시 mm분" // 2020년 08월 13일 오후 04시 30분
+    myDateFormatter.locale = Locale(identifier:"ko_KR") // PM, AM을 언어에 맞게 setting (ex: PM -> 오후)
+    
+    let convertStr = myDateFormatter.string(from: date)
+    
+    return convertStr
 }
 func getDayOfWidgetData(data:[WidgetData], i:Int) -> String{
     print("in getwidgetData", i)
@@ -145,7 +167,7 @@ struct widgetEntryView : View {
                     .padding(EdgeInsets(top: 13, leading: 20, bottom: 0, trailing: 0))
 
                 
-                Text("Post Day")
+                Text("Post DDay")
                     .font(.system(size: 15, weight: .semibold ))
                     .foregroundColor(.black)
                     .padding(EdgeInsets(top: 13, leading: 0, bottom: 0, trailing: 0))

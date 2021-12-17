@@ -47,9 +47,22 @@ class DdayNotificationCenter{
     
     func ringAlarm(idx: Int, today: Bool){
         
+        
         let content = setContent(idx: idx, today: today)
-        let dateComponents = DateComponents(hour: 2, minute: 52) //8시로 설정
-//        print("comp", dateComponents)
+        
+        let dday = CoreDataManager.shared.getEntity(key: "dday", idx: idx)
+        let set1 = CoreDataManager.shared.getSetting(idx: idx).set1
+        
+        let date = CalculateDay.shared.getTargetDay(dday: Int(dday)!, set1: set1)
+        
+        let year = Calendar.current.dateComponents([.year], from: date).year
+        let month = Calendar.current.dateComponents([.month], from: date).month
+        let day = Calendar.current.dateComponents([.day], from: date).day
+
+        
+        let dateComponents = DateComponents(year: year, month: month, day: day, hour: 8, minute: 00) //8시로 설정
+//        let dateComponents = DateComponents(hour: 3, minute: 00) //8시로 설정
+        
         print("noti 설정")
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)

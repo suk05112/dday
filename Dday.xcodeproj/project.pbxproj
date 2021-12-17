@@ -48,7 +48,6 @@
 		0370DF702701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */; };
 		038E95ED276369DC00B7BE6C /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038E95EC276369DC00B7BE6C /* WidgetData.swift */; };
 		038E95EE276369DC00B7BE6C /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038E95EC276369DC00B7BE6C /* WidgetData.swift */; };
-		038E95F32764DAD600B7BE6C /* WidgetInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038E95F22764DAD600B7BE6C /* WidgetInterface.storyboard */; };
 		039492E42760E4C2005630A8 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039492E32760E4C2005630A8 /* AppGroup.swift */; };
 		039492E52760E4C2005630A8 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039492E32760E4C2005630A8 /* AppGroup.swift */; };
 		0399EF0326EF8469009E868E /* CalculateDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399EF0226EF8469009E868E /* CalculateDay.swift */; };
@@ -143,7 +142,6 @@
 		0370DF6D2701AAC3000D1DA7 /* DdayModel_idx_version.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DdayModel_idx_version.xcdatamodel; sourceTree = "<group>"; };
 		0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model.xcmappingmodel; sourceTree = "<group>"; };
 		038E95EC276369DC00B7BE6C /* WidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetData.swift; sourceTree = "<group>"; };
-		038E95F22764DAD600B7BE6C /* WidgetInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WidgetInterface.storyboard; sourceTree = "<group>"; };
 		039492E32760E4C2005630A8 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		0399EF0226EF8469009E868E /* CalculateDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateDay.swift; sourceTree = "<group>"; };
 		0399EF2A26F4DF23009E868E /* DdayModel v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DdayModel v3.xcdatamodel"; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 				03191A6D26D4DC1A00E7B7E5 /* widget.intentdefinition */,
 				03191A6E26D4DC1C00E7B7E5 /* Assets.xcassets */,
 				03191A7026D4DC1C00E7B7E5 /* Info.plist */,
-				038E95F22764DAD600B7BE6C /* WidgetInterface.storyboard */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -415,7 +412,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				032F89A1276BCBDE00A124A2 /* Assets.xcassets in Resources */,
-				038E95F32764DAD600B7BE6C /* WidgetInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
