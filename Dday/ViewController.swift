@@ -28,6 +28,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+
 //        CoreDataManager.shared.deleteAll()
         
         UserDefaults.shared.set("this is widget test", forKey: "test")
@@ -43,6 +46,9 @@ class ViewController: UIViewController {
         ddayNoti.initNotification()
         
         save_widgetData()
+        
+
+        collectionView.reloadData()
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPostCommentNotification(_:)), name: DidDismissPostCommentViewController, object: nil)
 
@@ -74,6 +80,8 @@ class ViewController: UIViewController {
 //        WidgetCenter.shared.reloadAllTimelines()
 
     }
+    
+
     
 
     @objc func didDismissPostCommentNotification(_ noti: Notification) {
@@ -199,7 +207,8 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
     
     //지정된 섹션에 표시할 항목의 개수를 묻는 메서드
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { //2
-        return self.numberOfCell
+//        return self.numberOfCell
+        return getfilterdIndexByset1().count
     }
     
     //컬렉션뷰의 지정된 위치에 표시할 셀을 요청하는 메서드
@@ -207,16 +216,17 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? data else {
             return UICollectionViewCell()
         }
+
+        let index:Int = getfilterdIndexByset1()[indexPath.row]
         
-        let cellDday = CoreDataManager.shared.getEntity(key: "dday", idx: indexPath.row)
-        let setting = CoreDataManager.shared.getSetting(idx: indexPath.row)
+        
+        let cellDday = CoreDataManager.shared.getEntity(key: "dday", idx: index)
+        let setting = CoreDataManager.shared.getSetting(idx: index)
         var targetDay: Date
         targetDay = CalculateDay.shared.getTargetDay(dday: Int(cellDday)!, set1: setting.set1)
+        
         cell.day.text = formatter.toString(date: targetDay)
-        
-        
-//        cell.day.text = CoreDataManager.shared.getEntity(key: "day", idx: indexPath.row)
-        cell.name.text = CoreDataManager.shared.getEntity(key: "name", idx: indexPath.row)
+        cell.name.text = CoreDataManager.shared.getEntity(key: "name", idx: index)
         cell.dday.textAlignment = .left
         
         
@@ -249,30 +259,25 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
       
 
         print("setting value")
-        print(CoreDataManager.shared.getEntity(key: "name", idx: indexPath.row))
-        print(CoreDataManager.shared.getSetting(idx: indexPath.row).widget, "\n")
+        print(CoreDataManager.shared.getEntity(key: "name", idx: index))
+        print(CoreDataManager.shared.getSetting(idx: index).widget, "\n")
 
         
         return cell
 
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if(!CoreDataManager.shared.getSetting(idx: indexPath.row).set1 &&
-            Int(CoreDataManager.shared.getEntity(key: "dday", idx: indexPath.row))!>0 &&
-            UserDefaults.standard.bool(forKey: "hide")){
-            return CGSize(width: 350, height: 0)
-        }else{
-
-            return CGSize(width: 350, height: 80)
-
-        }
+        return CGSize(width: 350, height: 80)
 
     }
+    
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5.0
     }
+    
     
     func setCeelColor(idx: Int, cell: UIView){
         
@@ -304,6 +309,28 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
         backView.layer.shadowOpacity = 0.3
         backView.layer.shadowOffset = CGSize(width: -2, height: 2)
         backView.layer.shadowRadius = 3
+    }
+    
+    func getfilterdIndexByset1() -> [Int]{
+        
+        let numOfdata = CoreDataManager.shared.getCount()
+        var filteredIdx:[Int] = []
+        
+        if(UserDefaults.standard.bool(forKey: "hide")){
+            for i in 0..<numOfdata{
+                if(CoreDataManager.shared.getSetting(idx: i).set1 ||
+                    Int(CoreDataManager.shared.getEntity(key: "dday", idx: i))! < 1){
+                    
+                    filteredIdx.append(i)
+                }
+            
+            }
+        }
+        else{
+            filteredIdx = Array(0..<numOfdata)
+        }
+
+        return filteredIdx
     }
     
 }

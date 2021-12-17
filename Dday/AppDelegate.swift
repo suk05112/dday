@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var updateIdx: Int!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        print("did finish launching")
         // Override point for customization after application launch.
         UNUserNotificationCenter.current().delegate = self
 
@@ -97,6 +98,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    func applicationWillResignActive(_ application: UIApplication) {
+        print("홈버튼 누름")
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        print("background에 있음")
+    }
+    
 }
 
 
