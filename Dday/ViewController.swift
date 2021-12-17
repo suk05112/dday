@@ -23,6 +23,10 @@ class ViewController: UIViewController {
     let delegate = UIApplication.shared.delegate as? AppDelegate
     let DidDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
     let ddayNoti = DdayNotificationCenter()
+    
+    let sharedApp = UIApplication.shared
+    
+//    let taskId:UIBackgroundTaskIdentifier = taskinvalid
 
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -55,7 +59,7 @@ class ViewController: UIViewController {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]){
             (result, error) in print(result)
         }
-        Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(updatetime), userInfo: nil, repeats: true)
+//        Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(updatetime), userInfo: nil, repeats: true)
         //1분 60초
         //1시간 3600초
         //하루한번씩 체크는 86400
@@ -77,7 +81,6 @@ class ViewController: UIViewController {
             CoreDataManager.shared.updateDday(dday: updateDday, idx: i)
 
         }
-//        WidgetCenter.shared.reloadAllTimelines()
 
     }
     
@@ -150,6 +153,7 @@ class ViewController: UIViewController {
         }
     }
     
+
     func save_widgetData(){
         var collectData:[WidgetData] = []
         
@@ -168,7 +172,6 @@ class ViewController: UIViewController {
             UserDefaults.shared.setValue(encoded_data, forKey: "data")
         }
         WidgetCenter.shared.reloadAllTimelines()
-
         
     }
     
@@ -180,6 +183,7 @@ class ViewController: UIViewController {
         self.numberOfCell += 1
         
         save_widgetData()
+        ddayNoti.setNoticifation(i:idx)
 
     }
     
@@ -189,6 +193,7 @@ class ViewController: UIViewController {
         CoreDataManager.shared.deleteEntity(idx: indexPath.row)
         CoreDataManager.shared.deleteSetting(idx: indexPath.row)
         save_widgetData()
+        ddayNoti.removeNotification(idx: indexPath.row)
 
         self.numberOfCell -= 1
         rcvIdx = [-1, -1]

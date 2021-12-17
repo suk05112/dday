@@ -27,16 +27,36 @@ class DdayNotificationCenter{
         }
     }
     
+    func setNoticifation(i: Int){
+
+        if Int(CoreDataManager.shared.getEntity(key: "dday", idx: i)) == 0  { // 디데이에 도달하면
+            print("dday~~~~")
+            ringAlarm(idx: i, today: true)
+        }
+        else if Int(CoreDataManager.shared.getEntity(key: "dday", idx: i)) == -1 { //디데이 전날
+            print("dday 전날")
+
+            if(UserDefaults.standard.bool(forKey: "noti")){
+                ringAlarm(idx: i, today: false)
+
+            }
+
+        }
+
+    }
+    
     func ringAlarm(idx: Int, today: Bool){
         
         let content = setContent(idx: idx, today: today)
-        let dateComponents = DateComponents(hour: 6, minute: 58) //8시로 설정
-        print("comp", dateComponents)
+        let dateComponents = DateComponents(hour: 2, minute: 52) //8시로 설정
+//        print("comp", dateComponents)
+        print("noti 설정")
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        let request = UNNotificationRequest(identifier: "test", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        let request = UNNotificationRequest(identifier: String(idx), content: content, trigger: trigger)
         
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                
         userNotificationCenter.add(request) { error in
             if let error = error {
                 print("Notification Error: ", error)
@@ -45,6 +65,8 @@ class DdayNotificationCenter{
         
     }
     
+
+
     func setContent(idx: Int, today: Bool) -> UNMutableNotificationContent{
         let content = UNMutableNotificationContent()
         
@@ -57,5 +79,13 @@ class DdayNotificationCenter{
         }
         
         return content
+    
+    }
+    
+    
+    func removeNotification(idx: Int){
+        print("noti 삭제 됨")
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [String(idx)])
+
     }
 }

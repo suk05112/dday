@@ -36,6 +36,7 @@ class Add: UIViewController {
     let dele =  UIApplication.shared.delegate as? AppDelegate
     
     let formatter = DdayDateFormmater()
+    let ddayNoti = DdayNotificationCenter()
 
     
     let DidDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
@@ -156,6 +157,8 @@ class Add: UIViewController {
         
 
         CoreDataManager.shared.updateSetting(setting: setValue, idx: dele!.updateIdx)
+        ddayNoti.removeNotification(idx: dele!.updateIdx)
+        ddayNoti.setNoticifation(i: dele!.updateIdx)
 //        print("저장 후 저장된 값")
 //        print(CoreDataManager.shared.getSetting(idx: dele!.updateIdx).iter)
     }

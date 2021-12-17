@@ -124,11 +124,11 @@ struct widgetEntryView : View {
     var maxCount: Int {
         switch family {
         case .systemMedium:
-            return 3
+            return min(getUserdata().count, 3)
         case .systemLarge:
-            return 7
+            return min(getUserdata().count, 7)
         default:
-            return 5
+            return min(getUserdata().count, 5)
         }
     }
 
