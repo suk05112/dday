@@ -146,7 +146,7 @@ struct widgetEntryView : View {
     var maxCount: Int {
         switch family {
         case .systemMedium:
-            return min(getUserdata().count, 3)
+            return 3
         case .systemLarge:
             return min(getUserdata().count, 7)
         default:
@@ -164,13 +164,13 @@ struct widgetEntryView : View {
                 Image("postit")
                     .resizable()
                     .frame(width: 20, height: 20, alignment: .center)
-                    .padding(EdgeInsets(top: 13, leading: 20, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 0))
 
                 
-                Text("Post DDay")
+                Text("Post Day")
                     .font(.system(size: 15, weight: .semibold ))
                     .foregroundColor(.black)
-                    .padding(EdgeInsets(top: 13, leading: 0, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                     .frame(alignment: .leading)
                 
                 Spacer()
@@ -184,7 +184,7 @@ struct widgetEntryView : View {
             ForEach(0..<maxCount) { index in
                 HStack{
                     Text(getWidgetData(data:getUserdata(), i:index))
-                        .font(.body)
+                        .font(.system(size: 15))
                         .foregroundColor(.black)
                         .frame(alignment: .leading)
                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
@@ -193,7 +193,7 @@ struct widgetEntryView : View {
                     Spacer()
                     
                     Text(getDayOfWidgetData(data:getUserdata(), i:index))
-                        .font(.body)
+                        .font(.system(size: 15, weight: .semibold))
                         .foregroundColor(.black)
                         .frame(alignment: .center)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
@@ -272,7 +272,6 @@ struct widget_Previews: PreviewProvider {
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
 
         }
-
 
     }
     

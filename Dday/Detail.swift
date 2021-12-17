@@ -102,6 +102,7 @@ class Detail: UIViewController {
             self.iterSet.text = " "
             
         }
+        
     }
     @IBAction func edit(_ sender: Any) {
 //          self.presentingViewController?.dismiss(animated: true)

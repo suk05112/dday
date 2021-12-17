@@ -51,8 +51,6 @@ class Add: UIViewController {
         tableView.estimatedRowHeight = 50.0
         tableView.rowHeight = UITableView.automaticDimension
         
-        showPickerTime.text = formatter.toString(date: selectDate)
-
         loadData()
         
     }
@@ -71,8 +69,7 @@ class Add: UIViewController {
             print(CoreDataManager.shared.getEntity(key: "day", idx: idx).components(separatedBy: " ")[0])
             inputname.text = CoreDataManager.shared.getEntity(key: "name", idx: idx)
             datePicker.date = formatter.toDate(str: CoreDataManager.shared.getEntity(key: "day", idx: idx))
-            
-            showPickerTime.text = CoreDataManager.shared.getEntity(key: "day", idx: idx)
+            selectDate = formatter.toDate(str: formatter.toString(date: datePicker.date))
             
             if (CoreDataManager.shared.getSetting(idx: idx).iter == .none){
                 isPressed = [false,
@@ -259,12 +256,14 @@ extension Add: UITableViewDelegate, UITableViewDataSource{
         
         cell.cellSwitch.setOn(isPressed[section], animated: true)
         
+        
+        
         return cell
     }
 
     //헤더 셀의 높이
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 35
     }
     
     //footer 없애기
@@ -294,6 +293,7 @@ extension Add: UITableViewDelegate, UITableViewDataSource{
         
 
     }
+    
     
 }
 

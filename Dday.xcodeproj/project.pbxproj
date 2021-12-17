@@ -30,7 +30,6 @@
 		036518C426A5B67B00604A55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036518C226A5B67B00604A55 /* Main.storyboard */; };
 		036518C926A5B67D00604A55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036518C726A5B67D00604A55 /* LaunchScreen.storyboard */; };
 		036518D426A5B67D00604A55 /* DdayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518D326A5B67D00604A55 /* DdayTests.swift */; };
-		036518DF26A5B67D00604A55 /* DdayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518DE26A5B67D00604A55 /* DdayUITests.swift */; };
 		0367F7C926A900AA004DC581 /* Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F7C826A900AA004DC581 /* Add.swift */; };
 		0367F81B26B7AA69004DC581 /* rcvData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F81A26B7AA69004DC581 /* rcvData.swift */; };
 		0367F82326B7B2DF004DC581 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F82226B7B2DF004DC581 /* Detail.swift */; };
@@ -46,6 +45,7 @@
 		0370DF6826FD60C1000D1DA7 /* screenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6626FD60C1000D1DA7 /* screenCell.swift */; };
 		0370DF6F2701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */; };
 		0370DF702701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */; };
+		03801254276D3CBF00E735D8 /* DdayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518DE26A5B67D00604A55 /* DdayUITests.swift */; };
 		038E95ED276369DC00B7BE6C /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038E95EC276369DC00B7BE6C /* WidgetData.swift */; };
 		038E95EE276369DC00B7BE6C /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038E95EC276369DC00B7BE6C /* WidgetData.swift */; };
 		039492E42760E4C2005630A8 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039492E32760E4C2005630A8 /* AppGroup.swift */; };
@@ -508,7 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				036518DF26A5B67D00604A55 /* DdayUITests.swift in Sources */,
+				03801254276D3CBF00E735D8 /* DdayUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,6 +766,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F2YB4PBTB4;
 				INFOPLIST_FILE = DdayTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -787,6 +788,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F2YB4PBTB4;
 				INFOPLIST_FILE = DdayTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -807,6 +809,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F2YB4PBTB4;
 				INFOPLIST_FILE = DdayUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -826,6 +829,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F2YB4PBTB4;
 				INFOPLIST_FILE = DdayUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
