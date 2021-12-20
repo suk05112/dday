@@ -43,6 +43,8 @@ class Add: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -53,6 +55,14 @@ class Add: UIViewController {
         
         loadData()
         
+        
+    }
+    
+    @objc func handleTap(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            view.endEditing(true) // todo...
+        }
+        sender.cancelsTouchesInView = false
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -114,8 +124,6 @@ class Add: UIViewController {
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.timeZone = TimeZone(abbreviation: "KST")
 
-
-        showPickerTime.text = formatter.string(from: datePickerView.date)
         selectDate = formatter.date(from: formatter.string(from: datePickerView.date))!
     }
     
@@ -235,6 +243,9 @@ extension Add: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
+    
+
+    
     
     //section별로 몇개의 row가 있어야하는지
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

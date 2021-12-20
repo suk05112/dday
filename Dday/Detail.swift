@@ -16,7 +16,8 @@ class Detail: UIViewController {
     
 
     var data: rcvData = rcvData.init(name: "init name", day: "init day", dday: 0)
-    var idx:IndexPath = [-1, -1]
+//    var idx:IndexPath = [-1, -1]
+    var idx:Int = -1
     var setting: Setting = Setting(iter: .none, set1: false, widget: false)
     let delegate = UIApplication.shared.delegate as? AppDelegate
     
@@ -26,12 +27,12 @@ class Detail: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setting = CoreDataManager.shared.getSetting(idx: idx.row)
+
         loadData()
         
-        print(CoreDataManager.shared.getSetting(idx: idx.row).iter)
-        print(CoreDataManager.shared.getSetting(idx: idx.row).set1)
-        print(CoreDataManager.shared.getSetting(idx: idx.row).widget)
+        print(CoreDataManager.shared.getSetting(idx: idx).iter)
+        print(CoreDataManager.shared.getSetting(idx: idx).set1)
+        print(CoreDataManager.shared.getSetting(idx: idx).widget)
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPostCommentNotification(_:)), name: DidDismissPostCommentViewController, object: nil)
 
@@ -59,13 +60,42 @@ class Detail: UIViewController {
             print("edit show")
         }
     }
+    
+    func getfilterdIndexByset1() -> [Int]{
+        
+        let numOfdata = CoreDataManager.shared.getCount()
+        var filteredIdx:[Int] = []
+        
+        if(UserDefaults.standard.bool(forKey: "hide")){
+            for i in 0..<numOfdata{
+                if(CoreDataManager.shared.getSetting(idx: i).set1 ||
+                    Int(CoreDataManager.shared.getEntity(key: "dday", idx: i))! < 1){
+                    
+                    filteredIdx.append(i)
+                }
+            
+            }
+        }
+        else{
+            filteredIdx = Array(0..<numOfdata)
+        }
+
+        return filteredIdx
+    }
 
     func loadData(){
-        self.detail_name.text = CoreDataManager.shared.getEntity(key: "name", idx: idx.row)
-        self.detail_day.text = CoreDataManager.shared.getEntity(key: "day", idx: idx.row)
         
-        let dday = CoreDataManager.shared.getEntity(key: "dday", idx: idx.row)
-        let set1 = CoreDataManager.shared.getSetting(idx: idx.row).set1
+        print("filterd list")
+        print(getfilterdIndexByset1())
+//        let index:Int = getfilterdIndexByset1()[self.idx]
+//        let index = getfilterdIndexByset1()[idx]
+
+        setting = CoreDataManager.shared.getSetting(idx: self.idx)
+        self.detail_name.text = CoreDataManager.shared.getEntity(key: "name", idx: self.idx)
+        self.detail_day.text = CoreDataManager.shared.getEntity(key: "day", idx: self.idx)
+        
+        let dday = CoreDataManager.shared.getEntity(key: "dday", idx: self.idx)
+        let set1 = CoreDataManager.shared.getSetting(idx: self.idx).set1
         
         if(set1){
             if (Int(dday)!<0){
@@ -78,10 +108,11 @@ class Detail: UIViewController {
 
         }
         else{
+            print("set1 false dday 표시", dday, data.dday)
             if (Int(dday)!<0){
                 self.detail_dday.text = "D" + String(dday)
             }
-            else if(data.dday == 0){
+            else if(Int(dday) == 0){
                 self.detail_dday.text = "D-day"
             }
             else{
@@ -106,8 +137,11 @@ class Detail: UIViewController {
     }
     @IBAction func edit(_ sender: Any) {
 //          self.presentingViewController?.dismiss(animated: true)
+        
+//        let index:Int = getfilterdIndexByset1()[self.idx]
+
         delegate?.mode = "UPDATE"
-        delegate?.updateIdx = idx.row
+        delegate?.updateIdx = self.idx
         let viewControllerName = self.storyboard?.instantiateViewController(withIdentifier: "edit")
         viewControllerName?.modalTransitionStyle = .flipHorizontal
         if let view = viewControllerName {
@@ -122,7 +156,8 @@ class Detail: UIViewController {
             print("say yes")
             let mainVC = self.presentingViewController
             guard let vc = mainVC as? ViewController else {return}
-            vc.rcvIdx = self.idx
+//            vc.rcvIdx = self.idx
+            vc.rcvIdx = IndexPath(row: self.idx, section: 0)
             self.dismiss(animated: true) {
                 print("dismiss")
                 vc.viewDidLoad()
@@ -143,7 +178,7 @@ class Detail: UIViewController {
 
     func sendDetailData(data: rcvData, idx: IndexPath) {
         self.data = data
-        self.idx = idx
+        self.idx = idx.row
         print("data=",data)
     }
 
@@ -158,7 +193,10 @@ extension Detail: SendUpdateProtocol{
         formatter.dateFormat = "yyyy.MM.dd EEE"
         //코어데이터 업데이트
 //        CoreDataManager.shared.updateSetting(setting: setting)
-        CoreDataManager.shared.updateEntity(data: rcvData(name: name, day: formatter.string(from: date), dday: result), idx: idx.row)
+        
+        let index:Int = getfilterdIndexByset1()[idx]
+
+        CoreDataManager.shared.updateEntity(data: rcvData(name: name, day: formatter.string(from: date), dday: result), idx: index)
 
     }
     

@@ -29,5 +29,57 @@ class DdayTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testNoneSetting(){
+        let calculation = CalculateDay.shared
+        let noneSetting = Setting(iter: .none, set1: false, widget: false)
+        let str: String? = "2021.12.23 화요일"
+        
+        let testDay = DdayDateFormmater().toDate(str: str!)
+        
+        XCTAssertEqual(calculation.calculateDday(select_day: testDay, setting: noneSetting), -3, "정닶 dday와 다릅니다.")
+    }
 
+    func testIterSetting(){
+        
+    }
+    
+    func testSet1Setting(){
+        
+    }
+    
+    func testIterAndSet1Setting(){
+        
+    }
+    
+    
+    
+    
 }
+
+class NoneSetting{
+    
+    func beforeToday(){
+        
+    }
+    
+    func today(){
+        
+    }
+    
+    func afterToday(){
+        
+    }
+}
+
+//class IterSetting(){
+//    
+//}
+//
+//class Set1Setting(){
+//    
+//}
+//
+//class IterAndSet1Setting(){
+//    
+//}

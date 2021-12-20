@@ -112,7 +112,7 @@ class ViewController: UIViewController {
                 detail.data = rcvData(name: CoreDataManager.shared.getEntity(key: "name", idx: indexPath.row),
                                       day: CoreDataManager.shared.getEntity(key: "day", idx: indexPath.row),
                                       dday: Int(CoreDataManager.shared.getEntity(key: "dday", idx: indexPath.row))!)
-                detail.idx = indexPath
+                detail.idx = getfilterdIndexByset1()[indexPath.row]
                 detail.setting = CoreDataManager.shared.getSetting(idx: indexPath.row)
 
             }
@@ -335,6 +335,8 @@ extension ViewController:  UICollectionViewDataSource, UICollectionViewDelegate 
             filteredIdx = Array(0..<numOfdata)
         }
 
+        print("in main view")
+        print(filteredIdx)
         return filteredIdx
     }
     

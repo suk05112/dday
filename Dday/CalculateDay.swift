@@ -6,6 +6,7 @@
 //
 
 import Foundation
+//@testable import Dday
 
 class CalculateDay{
     static let shared = CalculateDay()
@@ -18,7 +19,7 @@ class CalculateDay{
 
         //보여질 디데이 계산
         var calculatedDday = iterCalculator(setting: setting, d_day: select_day)
-        var targetDay = getTargetDay(dday: calculatedDday, set1: setting.set1)
+//        var targetDay = getTargetDay(dday: calculatedDday, set1: setting.set1)
         
         
         //set1 설정
