@@ -300,7 +300,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="38" estimatedRowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JyU-O9-wBl">
-                                <rect key="frame" x="60" y="221" width="252" height="121"/>
+                                <rect key="frame" x="60" y="221" width="252" height="288"/>
                                 <color key="backgroundColor" red="0.99200338129999999" green="0.96471482519999996" blue="0.96471410989999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="separatorColor" red="0.99200338129999999" green="0.96471482519999996" blue="0.96471410989999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="sectionIndexBackgroundColor" red="0.99200338129999999" green="0.96471482519999996" blue="0.96471410989999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -361,7 +361,7 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.99200338129999999" green="0.96471482519999996" blue="0.96471410989999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <color key="backgroundColor" red="0.99200338129999999" green="0.96471482519999996" blue="0.96471410989999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outletCollection property="iterButtons" destination="5WH-B4-q6K" collectionClass="NSMutableArray" id="IUt-hK-A11"/>
                                             <outletCollection property="iterButtons" destination="i5e-CW-bdJ" collectionClass="NSMutableArray" id="PWM-zz-5nt"/>
@@ -413,7 +413,7 @@
                             <constraint firstItem="KA4-8c-bMw" firstAttribute="centerX" secondItem="JyU-O9-wBl" secondAttribute="centerX" constant="1.5" id="i4t-Bo-IsU"/>
                             <constraint firstItem="Yfj-Hh-zXc" firstAttribute="top" secondItem="tCk-Vz-WSy" secondAttribute="top" constant="100" id="lNm-q2-Sch"/>
                             <constraint firstItem="tCk-Vz-WSy" firstAttribute="bottom" secondItem="KA4-8c-bMw" secondAttribute="bottom" constant="100" id="otm-tt-LyV"/>
-                            <constraint firstItem="KA4-8c-bMw" firstAttribute="top" secondItem="JyU-O9-wBl" secondAttribute="bottom" constant="175" id="xqV-21-onC"/>
+                            <constraint firstItem="KA4-8c-bMw" firstAttribute="top" secondItem="JyU-O9-wBl" secondAttribute="bottom" constant="8" id="xqV-21-onC"/>
                         </constraints>
                     </view>
                     <connections>
@@ -439,9 +439,6 @@
         <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
