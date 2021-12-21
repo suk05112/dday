@@ -207,12 +207,6 @@
                                     <segue destination="APW-ZH-ptr" kind="presentation" identifier="show" modalTransitionStyle="crossDissolve" id="cMQ-zD-Ch6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yz7-9M-3SE">
-                                <rect key="frame" x="96" y="259" width="145" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="김민우 바보~~"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.99200338129999999" green="0.96471482519999996" blue="0.96471410989999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

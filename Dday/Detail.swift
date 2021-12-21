@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class Detail: UIViewController {
     
     @IBOutlet weak var detail_name: UILabel!

@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 class rcvData: Hashable {
     var name: String
     var day: String

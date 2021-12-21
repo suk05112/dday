@@ -30,6 +30,8 @@
 		036518C426A5B67B00604A55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036518C226A5B67B00604A55 /* Main.storyboard */; };
 		036518C926A5B67D00604A55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036518C726A5B67D00604A55 /* LaunchScreen.storyboard */; };
 		036518D426A5B67D00604A55 /* DdayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518D326A5B67D00604A55 /* DdayTests.swift */; };
+		0366683C2771C65100EB900C /* rcvData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F81A26B7AA69004DC581 /* rcvData.swift */; };
+		0366683D2771C65200EB900C /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F82C26BD200B004DC581 /* Setting.swift */; };
 		0367F7C926A900AA004DC581 /* Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F7C826A900AA004DC581 /* Add.swift */; };
 		0367F81B26B7AA69004DC581 /* rcvData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F81A26B7AA69004DC581 /* rcvData.swift */; };
 		0367F82326B7B2DF004DC581 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F82226B7B2DF004DC581 /* Detail.swift */; };
@@ -54,7 +56,6 @@
 		03BCDBB826F86BA5005FC05A /* Model2-1.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBB726F86BA5005FC05A /* Model2-1.xcmappingmodel */; };
 		03BCDBB926F86BA5005FC05A /* Model2-1.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBB726F86BA5005FC05A /* Model2-1.xcmappingmodel */; };
 		03BCDBBF26F87EB4005FC05A /* screenSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBBE26F87EB4005FC05A /* screenSetting.swift */; };
-		03BCDBC026F87EB4005FC05A /* screenSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBBE26F87EB4005FC05A /* screenSetting.swift */; };
 		03FDF9F7274D159F00ACD257 /* DdayNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDF9F6274D159F00ACD257 /* DdayNotificationCenter.swift */; };
 /* End PBXBuildFile section */
 
@@ -217,10 +218,7 @@
 				0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */,
 				0319197B26D4C5F100E7B7E5 /* Entity+CoreDataProperties.swift */,
 				0319197226D4C36A00E7B7E5 /* DdayModel.xcdatamodeld */,
-				0367F84E26C11C2D004DC581 /* IterCell.swift */,
-				0367F85326C11C45004DC581 /* AlarmCell.swift */,
-				0367F84926BFD079004DC581 /* CustomTableCell.swift */,
-				0367F84426BFC766004DC581 /* HeaderCell.swift */,
+				0366683E2771C67900EB900C /* AddCell */,
 				036518BB26A5B67B00604A55 /* Dday */,
 				036518D226A5B67D00604A55 /* DdayTests */,
 				036518DD26A5B67D00604A55 /* DdayUITests */,
@@ -245,24 +243,16 @@
 			isa = PBXGroup;
 			children = (
 				03191A8726D788C200E7B7E5 /* Dday.entitlements */,
-				036518C026A5B67B00604A55 /* ViewController.swift */,
-				03FDF9F6274D159F00ACD257 /* DdayNotificationCenter.swift */,
-				0370DF5026FC4E30000D1DA7 /* screenUD.swift */,
-				03191B4226E8EB0F00E7B7E5 /* CoreDataManager.swift */,
-				0367F81A26B7AA69004DC581 /* rcvData.swift */,
-				0367F82226B7B2DF004DC581 /* Detail.swift */,
-				0367F82C26BD200B004DC581 /* Setting.swift */,
-				0367F7C826A900AA004DC581 /* Add.swift */,
+				036518CA26A5B67D00604A55 /* Info.plist */,
+				036518C226A5B67B00604A55 /* Main.storyboard */,
+				036518C726A5B67D00604A55 /* LaunchScreen.storyboard */,
+				036518C526A5B67D00604A55 /* Assets.xcassets */,
+				0367F7BB26A8FF50004DC581 /* Dday */,
+				036668392771C54600EB900C /* View */,
+				0366683A2771C5D900EB900C /* Sigleton */,
+				0366683B2771C64600EB900C /* Data */,
 				036518BC26A5B67B00604A55 /* AppDelegate.swift */,
 				036518BE26A5B67B00604A55 /* SceneDelegate.swift */,
-				0367F7BB26A8FF50004DC581 /* Dday */,
-				036518C226A5B67B00604A55 /* Main.storyboard */,
-				036518C526A5B67D00604A55 /* Assets.xcassets */,
-				036518C726A5B67D00604A55 /* LaunchScreen.storyboard */,
-				036518CA26A5B67D00604A55 /* Info.plist */,
-				0399EF0226EF8469009E868E /* CalculateDay.swift */,
-				03BCDBBE26F87EB4005FC05A /* screenSetting.swift */,
-				03218E18276B37890075ECF0 /* DdayDateFormmater.swift */,
 			);
 			path = Dday;
 			sourceTree = "<group>";
@@ -283,6 +273,49 @@
 				036518E026A5B67D00604A55 /* Info.plist */,
 			);
 			path = DdayUITests;
+			sourceTree = "<group>";
+		};
+		036668392771C54600EB900C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				036518C026A5B67B00604A55 /* ViewController.swift */,
+				0367F82226B7B2DF004DC581 /* Detail.swift */,
+				0367F7C826A900AA004DC581 /* Add.swift */,
+				03BCDBBE26F87EB4005FC05A /* screenSetting.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		0366683A2771C5D900EB900C /* Sigleton */ = {
+			isa = PBXGroup;
+			children = (
+				0399EF0226EF8469009E868E /* CalculateDay.swift */,
+				03218E18276B37890075ECF0 /* DdayDateFormmater.swift */,
+				03FDF9F6274D159F00ACD257 /* DdayNotificationCenter.swift */,
+				03191B4226E8EB0F00E7B7E5 /* CoreDataManager.swift */,
+			);
+			path = Sigleton;
+			sourceTree = "<group>";
+		};
+		0366683B2771C64600EB900C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0367F82C26BD200B004DC581 /* Setting.swift */,
+				0367F81A26B7AA69004DC581 /* rcvData.swift */,
+				0370DF5026FC4E30000D1DA7 /* screenUD.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		0366683E2771C67900EB900C /* AddCell */ = {
+			isa = PBXGroup;
+			children = (
+				0367F84E26C11C2D004DC581 /* IterCell.swift */,
+				0367F84426BFC766004DC581 /* HeaderCell.swift */,
+				0367F84926BFD079004DC581 /* CustomTableCell.swift */,
+				0367F85326C11C45004DC581 /* AlarmCell.swift */,
+			);
+			name = AddCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +483,8 @@
 				03191A7126D4DC1C00E7B7E5 /* widget.intentdefinition in Sources */,
 				03191A6C26D4DC1A00E7B7E5 /* widget.swift in Sources */,
 				03191A9526D791CD00E7B7E5 /* Entity+CoreDataProperties.swift in Sources */,
+				0366683D2771C65200EB900C /* Setting.swift in Sources */,
+				0366683C2771C65100EB900C /* rcvData.swift in Sources */,
 				03191AD626DB74FD00E7B7E5 /* CoreDataStack.swift in Sources */,
 				03191A9A26D795B200E7B7E5 /* Entity+CoreDataClass.swift in Sources */,
 				0370DF6826FD60C1000D1DA7 /* screenCell.swift in Sources */,
@@ -457,7 +492,6 @@
 				03191A7D26D4DE9800E7B7E5 /* DdayModel.xcdatamodeld in Sources */,
 				0370DF702701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */,
 				03BCDBB926F86BA5005FC05A /* Model2-1.xcmappingmodel in Sources */,
-				03BCDBC026F87EB4005FC05A /* screenSetting.swift in Sources */,
 				038E95EE276369DC00B7BE6C /* WidgetData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,6 +760,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Dday/Dday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_TEAM = F2YB4PBTB4;
 				INFOPLIST_FILE = Dday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -747,6 +782,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Dday/Dday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_TEAM = F2YB4PBTB4;
 				INFOPLIST_FILE = Dday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
