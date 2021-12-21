@@ -42,6 +42,10 @@ struct Provider: IntentTimelineProvider {
 
 
         let timeline = Timeline(entries: entries, policy: .after(refreshDate))
+//        let timeline = Timeline(entries: entries, policy: .never)
+//        let timeline = Timeline(entries: entries, policy: .atEnd(refreshDate))
+
+
         completion(timeline)
         
     }
@@ -81,6 +85,7 @@ func getWidgetData(data:[WidgetData], i:Int) -> String{
             
             
     let myDateFormatter = DateFormatter()
+    
     myDateFormatter.dateFormat = "yyyy년 MM월 dd일 a hh시 mm분" // 2020년 08월 13일 오후 04시 30분
     myDateFormatter.locale = Locale(identifier:"ko_KR") // PM, AM을 언어에 맞게 setting (ex: PM -> 오후)
     

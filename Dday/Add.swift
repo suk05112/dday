@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WidgetKit
 
 class Add: UIViewController {
 
@@ -164,8 +165,35 @@ class Add: UIViewController {
         CoreDataManager.shared.updateSetting(setting: setValue, idx: dele!.updateIdx)
         ddayNoti.removeNotification(idx: dele!.updateIdx)
         ddayNoti.setNoticifation(i: dele!.updateIdx)
-//        print("저장 후 저장된 값")
-//        print(CoreDataManager.shared.getSetting(idx: dele!.updateIdx).iter)
+        
+        save_widgetData()
+        
+    }
+    
+    func save_widgetData(){
+        print("save widget 실행")
+        var collectData:[WidgetData] = []
+        UserDefaults.shared.setValue(collectData, forKey: "data")
+
+        
+        for i in 0..<CoreDataManager.shared.getCount(){
+            if(CoreDataManager.shared.getSetting(idx: i).widget){
+                let name = CoreDataManager.shared.getEntity(key: "name", idx: i)
+                let dday = CoreDataManager.shared.getEntity(key: "dday", idx: i)
+                let set1 = CoreDataManager.shared.getSetting(idx: i).set1
+
+                collectData.append(WidgetData(name: name, dday: dday, set1: set1))
+            }
+
+        }
+        
+        if let encoded_data = try? JSONEncoder().encode(collectData){
+            UserDefaults.shared.setValue(encoded_data, forKey: "data")
+        }
+        WidgetCenter.shared.reloadAllTimelines()
+//        WidgetCenter.shared.reloadTimelines(ofKind: "widget")
+
+        
     }
     
     //option + cmd + 화살표

@@ -207,6 +207,12 @@
                                     <segue destination="APW-ZH-ptr" kind="presentation" identifier="show" modalTransitionStyle="crossDissolve" id="cMQ-zD-Ch6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yz7-9M-3SE">
+                                <rect key="frame" x="96" y="259" width="145" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="김민우 바보~~"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.99200338129999999" green="0.96471482519999996" blue="0.96471410989999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -300,7 +306,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="38" estimatedRowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JyU-O9-wBl">
-                                <rect key="frame" x="60" y="221" width="252" height="288"/>
+                                <rect key="frame" x="60" y="207" width="252" height="302"/>
                                 <color key="backgroundColor" red="0.99200338129999999" green="0.96471482519999996" blue="0.96471410989999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="separatorColor" red="0.99200338129999999" green="0.96471482519999996" blue="0.96471410989999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="sectionIndexBackgroundColor" red="0.99200338129999999" green="0.96471482519999996" blue="0.96471410989999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -389,7 +395,7 @@
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="ojz-QC-XFG">
-                                <rect key="frame" x="132" y="163" width="111" height="31"/>
+                                <rect key="frame" x="132" y="149" width="111" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="111" id="HF2-5d-Weo"/>
                                 </constraints>
@@ -406,7 +412,7 @@
                             <constraint firstItem="KA4-8c-bMw" firstAttribute="leading" secondItem="tCk-Vz-WSy" secondAttribute="leading" constant="171" id="1YS-oc-5Xi"/>
                             <constraint firstItem="tCk-Vz-WSy" firstAttribute="trailing" secondItem="JyU-O9-wBl" secondAttribute="trailing" constant="63" id="Jiw-aN-x5D"/>
                             <constraint firstItem="Yfj-Hh-zXc" firstAttribute="leading" secondItem="tCk-Vz-WSy" secondAttribute="leading" constant="104" id="T9z-Pi-Orn"/>
-                            <constraint firstItem="ojz-QC-XFG" firstAttribute="top" secondItem="Yfj-Hh-zXc" secondAttribute="bottom" constant="29" id="Wxg-6X-UnC"/>
+                            <constraint firstItem="ojz-QC-XFG" firstAttribute="top" secondItem="Yfj-Hh-zXc" secondAttribute="bottom" constant="15" id="Wxg-6X-UnC"/>
                             <constraint firstItem="tCk-Vz-WSy" firstAttribute="trailing" secondItem="Yfj-Hh-zXc" secondAttribute="trailing" constant="104" id="bRI-oQ-Dpg"/>
                             <constraint firstItem="ojz-QC-XFG" firstAttribute="trailing" secondItem="JyU-O9-wBl" secondAttribute="trailing" constant="-69" id="d16-S6-yuO"/>
                             <constraint firstItem="JyU-O9-wBl" firstAttribute="leading" secondItem="tCk-Vz-WSy" secondAttribute="leading" constant="60" id="h1l-g8-dqH"/>
@@ -429,7 +435,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="N5K-kP-1yZ"/>
+        <segue reference="cMQ-zD-Ch6"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ellipsis" catalog="system" width="128" height="37"/>

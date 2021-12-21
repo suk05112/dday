@@ -32,8 +32,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
 
 //        CoreDataManager.shared.deleteAll()
         
@@ -48,10 +46,7 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         
         ddayNoti.initNotification()
-        
         save_widgetData()
-        
-
         collectionView.reloadData()
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPostCommentNotification(_:)), name: DidDismissPostCommentViewController, object: nil)
@@ -59,7 +54,7 @@ class ViewController: UIViewController {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]){
             (result, error) in print(result)
         }
-//        Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(updatetime), userInfo: nil, repeats: true)
+//        Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(updateWidget), userInfo: nil, repeats: true)
         //1분 60초
         //1시간 3600초
         //하루한번씩 체크는 86400
@@ -84,7 +79,6 @@ class ViewController: UIViewController {
 
     }
     
-
     
 
     @objc func didDismissPostCommentNotification(_ noti: Notification) {
@@ -126,36 +120,18 @@ class ViewController: UIViewController {
     }
     
 
-    @objc func updatetime() {
-        print("in update")
-        let formatter = DateFormatter() // 특정 포맷으로 날짜를 보여주기 위한 변수 선언
-        formatter.dateFormat = "yyyy-MM-dd HH:mm" // 날짜 포맷 지정
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.timeZone = TimeZone(abbreviation: "KST")
+    @objc func updateWidget() {
+        print("update widget")
+        WidgetCenter.shared.reloadAllTimelines()
 
-
-        if CoreDataManager.shared.getCount() > 0{
-            for i in 0...(CoreDataManager.shared.getCount()-1){
-                if Int(CoreDataManager.shared.getEntity(key: "dday", idx: i)) == 0  { // 디데이에 도달하면
-                    print("dday~~~~")
-                    ddayNoti.ringAlarm(idx: i, today: true)
-                }
-                else if Int(CoreDataManager.shared.getEntity(key: "dday", idx: i)) == -1 { //디데이 전날
-                    print("dday 전날")
-
-                    if(UserDefaults.standard.bool(forKey: "noti")){
-                        ddayNoti.ringAlarm(idx: i, today: false)
-
-                    }
-
-                }
-            }
-        }
     }
     
 
     func save_widgetData(){
+        print("save widget 실행")
         var collectData:[WidgetData] = []
+        UserDefaults.shared.setValue(collectData, forKey: "data")
+
         
         for i in 0..<CoreDataManager.shared.getCount(){
             if(CoreDataManager.shared.getSetting(idx: i).widget){
@@ -171,7 +147,9 @@ class ViewController: UIViewController {
         if let encoded_data = try? JSONEncoder().encode(collectData){
             UserDefaults.shared.setValue(encoded_data, forKey: "data")
         }
-        WidgetCenter.shared.reloadAllTimelines()
+//        WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.reloadTimelines(ofKind: "widget")
+
         
     }
     
