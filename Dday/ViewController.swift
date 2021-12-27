@@ -26,7 +26,6 @@ class ViewController: UIViewController {
     
     let sharedApp = UIApplication.shared
     
-//    let taskId:UIBackgroundTaskIdentifier = taskinvalid
 
     @IBOutlet weak var collectionView: UICollectionView!
 

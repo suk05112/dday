@@ -28,7 +28,9 @@ class Add: UIViewController {
     var alarmBtnPressed:[Bool] = [false, false, false]
     var isPressed:[Bool] = [false, false, false] //각 스위치 버튼 눌려있는지
 
-    let setting:[String] = ["  반복", "  설정일을 1일부터 시작", "  위젯"] //tableview 안내문구
+//    let setting:[String] = ["  반복", "  설정일을 1일부터 시작", "  위젯"] //tableview 안내문구
+    let setting:[String] = ["Iter".localized(), "set1".localized(), "widget".localized()] //tableview 안내문구
+
     var setValue = Setting(iter: .none, set1: false, widget: false) //최종적으로 저장할 데이터
 
     var delegate : SendProtocol?
@@ -47,6 +49,8 @@ class Add: UIViewController {
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
 
+        inputname.placeholder = "title".localized()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.alwaysBounceVertical = false
@@ -346,4 +350,10 @@ extension Add: UITextFieldDelegate{
         }
     }
 
+}
+
+extension String{
+    func localized(comment: String = "") -> String{
+        return NSLocalizedString(self, comment: comment)
+    }
 }

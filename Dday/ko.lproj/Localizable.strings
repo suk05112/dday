@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  Dday
+
+  Created by 한수진 on 2021/12/27.
+  
+*/
+"title" = "제목(10글자 이내)";
+
+"Iter" = " 반복";
+"set1" = " 설정일을 1일부터 시작";
+"widget" = " 위젯";
+
+"screenSetting" = "화면 설정";
+"hide" = "지난 디데이 숨기기";
+"sort" = "D-day 정렬";
+"noti" = "D-day 전날 알림";
+
+"notiDday" = "Dday 입니다";
+"notiBeforeDday" = "Dday 전날 입니다";

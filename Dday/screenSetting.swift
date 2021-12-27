@@ -12,7 +12,7 @@ class screenSetting: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     let headerCellIdentifier = "headerCell"
-    let cellInfo:[String] = ["지난 디데이 숨기기", "dday 정렬", "dday 전날 알림"] //tableview 안내문구
+    let cellInfo:[String] = ["hide".localized(), "sort".localized(), "noti".localized()] //tableview 안내문구
 
     let DidDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
     
@@ -75,7 +75,7 @@ extension screenSetting:  UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "화면설정"
+        return "screenSetting".localized()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

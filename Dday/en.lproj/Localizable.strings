@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  Dday
+
+  Created by 한수진 on 2021/12/27.
+  
+*/
+
+"title" = "Title(10 characters or less)";
+
+"Iter" = " Iter";
+"set1" = " Set date starts from 1st";
+"widget" = " Widget";
+
+"screenSetting" = "Screen Setting";
+"hide" = "Hide past D-days";
+"sort" = "D-day sort";
+"noti" = "Reminder the day before D-day";
+
+"notiDday" = "It's Dday";
+"notiBeforeDday" = "It is the day before dday";

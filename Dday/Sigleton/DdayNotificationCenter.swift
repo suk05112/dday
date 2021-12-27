@@ -85,10 +85,10 @@ class DdayNotificationCenter{
         
         content.title = CoreDataManager.shared.getEntity(key: "name", idx: idx)
         if today{
-            content.body = "dday입니다!!!"
+            content.body = "notiDday".localized()
         }
         else{
-            content.body = "dday 전날입니다~~"
+            content.body = "notiBeforeDday".localized()
         }
         
         return content
