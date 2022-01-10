@@ -147,6 +147,8 @@ struct widgetEntryView : View {
     var myData = DataEntry(date: Date(), widget_data: getUserdata())
     
     @Environment(\.widgetFamily) var family
+    @Environment(\.colorScheme) var scheme
+
     
     var maxCount: Int {
         switch family {
@@ -163,6 +165,8 @@ struct widgetEntryView : View {
     var body: some View {
         
         ZStack{
+            Theme.myBackgroundColor(forScheme: scheme)
+
             Color(red: CGFloat(250)/255.0, green: CGFloat(205)/255.0, blue: CGFloat(205)/255.0, opacity: 0.4).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .leading)
 
             HStack{
@@ -185,23 +189,27 @@ struct widgetEntryView : View {
         }
         
         VStack{
+            Theme.myBackgroundColor(forScheme: scheme)
 
             ForEach(0..<maxCount) { index in
                 HStack{
                     Text(getWidgetData(data:getUserdata(), i:index))
                         .font(.system(size: 15))
-                        .foregroundColor(.black)
+//                        .foregroundColor(.black)
                         .frame(alignment: .leading)
                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                        .foregroundColor(scheme == .light ? .black : .white)
 
 
                     Spacer()
                     
                     Text(getDayOfWidgetData(data:getUserdata(), i:index))
                         .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(.black)
+//                        .foregroundColor(.black)
                         .frame(alignment: .center)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                        .foregroundColor(scheme == .light ? .black : .white)
+
                 }
 
                 Divider()
@@ -295,5 +303,18 @@ extension UserDefaults {
     static var shared: UserDefaults {
         let appGroupId = "group.com.sujin.Dday"
         return UserDefaults(suiteName: appGroupId)!
+    }
+}
+
+struct Theme {
+    static func myBackgroundColor(forScheme scheme: ColorScheme) -> Color {
+        let lightColor = Color.white
+        let darckColor = Color.black
+        
+        switch scheme {
+        case .light : return lightColor
+        case .dark : return darckColor
+        @unknown default: return lightColor
+        }
     }
 }
