@@ -254,7 +254,7 @@
 				036518C526A5B67D00604A55 /* Assets.xcassets */,
 				0367F7BB26A8FF50004DC581 /* Dday */,
 				036668392771C54600EB900C /* View */,
-				0366683A2771C5D900EB900C /* Sigleton */,
+				0366683A2771C5D900EB900C /* Singleton */,
 				0366683B2771C64600EB900C /* Data */,
 				036518BC26A5B67B00604A55 /* AppDelegate.swift */,
 				036518BE26A5B67B00604A55 /* SceneDelegate.swift */,
@@ -291,7 +291,7 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		0366683A2771C5D900EB900C /* Sigleton */ = {
+		0366683A2771C5D900EB900C /* Singleton */ = {
 			isa = PBXGroup;
 			children = (
 				0399EF0226EF8469009E868E /* CalculateDay.swift */,
@@ -299,7 +299,7 @@
 				03FDF9F6274D159F00ACD257 /* DdayNotificationCenter.swift */,
 				03191B4226E8EB0F00E7B7E5 /* CoreDataManager.swift */,
 			);
-			path = Sigleton;
+			path = Singleton;
 			sourceTree = "<group>";
 		};
 		0366683B2771C64600EB900C /* Data */ = {
