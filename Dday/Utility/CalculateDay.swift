@@ -12,7 +12,7 @@ class CalculateDay{
     static let shared = CalculateDay()
     private init() { }
     let cal = Calendar(identifier: .gregorian)
-    let formatter = DdayDateFormmater()
+    let formatter = DdayDateFormatter()
 
     func calculateDday(select_day: Date, setting: Setting) -> Int{
         

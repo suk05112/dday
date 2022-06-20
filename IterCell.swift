@@ -9,11 +9,9 @@ import UIKit
 
 class IterCell: UITableViewCell {
 
-
     @IBOutlet var iterButtons: [UIButton]!
     
     var indexOfOneAndOnly: Int?
-
 
     override func awakeFromNib() {
         super.awakeFromNib()

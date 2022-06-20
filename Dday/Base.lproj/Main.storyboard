@@ -97,6 +97,7 @@
                             <constraint firstItem="c67-RO-8DR" firstAttribute="top" secondItem="06X-pC-lzQ" secondAttribute="top" id="yc5-sU-xoU"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="wi3-zT-Vda"/>
                     <connections>
                         <outlet property="detail_day" destination="X0f-eJ-7Hw" id="ngk-p5-Pr9"/>
                         <outlet property="detail_dday" destination="OuY-qN-bcP" id="BiD-Ch-Lco"/>
@@ -425,7 +426,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cMQ-zD-Ch6"/>
+        <segue reference="N5K-kP-1yZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ellipsis" catalog="system" width="128" height="37"/>

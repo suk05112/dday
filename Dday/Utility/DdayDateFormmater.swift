@@ -7,8 +7,8 @@
 
 import Foundation
 
-class DdayDateFormmater{
-    static let shared = DdayDateFormmater()
+class DdayDateFormatter{
+    static let shared = DdayDateFormatter().formatter
     let formatter = DateFormatter()
 
     init(){

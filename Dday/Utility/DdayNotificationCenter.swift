@@ -10,9 +10,13 @@ import UserNotifications
 
 class DdayNotificationCenter{
     let userNotificationCenter = UNUserNotificationCenter.current()
-    
-    func initNotification(){
+
+    init(){
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]){
+            (result, error) in print(result)
+        }
         requestAuthorization()
+
     }
     
     func requestAuthorization() {
@@ -101,4 +105,5 @@ class DdayNotificationCenter{
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [String(idx)])
 
     }
+    
 }

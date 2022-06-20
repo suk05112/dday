@@ -9,14 +9,13 @@ import UIKit
 import WidgetKit
 
 class Add: UIViewController {
-
+    
     let mode = "init"
     @IBOutlet var showPickerTime: UILabel!
     @IBOutlet weak var inputname: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var datePicker: UIDatePicker!
 
-    
     let headerCellIdentifier = "headerCell"
     let iterIdentifier = "Itercell"
     let alarmIdentifier = "AlarmCell"
@@ -34,19 +33,19 @@ class Add: UIViewController {
     var setValue = Setting(iter: .none, set1: false, widget: false) //최종적으로 저장할 데이터
 
     var delegate : SendProtocol?
-    var updateDelegate : SendUpdateProtocol?
+
     var selectDate =  Date()
     let dele =  UIApplication.shared.delegate as? AppDelegate
     
-    let formatter = DdayDateFormmater()
-    let ddayNoti = DdayNotificationCenter()
 
-    
+    let dateFormatter = DdayDateFormatter.shared
+    let notification = DdayNotificationCenter()
+
     let DidDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
 
         inputname.placeholder = "title".localized()
@@ -60,9 +59,8 @@ class Add: UIViewController {
         
         loadData()
         
-        
     }
-    
+
     @objc func handleTap(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
             view.endEditing(true) // todo...
@@ -71,67 +69,49 @@ class Add: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
          self.view.endEditing(true)
-
    }
+    
     func loadData(){
+        let item = Item()
+        
+        let idx = (dele?.updateIdx)!
+        let (name, day, dday) = item.getItemData(idx: idx)
+        let setting = item.getItemSetting(idx: idx)
+        
         
         if(dele!.mode == "UPDATE"){
-            let idx = (dele?.updateIdx)!
-            indexOfOneAndOnly = CoreDataManager.shared.getSetting(idx: idx).iter.rawValue - 1
+            indexOfOneAndOnly = setting.iter.rawValue - 1
             print("update mode")
-            print(CoreDataManager.shared.getEntity(key: "day", idx: idx).components(separatedBy: " ")[0])
-            inputname.text = CoreDataManager.shared.getEntity(key: "name", idx: idx)
-            datePicker.date = formatter.toDate(str: CoreDataManager.shared.getEntity(key: "day", idx: idx))
-            selectDate = formatter.toDate(str: formatter.toString(date: datePicker.date))
+            print(day.components(separatedBy: " ")[0])
             
-            if (CoreDataManager.shared.getSetting(idx: idx).iter == .none){
-                isPressed = [false,
-                             CoreDataManager.shared.getSetting(idx: idx).set1,
-                             CoreDataManager.shared.getSetting(idx: idx).widget]
+            inputname.text = name
+            datePicker.date = dateFormatter.date(from: day)!
+            selectDate = dateFormatter.date(from: dateFormatter.string(from: datePicker.date))!
+            
+            if (setting.iter == .none){
+                isPressed = [false, setting.set1, setting.widget]
                 setValue = Setting(iter: .none, set1: isPressed[1], widget: isPressed[2])
 
             }else{
-                
-                isPressed = [true,
-                             CoreDataManager.shared.getSetting(idx: idx).set1,
-                             CoreDataManager.shared.getSetting(idx: idx).widget]
-                switch CoreDataManager.shared.getSetting(idx: idx).iter {
-                case .week:
-                    iterBtnPressed = [true, false, false]
-
-                case .month:
-                    iterBtnPressed = [false, true, false]
-
-                case .year:
-                    iterBtnPressed = [false, false, true]
-                default:
-                    iterBtnPressed = [false, false, false]
-
-                }
-                
-                setValue = Setting(iter: CoreDataManager.shared.getSetting(idx: idx).iter, set1: isPressed[1], widget: isPressed[2])
+                isPressed = [true, setting.set1, setting.widget]
+                iterBtnPressed = setting.iter.pressedBtn()
+                setValue = Setting(iter: setting.iter, set1: isPressed[1], widget: isPressed[2])
 
             }
 
         }
     }
     
+ 
     @IBAction func textDidChanged(_ sender: Any){
         checkMaxLength(textField: inputname, maxLength: 10)
     }
     
     @IBAction func changeDatePIcker(_ sender: UIDatePicker) {
         let datePickerView = sender
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd EEE"
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.timeZone = TimeZone(abbreviation: "KST")
-
-        selectDate = formatter.date(from: formatter.string(from: datePickerView.date))!
+        selectDate = dateFormatter.date(from: dateFormatter.string(from: datePickerView.date))!
     }
-    
     
     @IBAction func saveDday(_ sender: UIButton){
 
@@ -143,13 +123,10 @@ class Add: UIViewController {
         
         if(dele!.mode == "UPDATE"){
             updateDday()
-            updateDelegate?.sendUpdate(date: selectDate, name: inputname.text!, setting: setValue)
-            
         }
         else{
             delegate?.send(date: selectDate, name: inputname.text!, setting: setValue, idx: CoreDataManager.shared.getCount())
         }
-        
 
         NotificationCenter.default.post(name: DidDismissPostCommentViewController, object: nil, userInfo: nil)
         self.navigationController?.popViewController(animated: true)
@@ -157,46 +134,15 @@ class Add: UIViewController {
     }
     
     func updateDday(){
-
         let calculatedDday = CalculateDay.shared.calculateDday(select_day: selectDate, setting: setValue) //dday
+        let data = rcvData(name: inputname.text!,
+                           day: dateFormatter.string(from: selectDate),
+                           dday: calculatedDday)
         
-        CoreDataManager.shared.updateEntity(data: rcvData(name: inputname.text!,
-                                                          day: formatter.toString(date: selectDate),
-                                                          dday: calculatedDday),
-                                            idx: dele!.updateIdx)
-        
+        Item().update(data: data, setting: setValue, idx: dele!.updateIdx)
 
-        CoreDataManager.shared.updateSetting(setting: setValue, idx: dele!.updateIdx)
-        ddayNoti.removeNotification(idx: dele!.updateIdx)
-        ddayNoti.setNoticifation(i: dele!.updateIdx)
-        
-        save_widgetData()
-        
-    }
-    
-    func save_widgetData(){
-        print("save widget 실행")
-        var collectData:[WidgetData] = []
-        UserDefaults.shared.setValue(collectData, forKey: "data")
-
-        
-        for i in 0..<CoreDataManager.shared.getCount(){
-            if(CoreDataManager.shared.getSetting(idx: i).widget){
-                let name = CoreDataManager.shared.getEntity(key: "name", idx: i)
-                let dday = CoreDataManager.shared.getEntity(key: "dday", idx: i)
-                let set1 = CoreDataManager.shared.getSetting(idx: i).set1
-
-                collectData.append(WidgetData(name: name, dday: dday, set1: set1))
-            }
-
-        }
-        
-        if let encoded_data = try? JSONEncoder().encode(collectData){
-            UserDefaults.shared.setValue(encoded_data, forKey: "data")
-        }
-        WidgetCenter.shared.reloadAllTimelines()
-//        WidgetCenter.shared.reloadTimelines(ofKind: "widget")
-
+        notification.removeNotification(idx: dele!.updateIdx)
+        notification.setNoticifation(i: dele!.updateIdx)
         
     }
     
@@ -261,13 +207,7 @@ class Add: UIViewController {
 
 }
 
-protocol SendProtocol{
-    func send(date: Date, name: String, setting: Setting, idx: Int)
-}
 
-protocol SendUpdateProtocol{
-    func sendUpdate(date: Date, name: String, setting: Setting)
-}
 
 extension Add: UITableViewDelegate, UITableViewDataSource{
     
@@ -276,15 +216,11 @@ extension Add: UITableViewDelegate, UITableViewDataSource{
         return 3
     }
     
-
-    
-    
     //section별로 몇개의 row가 있어야하는지
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0) {
             return isPressed[section] ? 1:0
         }
-
         else {return 0}
     }
     
@@ -298,8 +234,6 @@ extension Add: UITableViewDelegate, UITableViewDataSource{
         cell.cellSwitch.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
         
         cell.cellSwitch.setOn(isPressed[section], animated: true)
-        
-        
         
         return cell
     }
@@ -316,14 +250,11 @@ extension Add: UITableViewDelegate, UITableViewDataSource{
         return CGFloat.leastNonzeroMagnitude
     }
     
-
-    
     //tableview에 넣을 cell을 직접적으로 요청하는 함수
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: self.iterIdentifier, for: indexPath) as! IterCell
         cell.selectionStyle = .none
-        
         
         for i in 0...2{
             cell.iterButtons[i].tag = i
@@ -334,9 +265,7 @@ extension Add: UITableViewDelegate, UITableViewDataSource{
 
         return cell
         
-
     }
-    
     
 }
 
@@ -356,4 +285,13 @@ extension String{
     func localized(comment: String = "") -> String{
         return NSLocalizedString(self, comment: comment)
     }
+}
+protocol SendProtocol{
+    func send(date: Date, name: String, setting: Setting, idx: Int)
+}
+
+
+protocol SendUpdateProtocol{
+    func test()
+    func sendUpdate(idx: Int)
 }

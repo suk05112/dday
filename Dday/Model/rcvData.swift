@@ -13,6 +13,11 @@ class rcvData: Hashable {
     var day: String
     var dday: Int
     
+    init(){
+        name = ""
+        day = ""
+        dday = 0
+    }
     init(name: String, day: String, dday:Int){
         self.name = name
         self.day = day
