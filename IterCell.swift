@@ -10,7 +10,7 @@ import UIKit
 class IterCell: UITableViewCell {
 
     @IBOutlet var iterButtons: [UIButton]!
-    
+
     var indexOfOneAndOnly: Int?
 
     override func awakeFromNib() {
@@ -21,33 +21,29 @@ class IterCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
 //        week.setBackgroundColor(.red, for: .normal)
 //        week.setBackgroundColor(.blue, for: .selected)
 //        week.setBackgroundColor(.gray, for: .disabled)
-        
     }
     
-    @IBAction func touchButton(_ sender: UIButton){
+    @IBAction func touchButton(_ sender: UIButton) {
         print("btn touch")
-        if indexOfOneAndOnly != nil{
-            if !sender.isSelected{
-                for index in iterButtons.indices{
+        if indexOfOneAndOnly != nil {
+            if !sender.isSelected {
+                for index in iterButtons.indices {
                     iterButtons[index].isSelected = false
                 }
                 sender.isSelected = true
                 indexOfOneAndOnly = iterButtons.firstIndex(of: sender)
-            }else{
+            } else {
                 sender.isSelected = false
                 indexOfOneAndOnly = nil
             }
-        
-        }else{
+        } else {
             sender.isSelected = true
             indexOfOneAndOnly = iterButtons.firstIndex(of: sender)
         }
     }
-
 
 }
 
@@ -57,10 +53,8 @@ extension UIButton {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         context.setFillColor(color.cgColor)
         context.fill(CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0))
-        
         let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-         
         self.setBackgroundImage(backgroundImage, for: state)
     }
 }

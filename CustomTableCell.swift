@@ -9,7 +9,6 @@ import UIKit
 
 class CustomTableCell: UITableViewCell {
 
-
     @IBAction func btn(_ sender: Any) {
     }
     
