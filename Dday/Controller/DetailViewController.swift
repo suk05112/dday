@@ -54,8 +54,8 @@ class DetailViewController: UIViewController {
         let numOfdata = CoreDataManager.shared.getCount()
         var filteredIdx: [Int] = []
         
-        if(UserDefaults.standard.bool(forKey: "hide")){
-            for idx in 0..<numOfdata{
+        if UserDefaults.standard.bool(forKey: "hide") {
+            for idx in 0..<numOfdata {
                 if setting.set1 || Int(dday)! < 1 {
                     filteredIdx.append(idx)
                 }

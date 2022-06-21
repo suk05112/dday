@@ -5,6 +5,7 @@ disabled_rules:
 - force_try
 - line_length
 - trailing_whitespace
+- large_tuple
 
 included:
 excluded:

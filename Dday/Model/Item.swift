@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Item{
+class Item {
     var idx: Int = 0
     var data = RecieveData()
     var name: String = ""
@@ -19,10 +19,10 @@ class Item{
     let notification = DdayNotificationCenter()
     let dateFormatter = DdayDateFormatter.shared
 
-    init(){
+    init() {
     }
     
-    func add(data: RecieveData, setting: Setting, idx: Int){
+    func add(data: RecieveData, setting: Setting, idx: Int) {
 //        let data = rcvData(name: name, day: day, dday: dday)
         CoreDataManager.shared.saveEntity(data: data, idx: idx)
         CoreDataManager.shared.saveSetting(setting: setting)
@@ -30,13 +30,13 @@ class Item{
         WidgetUtility.save_widgetData()
     }
     
-    func delete(idx: Int){
+    func delete(idx: Int) {
         CoreDataManager.shared.deleteEntity(idx: idx)
         CoreDataManager.shared.deleteSetting(idx: idx)
         WidgetUtility.save_widgetData()
     }
     
-    func update(data: RecieveData, setting: Setting, idx: Int){
+    func update(data: RecieveData, setting: Setting, idx: Int) {
         CoreDataManager.shared.updateEntity(data: data, idx: idx)
 
         CoreDataManager.shared.updateSetting(setting: setting, idx: idx)
@@ -47,7 +47,7 @@ class Item{
 
     }
     
-    func getItemData(idx: Int) -> (String, String, String){
+    func getItemData(idx: Int) -> (String, String, String) {
         let name = CoreDataManager.shared.getEntity(key: "name", idx: idx)
         let day = CoreDataManager.shared.getEntity(key: "day", idx: idx)
         let dday = CoreDataManager.shared.getEntity(key: "dday", idx: idx)
@@ -55,22 +55,19 @@ class Item{
         return (name, day, dday)
     }
     
-    func getItemSetting(idx: Int) -> Setting{
+    func getItemSetting(idx: Int) -> Setting {
         return CoreDataManager.shared.getSetting(idx: idx)
     }
     
-    func getDdayString(dday: Int, set1: Bool) ->  String{
+    func getDdayString(dday: Int, set1: Bool) -> String {
 
-        if (dday<0){
+        if dday<0 {
             return "D" + String(dday)
-        }
-        else if(dday == 0){
+        } else if dday == 0 {
             return set1 ? "0일" : "D-day"
-        }
-        else{
+        } else {
             return set1 ? String(dday) + "일" : "D+" + String(dday)
         }
 
     }
 }
-

@@ -12,13 +12,13 @@ class RecieveData: Hashable {
     var day: String
     var dday: Int
     
-    init(){
+    init() {
         name = ""
         day = ""
         dday = 0
     }
     
-    init(name: String, day: String, dday:Int){
+    init(name: String, day: String, dday: Int) {
         self.name = name
         self.day = day
         self.dday = dday
@@ -33,6 +33,4 @@ class RecieveData: Hashable {
         hasher.combine(day)
         hasher.combine(dday)
     }
-    
-    
 }

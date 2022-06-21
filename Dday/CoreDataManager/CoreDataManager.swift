@@ -18,12 +18,12 @@ class CoreDataManager {
     let entityName: String = "Entity"
     let settingName: String = "MySetting"
     
-    func getEntity(key: String, idx: Int) ->String{
+    func getEntity(key: String, idx: Int) -> String {
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         var results = try! context?.fetch(request)
         
-        if(UserDefaults.standard.bool(forKey: "sort")){
+        if UserDefaults.standard.bool(forKey: "sort") {
             results = sortbyDday()
         }
 
@@ -32,13 +32,11 @@ class CoreDataManager {
         let myrequest: NSFetchRequest<Entity> = Entity.fetchRequest()
         let myrecord = try! context?.fetch(myrequest)
         
-        if(key != "dday"){
+        if key != "dday" {
             return (record as AnyObject).value(forKey: key) as! String
-        }
-        else{
+        } else {
             return String((record as AnyObject).value(forKey: "dday") as! Int)
         }
-
     }
  
     func  deleteAll() {
@@ -46,14 +44,13 @@ class CoreDataManager {
         let requestSEtting: NSFetchRequest<MySetting> = MySetting.fetchRequest()
 
         do {
-        
             let entityResults = try! context?.fetch(requestEntity)
             let settingResults = try! context?.fetch(requestSEtting)
             
-            entityResults!.forEach{
+            entityResults!.forEach {
                 context?.delete($0 as NSManagedObject)
             }
-            settingResults!.forEach{
+            settingResults!.forEach {
                 context?.delete($0 as NSManagedObject)
             }
             try context?.save()
@@ -65,7 +62,6 @@ class CoreDataManager {
         }
     }
     
-    
     func saveEntity(data: RecieveData, idx: Int) {
         if let context = context,
             let entity: NSEntityDescription
@@ -76,9 +72,7 @@ class CoreDataManager {
                 myentity.setValue(data.day, forKey: "day")
                 myentity.setValue(data.dday, forKey: "dday")
                 myentity.setValue(idx, forKey: "idx")
-
             }
-            
             do {
                 try context?.save()
             } catch {
@@ -97,10 +91,9 @@ class CoreDataManager {
             context?.rollback()
             print(error.localizedDescription)
         }
-
     }
     
-    func updateEntity(data: RecieveData, idx: Int){
+    func updateEntity(data: RecieveData, idx: Int) {
         print("update Entity!!")
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Entity")
         var myresult = [NSManagedObject]()
@@ -152,7 +145,6 @@ extension CoreDataManager {
         return Setting(iter: Iter(rawValue: (record as AnyObject).value(forKey: "iter") as! Int)!,
                        set1: (record as AnyObject).value(forKey: "set1") as! Bool,
                        widget: (record as AnyObject).value(forKey: "widget") as! Bool)
-
     }
     
     func saveSetting(setting: Setting) {
@@ -176,7 +168,7 @@ extension CoreDataManager {
             }
         }
     
-    func updateSetting(setting: Setting, idx: Int){
+    func updateSetting(setting: Setting, idx: Int) {
         print("update Setting!!")
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "MySetting")
         var myresult = [NSManagedObject]()
@@ -184,7 +176,7 @@ extension CoreDataManager {
         
         if let records = records as? [NSManagedObject] {
             myresult = records
-               }
+       }
         
         myresult[idx].setValue(setting.iter.rawValue, forKeyPath: "iter")
 //        myresult[idx].setValue(2, forKeyPath: "iter")
@@ -194,14 +186,12 @@ extension CoreDataManager {
 
         do {
             try context?.save()
-            
-            
         } catch {
             context?.rollback()
             print(error.localizedDescription)
         }
-
     }
+    
     func deleteSetting(idx: Int) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: settingName)
         let results = try! context?.fetch(request)
@@ -234,7 +224,7 @@ extension CoreDataManager {
         }
     }
     
-    func getCount() -> Int{
+    func getCount() -> Int {
         let request: NSFetchRequest<Entity> = Entity.fetchRequest()
         do {
             let count = try context!.count(for: request)
@@ -245,9 +235,9 @@ extension CoreDataManager {
         }
     }
     
-    func sortbyDday()->Array<Entity>{
+    func sortbyDday() -> Array<Entity> {
         let request: NSFetchRequest<Entity> = Entity.fetchRequest()
-        let sort = NSSortDescriptor(key: #keyPath(Entity.dday) , ascending: true)
+        let sort = NSSortDescriptor(key: #keyPath(Entity.dday), ascending: true)
         request.sortDescriptors = [sort]
         do {
             print("sort")
@@ -255,7 +245,7 @@ extension CoreDataManager {
             let record = try context?.fetch(request)
             print(type(of: record))
 
-            record?.forEach{
+            record?.forEach {
                 print($0.name)
             }
             return record!

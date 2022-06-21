@@ -36,7 +36,6 @@ class AddViewController: UIViewController {
 
     var selectDate =  Date()
     let dele =  UIApplication.shared.delegate as? AppDelegate
-    
 
     let dateFormatter = DdayDateFormatter.shared
     let notification = DdayNotificationCenter()

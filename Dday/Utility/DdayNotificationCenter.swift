@@ -8,15 +8,14 @@
 import Foundation
 import UserNotifications
 
-class DdayNotificationCenter{
+class DdayNotificationCenter {
     let userNotificationCenter = UNUserNotificationCenter.current()
 
-    init(){
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]){
+    init() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
             (result, error) in print(result)
         }
         requestAuthorization()
-
     }
     
     func requestAuthorization() {
@@ -31,26 +30,23 @@ class DdayNotificationCenter{
         }
     }
     
-    func setNoticifation(idx: Int){
+    func setNoticifation(idx: Int) {
 
-        if Int(CoreDataManager.shared.getEntity(key: "dday", idx: idx)) == 0  { // 디데이에 도달하면
+        if Int(CoreDataManager.shared.getEntity(key: "dday", idx: idx)) == 0 { // 디데이에 도달하면
             print("dday~~~~")
             ringAlarm(idx: idx, today: true)
-        }
-        else if Int(CoreDataManager.shared.getEntity(key: "dday", idx: idx)) == -1 { //디데이 전날
+        } else if Int(CoreDataManager.shared.getEntity(key: "dday", idx: idx)) == -1 { // 디데이 전날
             print("dday 전날")
 
-            if(UserDefaults.standard.bool(forKey: "noti")){
+            if UserDefaults.standard.bool(forKey: "noti") {
                 ringAlarm(idx: idx, today: false)
-
             }
 
         }
 
     }
     
-    func ringAlarm(idx: Int, today: Bool){
-        
+    func ringAlarm(idx: Int, today: Bool) {
         
         let content = setContent(idx: idx, today: today)
         
@@ -62,9 +58,8 @@ class DdayNotificationCenter{
         let year = Calendar.current.dateComponents([.year], from: date).year
         let month = Calendar.current.dateComponents([.month], from: date).month
         let day = Calendar.current.dateComponents([.day], from: date).day
-
         
-        let dateComponents = DateComponents(year: year, month: month, day: day, hour: 8, minute: 00) //8시로 설정
+        let dateComponents = DateComponents(year: year, month: month, day: day, hour: 8, minute: 00) // 8시로 설정
 //        let dateComponents = DateComponents(hour: 3, minute: 00) //8시로 설정
         
         print("noti 설정")
@@ -81,17 +76,14 @@ class DdayNotificationCenter{
         }
         
     }
-    
 
-
-    func setContent(idx: Int, today: Bool) -> UNMutableNotificationContent{
+    func setContent(idx: Int, today: Bool) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
         
         content.title = CoreDataManager.shared.getEntity(key: "name", idx: idx)
-        if today{
+        if today {
             content.body = "notiDday".localized()
-        }
-        else{
+        } else {
             content.body = "notiBeforeDday".localized()
         }
         
@@ -99,8 +91,7 @@ class DdayNotificationCenter{
     
     }
     
-    
-    func removeNotification(idx: Int){
+    func removeNotification(idx: Int) {
         print("noti 삭제 됨")
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [String(idx)])
 

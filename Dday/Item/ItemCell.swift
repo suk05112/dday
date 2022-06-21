@@ -29,15 +29,13 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         }
 
         let index: Int = getfilterdIndexByset1()[indexPath.row]
-        let (name, day, dday) = item.getItemData(idx: index)
+        let (_, day, dday) = item.getItemData(idx: index)
         let setting = item.getItemSetting(idx: index)
 
         cell.day.text = day
         cell.name.text = CoreDataManager.shared.getEntity(key: "name", idx: index)
         cell.dday.textAlignment = .left
         cell.dday.text = item.getDdayString(dday: Int(dday)!, set1: setting.set1)
-        
-
 
         setCeelColor(idx: indexPath.row, cell: cell)
         setViewShadow(backView: cell)
@@ -91,8 +89,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
                     filteredIdx.append(idx)
                 }
             }
-        }
-        else {
+        } else {
             filteredIdx = Array(0..<numOfdata)
         }
 

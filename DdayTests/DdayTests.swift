@@ -30,7 +30,7 @@ class DdayTests: XCTestCase {
         }
     }
     
-    func testNoneSetting(){
+    func testNoneSetting() {
         let calculation = CalculateDay.shared
         let noneSetting = Setting(iter: .none, set1: false, widget: false)
         let str: String? = "2021.12.23 화요일"
@@ -40,46 +40,44 @@ class DdayTests: XCTestCase {
         XCTAssertEqual(calculation.calculateDday(selectDay: testDay, setting: noneSetting), -3, "정닶 dday와 다릅니다.")
     }
 
-    func testIterSetting(){
+    func testIterSetting() {
         
     }
     
-    func testSet1Setting(){
+    func testSet1Setting() {
         
     }
     
-    func testIterAndSet1Setting(){
-        
-    }
-    
-    
-    
-    
-}
-
-class NoneSetting{
-    
-    func beforeToday(){
-        
-    }
-    
-    func today(){
-        
-    }
-    
-    func afterToday(){
+    func testIterAndSet1Setting() {
         
     }
 }
 
-//class IterSetting(){
-//    
-//}
-//
-//class Set1Setting(){
-//    
-//}
-//
-//class IterAndSet1Setting(){
-//    
-//}
+class NoneSetting {
+    
+    func beforeToday() {
+        
+    }
+    
+    func today() {
+        
+    }
+    
+    func afterToday() {
+        
+    }
+}
+
+/*
+class IterSetting(){
+    
+}
+
+class Set1Setting(){
+    
+}
+
+class IterAndSet1Setting(){
+    
+}
+*/

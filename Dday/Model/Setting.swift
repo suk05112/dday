@@ -10,23 +10,23 @@ import Foundation
 class Setting {
 
     var iter: Iter = .none
-    var set1: Bool //true, false
-    var widget: Bool //true, false
+    var set1: Bool // true, false
+    var widget: Bool // true, false
     
-    init(){
+    init() {
         iter = .none
         set1 = false
         widget = false
     }
     
-    init(iter: Iter, set1: Bool, widget: Bool){
+    init(iter: Iter, set1: Bool, widget: Bool) {
         self.iter = iter
         self.set1 = set1
         self.widget = widget
     }
 }
 
-enum Iter: Int{
+enum Iter: Int {
     case none
     case week
     case month
@@ -58,7 +58,7 @@ enum Iter: Int{
         }
     }
     
-    func pressedBtn() -> [Bool]{
+    func pressedBtn() -> [Bool] {
         switch self {
         case .none:
           return [false, false, false]
@@ -72,10 +72,9 @@ enum Iter: Int{
     }
 }
 
-enum Alarm: Int{
+enum Alarm: Int {
     case none
     case dday
     case hundred
     case year
 }
-

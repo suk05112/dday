@@ -7,21 +7,21 @@
 
 import Foundation
 
-class DdayDateFormatter{
+class DdayDateFormatter {
     static let shared = DdayDateFormatter().formatter
     let formatter = DateFormatter()
 
-    init(){
+    init() {
         formatter.dateFormat = "yyyy-MM-dd EEE"
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.timeZone = TimeZone(abbreviation: "KST")
     }
     
-    func toString(date: Date) -> String{
+    func toString(date: Date) -> String {
         return formatter.string(from: date)
     }
     
-    func toDate(str: String) -> Date{
+    func toDate(str: String) -> Date {
         return formatter.date(from: str)!
     }
 }

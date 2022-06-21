@@ -8,19 +8,18 @@
 import Foundation
 import UIKit
 
-extension AddViewController: UITableViewDelegate, UITableViewDataSource{
+extension AddViewController: UITableViewDelegate, UITableViewDataSource {
     
-    //table에 몇개의 section이 있을건지 알려줌
+    // table에 몇개의 section이 있을건지 알려줌
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
-    //section별로 몇개의 row가 있어야하는지
+    // section별로 몇개의 row가 있어야하는지
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(section == 0) {
+        if section == 0 {
             return isPressed[section] ? 1:0
-        }
-        else {return 0}
+        } else {return 0}
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -37,25 +36,25 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
 
-    //헤더 셀의 높이
+    // 헤더 셀의 높이
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 35
     }
     
-    //footer 없애기
+    // footer 없애기
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         tableView.sectionFooterHeight = .leastNonzeroMagnitude
 
         return CGFloat.leastNonzeroMagnitude
     }
     
-    //tableview에 넣을 cell을 직접적으로 요청하는 함수
+    // tableview에 넣을 cell을 직접적으로 요청하는 함수
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: self.iterIdentifier, for: indexPath) as! IterCell
         cell.selectionStyle = .none
         
-        for idx in 0...2{
+        for idx in 0...2 {
             cell.iterButtons[idx].tag = idx
             cell.iterButtons[idx].addTarget(self, action: #selector(self.iterBtnClicked(_:)), for: .touchUpInside)
             cell.iterButtons[idx].isSelected = iterBtnPressed[idx]

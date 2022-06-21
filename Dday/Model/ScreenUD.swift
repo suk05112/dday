@@ -7,17 +7,16 @@
 
 import Foundation
 
-class ScreenUD : NSObject ,NSCoding {
+class ScreenUD: NSObject, NSCoding {
     var hideDday: Bool
     var sortDday: Bool
     var notiBeforeDday: Bool
-
     
     init(hideDday: Bool, sortDday: Bool, notiBeforeDday: Bool) {
         self.hideDday = hideDday
         self.sortDday = sortDday
         self.notiBeforeDday = notiBeforeDday
-    } //NSCoding Protocol 구현
+    } // NSCoding Protocol 구현
     
     required init?(coder: NSCoder) {
         self.hideDday = coder.decodeObject(forKey: "hide") as! Bool

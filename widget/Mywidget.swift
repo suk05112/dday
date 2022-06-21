@@ -17,13 +17,13 @@ struct Provider: IntentTimelineProvider {
         return SimpleEntry(date: Date(), configuration: ConfigurationIntent())
     }
 
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
         let entry = SimpleEntry(date: Date(), configuration: configuration)
 
         completion(entry)
     }
 
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
 
         var entries: [SimpleEntry] = []
 
@@ -40,11 +40,9 @@ struct Provider: IntentTimelineProvider {
         let entry = SimpleEntry(date: currentDate, configuration: configuration)
         entries.append(entry)
 
-
         let timeline = Timeline(entries: entries, policy: .after(refreshDate))
 //        let timeline = Timeline(entries: entries, policy: .never)
 //        let timeline = Timeline(entries: entries, policy: .atEnd(refreshDate))
-
 
         completion(timeline)
         
@@ -56,7 +54,7 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationIntent
 }
 
-struct Data: Identifiable{
+struct Data: Identifiable {
     var id: String = "1"
     let data: WidgetData
     
@@ -64,73 +62,56 @@ struct Data: Identifiable{
 
 struct DataEntry: TimelineEntry {
     var date: Date
-    let widgetData : [WidgetData]
+    let widgetData: [WidgetData]
 }
 
-func getWidgetData(data:[WidgetData], idx:Int) -> String{
+func getWidgetData(data: [WidgetData], idx: Int) -> String {
     print("in getwidgetData", idx)
     
-    if idx<data.count{
+    if idx<data.count {
         return data[idx].name
-    }
-    else{
+    } else {
         return ""
     }
-    
-    
-    let date = Date()
-    
+        
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "mm" // 2020-08-13 16:30
-            
             
     let myDateFormatter = DateFormatter()
     
     myDateFormatter.dateFormat = "yyyy년 MM월 dd일 a hh시 mm분" // 2020년 08월 13일 오후 04시 30분
-    myDateFormatter.locale = Locale(identifier:"ko_KR") // PM, AM을 언어에 맞게 setting (ex: PM -> 오후)
+    myDateFormatter.locale = Locale(identifier: "ko_KR") // PM, AM을 언어에 맞게 setting (ex: PM -> 오후)
     
-    let convertStr = myDateFormatter.string(from: date)
+    let convertStr = myDateFormatter.string(from: Date())
     
     return convertStr
 }
-func getDayOfWidgetData(data:[WidgetData], idx:Int) -> String{
+func getDayOfWidgetData(data: [WidgetData], idx: Int) -> String {
     print("in getwidgetData", idx)
-   
 
-    if idx<data.count{
+    if idx<data.count {
         
         let dday = data[idx].dday
         let set1 = getUserdata()[idx].set1
         
-        if(set1){
-            if (Int(dday)!<0){
+        if set1 {
+            if Int(dday)!<0 {
                 return "D-" + String(abs(Int(dday)!))
-            }
-            else{
+            } else {
                 return String(dday) + "일"
-
             }
-
-        }
-        else{
-            if (Int(dday)!<0){
+        } else {
+            if Int(dday)!<0 {
                 return "D" + String(dday)
-            }
-            else if(Int(dday) == 0){
+            } else if Int(dday) == 0 {
                 return"D-day"
-            }
-            else{
+            } else {
                 return "D+" + String(dday)
-
             }
         }
-        
-    }
-
-    else{
+    } else {
         return " "
     }
-
 }
 
 func getImage(name: String, type: String = "png") -> UIImage? {
@@ -142,13 +123,12 @@ func getImage(name: String, type: String = "png") -> UIImage? {
         return UIImage(contentsOfFile: path)
     }
 
-struct WidgetEntryView : View {
+struct WidgetEntryView: View {
     var entry: Provider.Entry
     var myData = DataEntry(date: Date(), widgetData: getUserdata())
     
     @Environment(\.widgetFamily) var family
     @Environment(\.colorScheme) var scheme
-
     
     var maxCount: Int {
         switch family {
@@ -161,20 +141,18 @@ struct WidgetEntryView : View {
         }
     }
 
-
     var body: some View {
         
-        ZStack{
+        ZStack {
             Theme.myBackgroundColor(forScheme: scheme)
 
             Color(red: CGFloat(250)/255.0, green: CGFloat(205)/255.0, blue: CGFloat(205)/255.0, opacity: 0.4).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .leading)
 
-            HStack{
+            HStack {
                 Image("postit")
                     .resizable()
                     .frame(width: 20, height: 20, alignment: .center)
                     .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 0))
-
                 
                 Text("Post Day")
                     .font(.system(size: 15, weight: .semibold ))
@@ -188,22 +166,21 @@ struct WidgetEntryView : View {
 
         }
         
-        VStack{
+        VStack {
             Theme.myBackgroundColor(forScheme: scheme)
 
             ForEach(0..<maxCount) { index in
-                HStack{
-                    Text(getWidgetData(data:getUserdata(), idx:index))
+                HStack {
+                    Text(getWidgetData(data: getUserdata(), idx: index))
                         .font(.system(size: 15))
 //                        .foregroundColor(.black)
                         .frame(alignment: .leading)
                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                         .foregroundColor(scheme == .light ? .black : .white)
 
-
                     Spacer()
                     
-                    Text(getDayOfWidgetData(data:getUserdata(), idx:index))
+                    Text(getDayOfWidgetData(data: getUserdata(), idx: index))
                         .font(.system(size: 15, weight: .semibold))
 //                        .foregroundColor(.black)
                         .frame(alignment: .center)
@@ -225,13 +202,13 @@ struct WidgetEntryView : View {
     }
 }
 
-struct DdayView : View {
+struct DdayView: View {
     var myData = DataEntry(date: Date(), widgetData: getUserdata())
     
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
             ForEach(0..<getUserdata().count) { index in
-                Text(getDayOfWidgetData(data:getUserdata(), idx:index))
+                Text(getDayOfWidgetData(data: getUserdata(), idx: index))
                 Text("dday view")
                 Divider()
             }.frame(height: 20)
@@ -239,7 +216,7 @@ struct DdayView : View {
         }
     }
 }
-func getUserdata() -> [WidgetData]{
+func getUserdata() -> [WidgetData] {
     guard let orderData = UserDefaults.shared.data(forKey: "data") else { return [] }
     print("widget data", try!JSONDecoder().decode([WidgetData].self, from: orderData))
     
@@ -247,7 +224,7 @@ func getUserdata() -> [WidgetData]{
 
 }
 
-func getCoredata(){
+func getCoredata() {
     let storeURL = AppGroup.facts.containerURL.appendingPathComponent("Dday.sqlite")
     let description = NSPersistentStoreDescription(url: storeURL)
 
@@ -256,9 +233,8 @@ func getCoredata(){
 }
 
 @main
-struct Mywidget: Widget { //위젯 추가하는 화면
+struct Mywidget: Widget { // 위젯 추가하는 화면
     let kind: String = "widget"
-
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
@@ -276,7 +252,7 @@ struct Widget_Previews: PreviewProvider {
 
     static var previews: some View {
         
-        Group{
+        Group {
             WidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
                 .environment(\.sizeCategory, .medium)
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
@@ -292,8 +268,7 @@ struct Widget_Previews: PreviewProvider {
            let appGroupIdentifier = "group.com.sujin.Dday"
            if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupIdentifier) {
                return url.appendingPathComponent("Plants.plist")
-           }
-           else {
+           } else {
                preconditionFailure("Expected a valid app group container")
            }
        }()

@@ -56,7 +56,7 @@ class CoreDataStack {
             try context.save()
             print("Working context saved")
             saveContext()
-        } catch (let error) {
+        } catch let error {
             print(error)
 //            RaiseError.raise()
         }

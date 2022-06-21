@@ -9,9 +9,7 @@
 import Foundation
 import CoreData
 
-
 extension Entity {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Entity> {
         return NSFetchRequest<Entity>(entityName: "Entity")
     }
@@ -21,14 +19,13 @@ extension Entity {
     @NSManaged public var dday: Int
     @NSManaged public var idx: Int
 
+}
+
+extension Entity: Identifiable {
 
 }
 
-extension Entity : Identifiable {
-
-}
-
-extension MySetting{
+extension MySetting {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<MySetting> {
         return NSFetchRequest<MySetting>(entityName: "MySetting")
     }
@@ -37,9 +34,8 @@ extension MySetting{
     @NSManaged public var set1: Bool
     @NSManaged public var widget: Bool
 
-
 }
 
-extension MySetting : Identifiable {
+extension MySetting: Identifiable {
 
 }

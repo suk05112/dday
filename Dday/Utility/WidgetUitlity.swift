@@ -8,20 +8,19 @@
 import Foundation
 import WidgetKit
 
-class WidgetUtility{
+class WidgetUtility {
     
     @objc func updateWidget() {
         print("update widget")
         WidgetCenter.shared.reloadAllTimelines()
     }
     
-    static func save_widgetData(){
+    static func save_widgetData() {
         print("save widget 실행")
-        var collectData:[WidgetData] = []
+        var collectData: [WidgetData] = []
         UserDefaults.shared.setValue(collectData, forKey: "data")
 
-        
-        for idx in 0..<CoreDataManager.shared.getCount(){
+        for idx in 0..<CoreDataManager.shared.getCount() {
             if(CoreDataManager.shared.getSetting(idx: idx).widget){
                 let name = CoreDataManager.shared.getEntity(key: "name", idx: idx)
                 let dday = CoreDataManager.shared.getEntity(key: "dday", idx: idx)
@@ -32,11 +31,10 @@ class WidgetUtility{
 
         }
         
-        if let encodedData = try? JSONEncoder().encode(collectData){
+        if let encodedData = try? JSONEncoder().encode(collectData) {
             UserDefaults.shared.setValue(encodedData, forKey: "data")
         }
         WidgetCenter.shared.reloadTimelines(ofKind: "widget")
 
-        
     }
 }

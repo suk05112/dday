@@ -10,7 +10,6 @@ import CoreData
 import UserNotifications
 import BackgroundTasks
 
-
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
@@ -22,9 +21,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         print("백그라운드에서 실행됨")
         
         completionHandler()
-        
 
-        
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -129,7 +126,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     */
-
     
     private func scheduleAppRefresh() {
             do {
@@ -205,10 +201,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         print("홈버튼 누름")
     }
-    
 
 }
-
 
 extension UIViewController {
     func hideKeyboard() {
