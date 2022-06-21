@@ -74,13 +74,11 @@ class AddViewController: UIViewController {
     
     func loadData(){
         let item = Item()
-        
-        let idx = (dele?.updateIdx)!
-        let (name, day, dday) = item.getItemData(idx: idx)
-        let setting = item.getItemSetting(idx: idx)
-        
-        
+ 
         if(dele!.mode == "UPDATE"){
+            let idx = (dele?.updateIdx)!
+            let (name, day, dday) = item.getItemData(idx: idx)
+            let setting = item.getItemSetting(idx: idx)
             indexOfOneAndOnly = setting.iter.rawValue - 1
             print("update mode")
             print(day.components(separatedBy: " ")[0])

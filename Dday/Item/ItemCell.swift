@@ -84,6 +84,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate ,
         return 5.0
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+           
+        }
     
     func setCeelColor(idx: Int, cell: UIView){
         let colors = ["level1", "level2", "level3","level4"]

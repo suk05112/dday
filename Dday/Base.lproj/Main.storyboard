@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Detail-->
+        <!--Detail View Controller-->
         <scene sceneID="mYz-30-BWj">
             <objects>
-                <viewController storyboardIdentifier="DetailVC" id="iCA-6o-hQj" customClass="Detail" customModule="Dday" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailVC" id="iCA-6o-hQj" customClass="DetailViewController" customModule="Dday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iFw-QC-Quj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -188,6 +188,7 @@
                                             <outlet property="day" destination="YFr-g5-tqG" id="Rm2-t4-32v"/>
                                             <outlet property="dday" destination="yZf-9d-jwn" id="pGo-dx-TUU"/>
                                             <outlet property="name" destination="ofX-EB-hvu" id="Hs0-lQ-7Mg"/>
+                                            <segue destination="iCA-6o-hQj" kind="presentation" identifier="GoToDetail" id="hl4-th-5m8"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -221,7 +222,6 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="mP0-AR-QFa" id="5U5-xs-gcD"/>
-                        <segue destination="iCA-6o-hQj" kind="presentation" identifier="GoToDetail" id="UaH-S2-1PD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -288,10 +288,10 @@
             </objects>
             <point key="canvasLocation" x="1429.5999999999999" y="-163.26836581709148"/>
         </scene>
-        <!--Add-->
+        <!--Add View Controller-->
         <scene sceneID="uXf-pF-SOi">
             <objects>
-                <viewController storyboardIdentifier="edit" id="APW-ZH-ptr" customClass="Add" customModule="Dday" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="edit" id="APW-ZH-ptr" customClass="AddViewController" customModule="Dday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XHf-cg-b37">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -426,7 +426,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="N5K-kP-1yZ"/>
+        <segue reference="cMQ-zD-Ch6"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
