@@ -188,7 +188,6 @@
                                             <outlet property="day" destination="YFr-g5-tqG" id="Rm2-t4-32v"/>
                                             <outlet property="dday" destination="yZf-9d-jwn" id="pGo-dx-TUU"/>
                                             <outlet property="name" destination="ofX-EB-hvu" id="Hs0-lQ-7Mg"/>
-                                            <segue destination="iCA-6o-hQj" kind="presentation" identifier="DetailVC" id="TMI-dy-Ixj"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -222,6 +221,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="mP0-AR-QFa" id="5U5-xs-gcD"/>
+                        <segue destination="iCA-6o-hQj" kind="presentation" identifier="GoToDetail" id="UaH-S2-1PD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

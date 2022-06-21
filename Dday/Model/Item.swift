@@ -20,7 +20,6 @@ class Item{
     let dateFormatter = DdayDateFormatter.shared
 
     init(){
-        
     }
     
     func add(data: rcvData, setting: Setting, idx: Int){
@@ -59,8 +58,19 @@ class Item{
     func getItemSetting(idx: Int) -> Setting{
         return CoreDataManager.shared.getSetting(idx: idx)
     }
+    
+    func getDdayString(dday: Int, set1: Bool) ->  String{
+
+        if (dday<0){
+            return "D" + String(dday)
+        }
+        else if(dday == 0){
+            return set1 ? "0일" : "D-day"
+        }
+        else{
+            return set1 ? String(dday) + "일" : "D+" + String(dday)
+        }
+
+    }
 }
 
-extension Item{
-    
-}
