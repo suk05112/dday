@@ -33,21 +33,18 @@ class ViewController: UIViewController {
 //        CoreDataManager.shared.deleteAll()
         
         numberOfCell = CoreDataManager.shared.getCount()
-        if (rcvIdx.row != -1){
+        if rcvIdx.row != -1 {
             removeData(indexPath: rcvIdx)
         }
 
         collectionView.dataSource = self
         collectionView.delegate = self
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPostCommentNotification(_:)), name: didDismissPostCommentViewController, object: nil)
         
         WidgetUtility.save_widgetData()
         collectionView.reloadData()
-        
     }
-    
-    
+
     @objc func didDismissPostCommentNotification(_ noti: Notification) {
         print("함수 안!!")
         collectionView.reloadData()
@@ -56,14 +53,13 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "show" {
             delegate?.mode = "CREATE"
-            let viewController : AddViewController = segue.destination as! AddViewController
+            let viewController: AddViewController = segue.destination as! AddViewController
                 viewController.delegate = self
             
             print("seg show")
         }
-        
         if segue.identifier == "GoToDetail"{
-            let detail : DetailViewController = segue.destination as! DetailViewController
+            let detail: DetailViewController = segue.destination as! DetailViewController
             print("detail show")
             if let cell = sender as? UICollectionViewCell,
                let indexPath = self.collectionView.indexPath(for: cell) {
@@ -76,10 +72,9 @@ class ViewController: UIViewController {
         }
     }
 
-    
-    func add(data: RecieveData, setting: Setting, idx: Int){
+    func add(data: RecieveData, setting: Setting, idx: Int) {
         item.add(data: data, setting: setting, idx: idx)
-        notification.setNoticifation(idx:idx)
+        notification.setNoticifation(idx: idx)
         self.numberOfCell += 1
     }
     
@@ -95,9 +90,8 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: SendProtocol{
-    
-    func send(date: Date, name: String, setting: Setting, idx: Int) { //5
+extension ViewController: SendProtocol {
+    func send(date: Date, name: String, setting: Setting, idx: Int) {
 
         let calculatedDday = CalculateDay.shared.calculateDday(selectDay: date, setting: setting)
         print("result 받은 직후", calculatedDday)
@@ -107,7 +101,6 @@ extension ViewController: SendProtocol{
                           dday: calculatedDday),
             setting: setting, idx: idx)
     }
-    
 }
 
 extension UserDefaults {
@@ -116,4 +109,3 @@ extension UserDefaults {
         return UserDefaults(suiteName: appGroupID)!
     }
 }
-
