@@ -208,7 +208,6 @@ class Add: UIViewController {
 }
 
 
-
 extension Add: UITableViewDelegate, UITableViewDataSource{
     
     //table에 몇개의 section이 있을건지 알려줌

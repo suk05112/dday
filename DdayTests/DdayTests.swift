@@ -35,7 +35,7 @@ class DdayTests: XCTestCase {
         let noneSetting = Setting(iter: .none, set1: false, widget: false)
         let str: String? = "2021.12.23 화요일"
         
-        let testDay = DdayDateFormmater().toDate(str: str!)
+        let testDay = DdayDateFormatter().toDate(str: str!)
         
         XCTAssertEqual(calculation.calculateDday(select_day: testDay, setting: noneSetting), -3, "정닶 dday와 다릅니다.")
     }
