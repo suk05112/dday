@@ -8,7 +8,6 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
     @IBOutlet weak var detailName: UILabel!
     @IBOutlet weak var detailDday: UILabel!
     @IBOutlet weak var detailDay: UILabel!
@@ -51,8 +50,7 @@ class DetailViewController: UIViewController {
 
     }
     
-    func getfilterdIndexByset1() -> [Int]{
-        
+    func getfilterdIndexByset1() -> [Int] {
         let numOfdata = CoreDataManager.shared.getCount()
         var filteredIdx: [Int] = []
         

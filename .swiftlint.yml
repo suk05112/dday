@@ -4,6 +4,7 @@ disabled_rules:
 - force_cast
 - force_try
 - line_length
+- trailing_whitespace
 
 included:
 excluded:
