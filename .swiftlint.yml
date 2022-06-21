@@ -1,0 +1,11 @@
+#  <#Title#>
+
+disabled_rules:
+- force_cast
+- force_try
+
+included:
+excluded:
+- Pods
+- Libraries
+- actionWidget/ActionViewController.swift

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class data: UICollectionViewCell{
+class Data: UICollectionViewCell{
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var day: UILabel!
     @IBOutlet weak var dday: UILabel!
@@ -24,7 +24,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate ,
     
     //컬렉션뷰의 지정된 위치에 표시할 셀을 요청하는 메서드
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? data else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? Data else {
             return UICollectionViewCell()
         }
 
@@ -109,11 +109,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate ,
         var filteredIdx:[Int] = []
         
         if(UserDefaults.standard.bool(forKey: "hide")){
-            for i in 0..<numOfdata{
-                if(CoreDataManager.shared.getSetting(idx: i).set1 ||
-                    Int(CoreDataManager.shared.getEntity(key: "dday", idx: i))! < 1){
+            for idx in 0..<numOfdata{
+                if(CoreDataManager.shared.getSetting(idx: idx).set1 ||
+                    Int(CoreDataManager.shared.getEntity(key: "dday", idx: idx))! < 1){
                     
-                    filteredIdx.append(i)
+                    filteredIdx.append(idx)
                 }
             
             }

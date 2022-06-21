@@ -55,10 +55,10 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: self.iterIdentifier, for: indexPath) as! IterCell
         cell.selectionStyle = .none
         
-        for i in 0...2{
-            cell.iterButtons[i].tag = i
-            cell.iterButtons[i].addTarget(self, action: #selector(self.iterBtnClicked(_:)), for: .touchUpInside)
-            cell.iterButtons[i].isSelected = iterBtnPressed[i]
+        for idx in 0...2{
+            cell.iterButtons[idx].tag = idx
+            cell.iterButtons[idx].addTarget(self, action: #selector(self.iterBtnClicked(_:)), for: .touchUpInside)
+            cell.iterButtons[idx].isSelected = iterBtnPressed[idx]
         }
         print("버튼 값", iterBtnPressed)
 

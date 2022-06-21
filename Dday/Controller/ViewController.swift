@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     let delegate = UIApplication.shared.delegate as? AppDelegate
 
     let notification = DdayNotificationCenter()
-    let DidDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
+    let didDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
     
     let item = Item()
     
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPostCommentNotification(_:)), name: DidDismissPostCommentViewController, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPostCommentNotification(_:)), name: didDismissPostCommentViewController, object: nil)
         
         WidgetUtility.save_widgetData()
         collectionView.reloadData()
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
                let indexPath = self.collectionView.indexPath(for: cell) {
                 let (name, day, dday) = item.getItemData(idx: indexPath.row)
 
-                detail.data = rcvData(name: name, day: day, dday: Int(dday)!)
+                detail.data = RecieveData(name: name, day: day, dday: Int(dday)!)
                 detail.idx = getfilterdIndexByset1()[indexPath.row]
 
             }
@@ -77,9 +77,9 @@ class ViewController: UIViewController {
     }
 
     
-    func add(data: rcvData, setting: Setting, idx: Int){
+    func add(data: RecieveData, setting: Setting, idx: Int){
         item.add(data: data, setting: setting, idx: idx)
-        notification.setNoticifation(i:idx)
+        notification.setNoticifation(idx:idx)
         self.numberOfCell += 1
     }
     
@@ -99,10 +99,10 @@ extension ViewController: SendProtocol{
     
     func send(date: Date, name: String, setting: Setting, idx: Int) { //5
 
-        let calculatedDday = CalculateDay.shared.calculateDday(select_day: date, setting: setting)
+        let calculatedDday = CalculateDay.shared.calculateDday(selectDay: date, setting: setting)
         print("result 받은 직후", calculatedDday)
 
-        add(data: rcvData(name: name,
+        add(data: RecieveData(name: name,
                           day: dateFormatter.string(from: date),
                           dday: calculatedDday),
             setting: setting, idx: idx)

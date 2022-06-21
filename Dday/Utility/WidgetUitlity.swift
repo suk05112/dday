@@ -21,19 +21,19 @@ class WidgetUtility{
         UserDefaults.shared.setValue(collectData, forKey: "data")
 
         
-        for i in 0..<CoreDataManager.shared.getCount(){
-            if(CoreDataManager.shared.getSetting(idx: i).widget){
-                let name = CoreDataManager.shared.getEntity(key: "name", idx: i)
-                let dday = CoreDataManager.shared.getEntity(key: "dday", idx: i)
-                let set1 = CoreDataManager.shared.getSetting(idx: i).set1
+        for idx in 0..<CoreDataManager.shared.getCount(){
+            if(CoreDataManager.shared.getSetting(idx: idx).widget){
+                let name = CoreDataManager.shared.getEntity(key: "name", idx: idx)
+                let dday = CoreDataManager.shared.getEntity(key: "dday", idx: idx)
+                let set1 = CoreDataManager.shared.getSetting(idx: idx).set1
 
                 collectData.append(WidgetData(name: name, dday: dday, set1: set1))
             }
 
         }
         
-        if let encoded_data = try? JSONEncoder().encode(collectData){
-            UserDefaults.shared.setValue(encoded_data, forKey: "data")
+        if let encodedData = try? JSONEncoder().encode(collectData){
+            UserDefaults.shared.setValue(encodedData, forKey: "data")
         }
         WidgetCenter.shared.reloadTimelines(ofKind: "widget")
 

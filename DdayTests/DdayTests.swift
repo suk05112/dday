@@ -37,7 +37,7 @@ class DdayTests: XCTestCase {
         
         let testDay = DdayDateFormatter().toDate(str: str!)
         
-        XCTAssertEqual(calculation.calculateDday(select_day: testDay, setting: noneSetting), -3, "정닶 dday와 다릅니다.")
+        XCTAssertEqual(calculation.calculateDday(selectDay: testDay, setting: noneSetting), -3, "정닶 dday와 다릅니다.")
     }
 
     func testIterSetting(){

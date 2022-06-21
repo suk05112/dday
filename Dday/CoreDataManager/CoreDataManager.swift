@@ -47,13 +47,13 @@ class CoreDataManager {
 
         do {
         
-            let Entityresults = try! context?.fetch(requestEntity)
-            let Settingresults = try! context?.fetch(requestSEtting)
+            let entityResults = try! context?.fetch(requestEntity)
+            let settingResults = try! context?.fetch(requestSEtting)
             
-            Entityresults!.forEach{
+            entityResults!.forEach{
                 context?.delete($0 as NSManagedObject)
             }
-            Settingresults!.forEach{
+            settingResults!.forEach{
                 context?.delete($0 as NSManagedObject)
             }
             try context?.save()
@@ -66,7 +66,7 @@ class CoreDataManager {
     }
     
     
-    func saveEntity(data: rcvData, idx: Int) {
+    func saveEntity(data: RecieveData, idx: Int) {
         if let context = context,
             let entity: NSEntityDescription
             = NSEntityDescription.entity(forEntityName: entityName, in: context) {
@@ -100,7 +100,7 @@ class CoreDataManager {
 
     }
     
-    func updateEntity(data: rcvData, idx: Int){
+    func updateEntity(data: RecieveData, idx: Int){
         print("update Entity!!")
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Entity")
         var myresult = [NSManagedObject]()
@@ -121,18 +121,15 @@ class CoreDataManager {
             context?.rollback()
             print(error.localizedDescription)
         }
-
     }
-    
-    func updateDday(dday:Int, idx:Int){
+
+    func updateDday(dday: Int, idx: Int) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Entity")
         var myresult = [NSManagedObject]()
         let records = try! context!.fetch(request)
-        
         if let records = records as? [NSManagedObject] {
             myresult = records
                }
-        
         myresult[idx].setValue(dday, forKeyPath: "dday")
 
         do {

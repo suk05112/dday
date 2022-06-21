@@ -9,7 +9,7 @@ import Foundation
 
 class Item{
     var idx: Int = 0
-    var data = rcvData()
+    var data = RecieveData()
     var name: String = ""
     var day: String = ""
     var dday: Int = 0
@@ -22,7 +22,7 @@ class Item{
     init(){
     }
     
-    func add(data: rcvData, setting: Setting, idx: Int){
+    func add(data: RecieveData, setting: Setting, idx: Int){
 //        let data = rcvData(name: name, day: day, dday: dday)
         CoreDataManager.shared.saveEntity(data: data, idx: idx)
         CoreDataManager.shared.saveSetting(setting: setting)
@@ -36,12 +36,12 @@ class Item{
         WidgetUtility.save_widgetData()
     }
     
-    func update(data: rcvData, setting: Setting, idx: Int){
+    func update(data: RecieveData, setting: Setting, idx: Int){
         CoreDataManager.shared.updateEntity(data: data, idx: idx)
 
         CoreDataManager.shared.updateSetting(setting: setting, idx: idx)
         notification.removeNotification(idx: idx)
-        notification.setNoticifation(i: idx)
+        notification.setNoticifation(idx: idx)
         
         WidgetUtility.save_widgetData()
 

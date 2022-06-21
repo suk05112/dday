@@ -31,17 +31,17 @@ class DdayNotificationCenter{
         }
     }
     
-    func setNoticifation(i: Int){
+    func setNoticifation(idx: Int){
 
-        if Int(CoreDataManager.shared.getEntity(key: "dday", idx: i)) == 0  { // 디데이에 도달하면
+        if Int(CoreDataManager.shared.getEntity(key: "dday", idx: idx)) == 0  { // 디데이에 도달하면
             print("dday~~~~")
-            ringAlarm(idx: i, today: true)
+            ringAlarm(idx: idx, today: true)
         }
-        else if Int(CoreDataManager.shared.getEntity(key: "dday", idx: i)) == -1 { //디데이 전날
+        else if Int(CoreDataManager.shared.getEntity(key: "dday", idx: idx)) == -1 { //디데이 전날
             print("dday 전날")
 
             if(UserDefaults.standard.bool(forKey: "noti")){
-                ringAlarm(idx: i, today: false)
+                ringAlarm(idx: idx, today: false)
 
             }
 

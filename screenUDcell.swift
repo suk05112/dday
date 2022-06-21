@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class screenCell: UITableViewCell {
+class ScreenCell: UITableViewCell {
     
     @IBOutlet weak var cellSwitch: UISwitch!
     

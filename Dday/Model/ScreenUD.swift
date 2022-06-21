@@ -7,7 +7,7 @@
 
 import Foundation
 
-class screenUD : NSObject ,NSCoding {
+class ScreenUD : NSObject ,NSCoding {
     var hideDday: Bool
     var sortDday: Bool
     var notiBeforeDday: Bool

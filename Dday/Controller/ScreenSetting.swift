@@ -7,14 +7,14 @@
 
 import UIKit
 
-class screenSetting: UIViewController{
+class ScreenSetting: UIViewController{
     
     
     @IBOutlet weak var tableView: UITableView!
     let headerCellIdentifier = "headerCell"
     let cellInfo:[String] = ["hide".localized(), "sort".localized(), "noti".localized()] //tableview 안내문구
 
-    let DidDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
+    let didDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class screenSetting: UIViewController{
     
     override func viewDidDisappear(_ animated: Bool) {
         print("disappear")
-        NotificationCenter.default.post(name: DidDismissPostCommentViewController, object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: didDismissPostCommentViewController, object: nil, userInfo: nil)
 
     }
     
@@ -63,7 +63,7 @@ class screenSetting: UIViewController{
     }
 }
     
-extension screenSetting:  UITableViewDelegate, UITableViewDataSource{
+extension ScreenSetting:  UITableViewDelegate, UITableViewDataSource{
     //table에 몇개의 section이 있을건지 알려줌
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -79,7 +79,7 @@ extension screenSetting:  UITableViewDelegate, UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "screenCell", for: indexPath) as! screenCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "screenCell", for: indexPath) as! ScreenCell
         
         cell.textLabel!.text = cellInfo[indexPath.row]
         cell.cellSwitch!.tag = indexPath.row

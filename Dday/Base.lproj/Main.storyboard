@@ -99,9 +99,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="wi3-zT-Vda"/>
                     <connections>
-                        <outlet property="detail_day" destination="X0f-eJ-7Hw" id="ngk-p5-Pr9"/>
-                        <outlet property="detail_dday" destination="OuY-qN-bcP" id="BiD-Ch-Lco"/>
-                        <outlet property="detail_name" destination="J12-2H-nmy" id="Psi-yH-d8q"/>
+                        <outlet property="detailDay" destination="X0f-eJ-7Hw" id="ngk-p5-Pr9"/>
+                        <outlet property="detailDday" destination="OuY-qN-bcP" id="BiD-Ch-Lco"/>
+                        <outlet property="detailName" destination="J12-2H-nmy" id="Psi-yH-d8q"/>
                         <outlet property="iterSet" destination="Gac-2h-YnK" id="Me4-cb-95k"/>
                     </connections>
                 </viewController>
@@ -143,7 +143,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="L6S-Ue-h4R" customClass="data" customModule="Dday" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="L6S-Ue-h4R" customClass="Data" customModule="Dday" customModuleProvider="target">
                                         <rect key="frame" x="9" y="0.0" width="336" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CCc-HI-rOq">
@@ -231,7 +231,7 @@
         <!--Screen Setting-->
         <scene sceneID="pfA-5j-vcR">
             <objects>
-                <viewController id="rSi-hJ-WbC" customClass="screenSetting" customModule="Dday" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rSi-hJ-WbC" customClass="ScreenSetting" customModule="Dday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V3k-qI-0Ev">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -242,10 +242,10 @@
                                 <color key="backgroundColor" red="0.99200338129999999" green="0.96471482519999996" blue="0.96471410989999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="sectionIndexBackgroundColor" red="0.99200338129999999" green="0.96471482519999996" blue="0.96471410989999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="screenCell" id="wCI-2A-zd7" customClass="screenCell" customModule="Dday" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="screenCell" id="wCI-2A-zd7" customClass="ScreenCell" customModule="Dday" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="343" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wCI-2A-zd7" id="5hq-Fq-M3s" customClass="screenCell" customModule="Dday" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wCI-2A-zd7" id="5hq-Fq-M3s" customClass="ScreenCell" customModule="Dday" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>

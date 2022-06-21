@@ -41,7 +41,7 @@ class AddViewController: UIViewController {
     let dateFormatter = DdayDateFormatter.shared
     let notification = DdayNotificationCenter()
 
-    let DidDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
+    let didDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,22 +132,22 @@ class AddViewController: UIViewController {
             delegate?.send(date: selectDate, name: inputname.text!, setting: setValue, idx: CoreDataManager.shared.getCount())
         }
 
-        NotificationCenter.default.post(name: DidDismissPostCommentViewController, object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: didDismissPostCommentViewController, object: nil, userInfo: nil)
         self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     
     func updateDday(){
-        let calculatedDday = CalculateDay.shared.calculateDday(select_day: selectDate, setting: setValue) //dday
+        let calculatedDday = CalculateDay.shared.calculateDday(selectDay: selectDate, setting: setValue) //dday
         
-        let data = rcvData(name: inputname.text!,
+        let data = RecieveData(name: inputname.text!,
                            day: dateFormatter.string(from: selectDate),
                            dday: calculatedDday)
         
         Item().update(data: data, setting: setValue, idx: dele!.updateIdx)
 
         notification.removeNotification(idx: dele!.updateIdx)
-        notification.setNoticifation(i: dele!.updateIdx)
+        notification.setNoticifation(idx: dele!.updateIdx)
         
     }
     
@@ -196,7 +196,7 @@ class AddViewController: UIViewController {
                 setValue.iter = Iter.none
             }
 
-        }else{ //하나도 선택되어있지 않을 때
+        } else { // 하나도 선택되어있지 않을 때
             iterBtnPressed[sender.tag] = true
             indexOfOneAndOnly = sender.tag
             setValue.iter = Iter(rawValue: sender.tag + 1)!

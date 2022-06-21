@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0316CA992861C64500328639 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 0316CA982861C64500328639 /* .swiftlint.yml */; };
 		0319197426D4C36A00E7B7E5 /* DdayModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0319197226D4C36A00E7B7E5 /* DdayModel.xcdatamodeld */; };
 		0319197C26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319197A26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift */; };
 		0319197E26D4C5F100E7B7E5 /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319197B26D4C5F100E7B7E5 /* Entity+CoreDataProperties.swift */; };
 		03191A6826D4DC1A00E7B7E5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0319193126CFB47B00E7B7E5 /* WidgetKit.framework */; };
 		03191A6926D4DC1A00E7B7E5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0319193326CFB47B00E7B7E5 /* SwiftUI.framework */; };
-		03191A6C26D4DC1A00E7B7E5 /* widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191A6B26D4DC1A00E7B7E5 /* widget.swift */; };
+		03191A6C26D4DC1A00E7B7E5 /* Mywidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03191A6B26D4DC1A00E7B7E5 /* Mywidget.swift */; };
 		03191A7126D4DC1C00E7B7E5 /* widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 03191A6D26D4DC1A00E7B7E5 /* widget.intentdefinition */; };
 		03191A7226D4DC1C00E7B7E5 /* widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 03191A6D26D4DC1A00E7B7E5 /* widget.intentdefinition */; };
 		03191A7526D4DC1D00E7B7E5 /* widgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 03191A6726D4DC1A00E7B7E5 /* widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -27,12 +28,12 @@
 		036518C426A5B67B00604A55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036518C226A5B67B00604A55 /* Main.storyboard */; };
 		036518C926A5B67D00604A55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036518C726A5B67D00604A55 /* LaunchScreen.storyboard */; };
 		036518D426A5B67D00604A55 /* DdayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518D326A5B67D00604A55 /* DdayTests.swift */; };
-		0366683C2771C65100EB900C /* rcvData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F81A26B7AA69004DC581 /* rcvData.swift */; };
+		0366683C2771C65100EB900C /* RecieveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F81A26B7AA69004DC581 /* RecieveData.swift */; };
 		0366683D2771C65200EB900C /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F82C26BD200B004DC581 /* Setting.swift */; };
 		0366689B2779747600EB900C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0366689E2779747600EB900C /* Localizable.strings */; };
 		0366689C2779747600EB900C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0366689E2779747600EB900C /* Localizable.strings */; };
 		0367F7C926A900AA004DC581 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F7C826A900AA004DC581 /* AddViewController.swift */; };
-		0367F81B26B7AA69004DC581 /* rcvData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F81A26B7AA69004DC581 /* rcvData.swift */; };
+		0367F81B26B7AA69004DC581 /* RecieveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F81A26B7AA69004DC581 /* RecieveData.swift */; };
 		0367F82326B7B2DF004DC581 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F82226B7B2DF004DC581 /* DetailViewController.swift */; };
 		0367F82D26BD200B004DC581 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F82C26BD200B004DC581 /* Setting.swift */; };
 		0367F84526BFC766004DC581 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F84426BFC766004DC581 /* HeaderCell.swift */; };
@@ -40,10 +41,10 @@
 		0367F84F26C11C2D004DC581 /* IterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F84E26C11C2D004DC581 /* IterCell.swift */; };
 		0367F85426C11C45004DC581 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F85326C11C45004DC581 /* AlarmCell.swift */; };
 		036FFDF527676F26000BDBD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 036518C526A5B67D00604A55 /* Assets.xcassets */; };
-		0370DF5126FC4E30000D1DA7 /* screenUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF5026FC4E30000D1DA7 /* screenUD.swift */; };
-		0370DF5226FC4E30000D1DA7 /* screenUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF5026FC4E30000D1DA7 /* screenUD.swift */; };
-		0370DF6726FD60C1000D1DA7 /* screenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6626FD60C1000D1DA7 /* screenCell.swift */; };
-		0370DF6826FD60C1000D1DA7 /* screenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6626FD60C1000D1DA7 /* screenCell.swift */; };
+		0370DF5126FC4E30000D1DA7 /* ScreenUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF5026FC4E30000D1DA7 /* ScreenUD.swift */; };
+		0370DF5226FC4E30000D1DA7 /* ScreenUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF5026FC4E30000D1DA7 /* ScreenUD.swift */; };
+		0370DF6726FD60C1000D1DA7 /* ScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6626FD60C1000D1DA7 /* ScreenCell.swift */; };
+		0370DF6826FD60C1000D1DA7 /* ScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6626FD60C1000D1DA7 /* ScreenCell.swift */; };
 		0370DF6F2701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */; };
 		0370DF702701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */; };
 		0377EAE7286034F100CEA034 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0377EAE6286034F100CEA034 /* ItemCell.swift */; };
@@ -58,7 +59,7 @@
 		0399EF0326EF8469009E868E /* CalculateDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399EF0226EF8469009E868E /* CalculateDay.swift */; };
 		03BCDBB826F86BA5005FC05A /* Model2-1.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBB726F86BA5005FC05A /* Model2-1.xcmappingmodel */; };
 		03BCDBB926F86BA5005FC05A /* Model2-1.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBB726F86BA5005FC05A /* Model2-1.xcmappingmodel */; };
-		03BCDBBF26F87EB4005FC05A /* screenSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBBE26F87EB4005FC05A /* screenSetting.swift */; };
+		03BCDBBF26F87EB4005FC05A /* ScreenSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BCDBBE26F87EB4005FC05A /* ScreenSetting.swift */; };
 		03FDF9F7274D159F00ACD257 /* DdayNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDF9F6274D159F00ACD257 /* DdayNotificationCenter.swift */; };
 		17DF7EC359AB592405E84BEA /* Pods_Dday_DdayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509072514BE974D6EA73C2FC /* Pods_Dday_DdayUITests.framework */; };
 		89D32270ECCE4E547BFF9FB8 /* Pods_DdayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4090B7F538912BE47AA57499 /* Pods_DdayTests.framework */; };
@@ -106,13 +107,14 @@
 
 /* Begin PBXFileReference section */
 		03132FC926F86A6700A086AE /* DdayModel v2-1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DdayModel v2-1.xcdatamodel"; sourceTree = "<group>"; };
+		0316CA982861C64500328639 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		0319193126CFB47B00E7B7E5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		0319193326CFB47B00E7B7E5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		0319197326D4C36A00E7B7E5 /* DdayModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DdayModel.xcdatamodel; sourceTree = "<group>"; };
 		0319197A26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0319197B26D4C5F100E7B7E5 /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		03191A6726D4DC1A00E7B7E5 /* widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = widgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		03191A6B26D4DC1A00E7B7E5 /* widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = widget.swift; sourceTree = "<group>"; };
+		03191A6B26D4DC1A00E7B7E5 /* Mywidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mywidget.swift; sourceTree = "<group>"; };
 		03191A6D26D4DC1A00E7B7E5 /* widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = widget.intentdefinition; sourceTree = "<group>"; };
 		03191A6E26D4DC1C00E7B7E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03191A7026D4DC1C00E7B7E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -140,15 +142,15 @@
 		0366689F2779753700EB900C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0367F7BB26A8FF50004DC581 /* Dday */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Dday; sourceTree = "<group>"; };
 		0367F7C826A900AA004DC581 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
-		0367F81A26B7AA69004DC581 /* rcvData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rcvData.swift; sourceTree = "<group>"; };
+		0367F81A26B7AA69004DC581 /* RecieveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecieveData.swift; sourceTree = "<group>"; };
 		0367F82226B7B2DF004DC581 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		0367F82C26BD200B004DC581 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		0367F84426BFC766004DC581 /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		0367F84926BFD079004DC581 /* CustomTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableCell.swift; sourceTree = "<group>"; };
 		0367F84E26C11C2D004DC581 /* IterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterCell.swift; sourceTree = "<group>"; };
 		0367F85326C11C45004DC581 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
-		0370DF5026FC4E30000D1DA7 /* screenUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = screenUD.swift; sourceTree = "<group>"; };
-		0370DF6626FD60C1000D1DA7 /* screenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = screenCell.swift; sourceTree = "<group>"; };
+		0370DF5026FC4E30000D1DA7 /* ScreenUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenUD.swift; sourceTree = "<group>"; };
+		0370DF6626FD60C1000D1DA7 /* ScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCell.swift; sourceTree = "<group>"; };
 		0370DF6D2701AAC3000D1DA7 /* DdayModel_idx_version.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DdayModel_idx_version.xcdatamodel; sourceTree = "<group>"; };
 		0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model.xcmappingmodel; sourceTree = "<group>"; };
 		0377EAE6286034F100CEA034 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
@@ -160,7 +162,7 @@
 		0399EF0226EF8469009E868E /* CalculateDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateDay.swift; sourceTree = "<group>"; };
 		0399EF2A26F4DF23009E868E /* DdayModel v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DdayModel v3.xcdatamodel"; sourceTree = "<group>"; };
 		03BCDBB726F86BA5005FC05A /* Model2-1.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = "Model2-1.xcmappingmodel"; sourceTree = "<group>"; };
-		03BCDBBE26F87EB4005FC05A /* screenSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = screenSetting.swift; sourceTree = "<group>"; };
+		03BCDBBE26F87EB4005FC05A /* ScreenSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSetting.swift; sourceTree = "<group>"; };
 		03FDF9F6274D159F00ACD257 /* DdayNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DdayNotificationCenter.swift; sourceTree = "<group>"; };
 		0E9928F8F7BA25FCFB4F1CDD /* Pods-Dday-DdayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dday-DdayUITests.debug.xcconfig"; path = "Target Support Files/Pods-Dday-DdayUITests/Pods-Dday-DdayUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4090B7F538912BE47AA57499 /* Pods_DdayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DdayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,7 +232,7 @@
 		03191A6A26D4DC1A00E7B7E5 /* widget */ = {
 			isa = PBXGroup;
 			children = (
-				03191A6B26D4DC1A00E7B7E5 /* widget.swift */,
+				03191A6B26D4DC1A00E7B7E5 /* Mywidget.swift */,
 				03191A6D26D4DC1A00E7B7E5 /* widget.intentdefinition */,
 				03191A6E26D4DC1C00E7B7E5 /* Assets.xcassets */,
 				03191A7026D4DC1C00E7B7E5 /* Info.plist */,
@@ -241,9 +243,10 @@
 		036518B026A5B67A00604A55 = {
 			isa = PBXGroup;
 			children = (
+				0316CA982861C64500328639 /* .swiftlint.yml */,
 				038E95EC276369DC00B7BE6C /* WidgetData.swift */,
 				039492E32760E4C2005630A8 /* AppGroup.swift */,
-				0370DF6626FD60C1000D1DA7 /* screenCell.swift */,
+				0370DF6626FD60C1000D1DA7 /* ScreenCell.swift */,
 				03BCDBB726F86BA5005FC05A /* Model2-1.xcmappingmodel */,
 				03191A8226D4DF4C00E7B7E5 /* widgetExtension.entitlements */,
 				0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */,
@@ -344,8 +347,8 @@
 		0377EAE328602C7600CEA034 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0370DF5026FC4E30000D1DA7 /* screenUD.swift */,
-				0367F81A26B7AA69004DC581 /* rcvData.swift */,
+				0370DF5026FC4E30000D1DA7 /* ScreenUD.swift */,
+				0367F81A26B7AA69004DC581 /* RecieveData.swift */,
 				0367F82C26BD200B004DC581 /* Setting.swift */,
 				0377EAEB28605B7F00CEA034 /* Item.swift */,
 			);
@@ -358,7 +361,7 @@
 				036518C026A5B67B00604A55 /* ViewController.swift */,
 				0367F82226B7B2DF004DC581 /* DetailViewController.swift */,
 				0367F7C826A900AA004DC581 /* AddViewController.swift */,
-				03BCDBBE26F87EB4005FC05A /* screenSetting.swift */,
+				03BCDBBE26F87EB4005FC05A /* ScreenSetting.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				036518B626A5B67B00604A55 /* Frameworks */,
 				036518B726A5B67B00604A55 /* Resources */,
 				0319194126CFB47E00E7B7E5 /* Embed App Extensions */,
+				0316CA952861C55500328639 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -545,6 +549,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0316CA992861C64500328639 /* .swiftlint.yml in Resources */,
 				036518C926A5B67D00604A55 /* LaunchScreen.storyboard in Resources */,
 				0366689B2779747600EB900C /* Localizable.strings in Resources */,
 				036FFDF527676F26000BDBD7 /* Assets.xcassets in Resources */,
@@ -569,6 +574,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0316CA952861C55500328639 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
 		8046D267015D69C4665CA786 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -664,12 +686,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0370DF5226FC4E30000D1DA7 /* screenUD.swift in Sources */,
+				0370DF5226FC4E30000D1DA7 /* ScreenUD.swift in Sources */,
 				03191A7126D4DC1C00E7B7E5 /* widget.intentdefinition in Sources */,
-				03191A6C26D4DC1A00E7B7E5 /* widget.swift in Sources */,
+				03191A6C26D4DC1A00E7B7E5 /* Mywidget.swift in Sources */,
 				0366683D2771C65200EB900C /* Setting.swift in Sources */,
-				0366683C2771C65100EB900C /* rcvData.swift in Sources */,
-				0370DF6826FD60C1000D1DA7 /* screenCell.swift in Sources */,
+				0366683C2771C65100EB900C /* RecieveData.swift in Sources */,
+				0370DF6826FD60C1000D1DA7 /* ScreenCell.swift in Sources */,
 				039492E52760E4C2005630A8 /* AppGroup.swift in Sources */,
 				03191A7D26D4DE9800E7B7E5 /* DdayModel.xcdatamodeld in Sources */,
 				0370DF702701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */,
@@ -695,8 +717,8 @@
 				0399EF0326EF8469009E868E /* CalculateDay.swift in Sources */,
 				0377EAEC28605B7F00CEA034 /* Item.swift in Sources */,
 				0367F82326B7B2DF004DC581 /* DetailViewController.swift in Sources */,
-				0370DF6726FD60C1000D1DA7 /* screenCell.swift in Sources */,
-				0367F81B26B7AA69004DC581 /* rcvData.swift in Sources */,
+				0370DF6726FD60C1000D1DA7 /* ScreenCell.swift in Sources */,
+				0367F81B26B7AA69004DC581 /* RecieveData.swift in Sources */,
 				0367F84526BFC766004DC581 /* HeaderCell.swift in Sources */,
 				0319197C26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift in Sources */,
 				036518BD26A5B67B00604A55 /* AppDelegate.swift in Sources */,
@@ -707,10 +729,10 @@
 				0370DF6F2701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */,
 				03218E19276B37890075ECF0 /* DdayDateFormmater.swift in Sources */,
 				0367F82D26BD200B004DC581 /* Setting.swift in Sources */,
-				03BCDBBF26F87EB4005FC05A /* screenSetting.swift in Sources */,
+				03BCDBBF26F87EB4005FC05A /* ScreenSetting.swift in Sources */,
 				036518BF26A5B67B00604A55 /* SceneDelegate.swift in Sources */,
 				03BCDBB826F86BA5005FC05A /* Model2-1.xcmappingmodel in Sources */,
-				0370DF5126FC4E30000D1DA7 /* screenUD.swift in Sources */,
+				0370DF5126FC4E30000D1DA7 /* ScreenUD.swift in Sources */,
 				038E95ED276369DC00B7BE6C /* WidgetData.swift in Sources */,
 				0377EAEA28603BEC00CEA034 /* WidgetUitlity.swift in Sources */,
 			);

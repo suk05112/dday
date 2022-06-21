@@ -64,14 +64,14 @@ struct Data: Identifiable{
 
 struct DataEntry: TimelineEntry {
     var date: Date
-    let widget_data : [WidgetData]
+    let widgetData : [WidgetData]
 }
 
-func getWidgetData(data:[WidgetData], i:Int) -> String{
-    print("in getwidgetData", i)
+func getWidgetData(data:[WidgetData], idx:Int) -> String{
+    print("in getwidgetData", idx)
     
-    if i<data.count{
-        return data[i].name
+    if idx<data.count{
+        return data[idx].name
     }
     else{
         return ""
@@ -93,14 +93,14 @@ func getWidgetData(data:[WidgetData], i:Int) -> String{
     
     return convertStr
 }
-func getDayOfWidgetData(data:[WidgetData], i:Int) -> String{
-    print("in getwidgetData", i)
+func getDayOfWidgetData(data:[WidgetData], idx:Int) -> String{
+    print("in getwidgetData", idx)
    
 
-    if i<data.count{
+    if idx<data.count{
         
-        let dday = data[i].dday
-        let set1 = getUserdata()[i].set1
+        let dday = data[idx].dday
+        let set1 = getUserdata()[idx].set1
         
         if(set1){
             if (Int(dday)!<0){
@@ -142,9 +142,9 @@ func getImage(name: String, type: String = "png") -> UIImage? {
         return UIImage(contentsOfFile: path)
     }
 
-struct widgetEntryView : View {
+struct WidgetEntryView : View {
     var entry: Provider.Entry
-    var myData = DataEntry(date: Date(), widget_data: getUserdata())
+    var myData = DataEntry(date: Date(), widgetData: getUserdata())
     
     @Environment(\.widgetFamily) var family
     @Environment(\.colorScheme) var scheme
@@ -193,7 +193,7 @@ struct widgetEntryView : View {
 
             ForEach(0..<maxCount) { index in
                 HStack{
-                    Text(getWidgetData(data:getUserdata(), i:index))
+                    Text(getWidgetData(data:getUserdata(), idx:index))
                         .font(.system(size: 15))
 //                        .foregroundColor(.black)
                         .frame(alignment: .leading)
@@ -203,7 +203,7 @@ struct widgetEntryView : View {
 
                     Spacer()
                     
-                    Text(getDayOfWidgetData(data:getUserdata(), i:index))
+                    Text(getDayOfWidgetData(data:getUserdata(), idx:index))
                         .font(.system(size: 15, weight: .semibold))
 //                        .foregroundColor(.black)
                         .frame(alignment: .center)
@@ -226,12 +226,12 @@ struct widgetEntryView : View {
 }
 
 struct DdayView : View {
-    var myData = DataEntry(date: Date(), widget_data: getUserdata())
+    var myData = DataEntry(date: Date(), widgetData: getUserdata())
     
     var body: some View {
         VStack(alignment: .leading){
             ForEach(0..<getUserdata().count) { index in
-                Text(getDayOfWidgetData(data:getUserdata(), i:index))
+                Text(getDayOfWidgetData(data:getUserdata(), idx:index))
                 Text("dday view")
                 Divider()
             }.frame(height: 20)
@@ -256,13 +256,13 @@ func getCoredata(){
 }
 
 @main
-struct widget: Widget { //위젯 추가하는 화면
+struct Mywidget: Widget { //위젯 추가하는 화면
     let kind: String = "widget"
 
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            widgetEntryView(entry: entry)
+            WidgetEntryView(entry: entry)
         }
         .configurationDisplayName("디데이 위젯")
         .description("위젯표시를 설정한 디데이들을 확인할 수 있습니다.")
@@ -272,12 +272,12 @@ struct widget: Widget { //위젯 추가하는 화면
     
 }
 
-struct widget_Previews: PreviewProvider {
+struct Widget_Previews: PreviewProvider {
 
     static var previews: some View {
         
         Group{
-            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+            WidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
                 .environment(\.sizeCategory, .medium)
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             DdayView()

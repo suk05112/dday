@@ -272,7 +272,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
             endingLineNumber = "98"
-            landmarkName = "getDayOfWidgetData(data:i:)"
+            landmarkName = "getDayOfWidgetData(data:idx:)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -288,7 +288,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
             endingLineNumber = "131"
-            landmarkName = "getDayOfWidgetData(data:i:)"
+            landmarkName = "getDayOfWidgetData(data:idx:)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -461,7 +461,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "164"
             endingLineNumber = "164"
-            landmarkName = "widgetEntryView"
+            landmarkName = "WidgetEntryView"
             landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>

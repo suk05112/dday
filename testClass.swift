@@ -7,6 +7,6 @@
 
 import Foundation
 
-class testClass{
+class TestClass{
  let test = 0
 }

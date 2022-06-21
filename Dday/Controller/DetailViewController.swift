@@ -9,16 +9,16 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet weak var detail_name: UILabel!
-    @IBOutlet weak var detail_dday: UILabel!
-    @IBOutlet weak var detail_day: UILabel!
+    @IBOutlet weak var detailName: UILabel!
+    @IBOutlet weak var detailDday: UILabel!
+    @IBOutlet weak var detailDay: UILabel!
     @IBOutlet weak var iterSet: UILabel!
     
-    var data: rcvData = rcvData.init(name: "init name", day: "init day", dday: 0)
+    var data: RecieveData = RecieveData.init(name: "init name", day: "init day", dday: 0)
     var idx:Int = -1
     let delegate = UIApplication.shared.delegate as? AppDelegate
 
-    let DidDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
+    let didDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
     
     let item = Item()
     var (name, day, dday) = ("","","")
@@ -31,11 +31,11 @@ class DetailViewController: UIViewController {
 
         loadData()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPostCommentNotification(_:)), name: DidDismissPostCommentViewController, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissPostCommentNotification(_:)), name: didDismissPostCommentViewController, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        NotificationCenter.default.post(name: DidDismissPostCommentViewController, object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: didDismissPostCommentViewController, object: nil, userInfo: nil)
     }
     
     @objc func didDismissPostCommentNotification(_ noti: Notification) {
@@ -57,9 +57,9 @@ class DetailViewController: UIViewController {
         var filteredIdx:[Int] = []
         
         if(UserDefaults.standard.bool(forKey: "hide")){
-            for i in 0..<numOfdata{
+            for idx in 0..<numOfdata{
                 if(setting.set1 || Int(dday)! < 1){
-                    filteredIdx.append(i)
+                    filteredIdx.append(idx)
                 }
             }
         }
@@ -74,9 +74,9 @@ class DetailViewController: UIViewController {
         (name, day, dday) = item.getItemData(idx: self.idx)
         setting = item.getItemSetting(idx: idx)
         
-        self.detail_name.text = name
-        self.detail_day.text = day
-        self.detail_dday.text = item.getDdayString(dday: Int(dday)!, set1: setting.set1)
+        self.detailName.text = name
+        self.detailDay.text = day
+        self.detailDday.text = item.getDdayString(dday: Int(dday)!, set1: setting.set1)
         self.iterSet.text = setting.iter.kor()
         
     }

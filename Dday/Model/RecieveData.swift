@@ -7,8 +7,7 @@
 
 import Foundation
 
-
-class rcvData: Hashable {
+class RecieveData: Hashable {
     var name: String
     var day: String
     var dday: Int
@@ -18,13 +17,14 @@ class rcvData: Hashable {
         day = ""
         dday = 0
     }
+    
     init(name: String, day: String, dday:Int){
         self.name = name
         self.day = day
         self.dday = dday
     }
     
-    static func == (lhs: rcvData, rhs: rcvData) -> Bool {
+    static func == (lhs: RecieveData, rhs: RecieveData) -> Bool {
         return lhs == rhs
     }
     
