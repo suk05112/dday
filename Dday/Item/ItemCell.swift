@@ -8,13 +8,8 @@
 import Foundation
 import UIKit
 
-class Data: UICollectionViewCell {
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var day: UILabel!
-    @IBOutlet weak var dday: UILabel!
-}
-
-extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+//extension ViewController: UICollectionViewDelegateFlowLayout {
+extension ViewController {
 
     // 지정된 섹션에 표시할 항목의 개수를 묻는 메서드
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { // 2
@@ -24,10 +19,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
 
     // 컬렉션뷰의 지정된 위치에 표시할 셀을 요청하는 메서드
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? Data else {
-            return UICollectionViewCell()
-        }
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? Data else {
+//            return UICollectionViewCell()
+//        }
 
+        guard let cell: CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? CollectionViewCell else { return CollectionViewCell() }
         let index: Int = getfilterdIndexByset1()[indexPath.row]
         let (_, day, dday) = item.getItemData(idx: index)
         let setting = item.getItemSetting(idx: index)
@@ -59,7 +55,18 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detail = DetailViewController()
         
+        if let cell : CollectionViewCell = self.collectionView?.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? CollectionViewCell{
+            let (name, day, dday) = item.getItemData(idx: indexPath.row)
+
+            detail.idx = indexPath.row
+            detail.data = RecieveData(name: name, day: day, dday: Int(dday)!)
+//                detail.idx = getfilterdIndexByset1()[indexPath.row]
+
+        }
+        detail.modalPresentationStyle = .formSheet
+        self.present(detail, animated: true, completion: nil)
         }
 
     func setCeelColor(idx: Int, cell: UIView) {
@@ -96,3 +103,5 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         return filteredIdx
     }
 }
+
+

@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import SnapKit
 
 class DetailViewController: UIViewController {
-    @IBOutlet weak var detailName: UILabel!
-    @IBOutlet weak var detailDday: UILabel!
-    @IBOutlet weak var detailDay: UILabel!
-    @IBOutlet weak var iterSet: UILabel!
+//    @IBOutlet weak var detailName: UILabel!
+//    @IBOutlet weak var detailDday: UILabel!
+//    @IBOutlet weak var detailDay: UILabel!
+//    @IBOutlet weak var iterSet: UILabel!
     
     var data: RecieveData = RecieveData.init(name: "init name", day: "init day", dday: 0)
     var idx: Int = -1
@@ -19,12 +20,19 @@ class DetailViewController: UIViewController {
 
     let didDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
     
+    var detailView = DetailView()
     let item = Item()
     var (name, day, dday) = ("", "", "")
     var setting = Setting()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        self.view.addSubview(detailView)
+        detailView.snp.makeConstraints { make in
+            make.centerX.equalTo(self.view)
+            make.centerY.equalTo(self.view)
+        }
         (name, day, dday) = item.getItemData(idx: self.idx)
         setting = item.getItemSetting(idx: idx)
 
@@ -67,16 +75,18 @@ class DetailViewController: UIViewController {
         return filteredIdx
     }
 
+    
     func loadData() {
         (name, day, dday) = item.getItemData(idx: self.idx)
         setting = item.getItemSetting(idx: idx)
         
-        self.detailName.text = name
-        self.detailDay.text = day
-        self.detailDday.text = item.getDdayString(dday: Int(dday)!, set1: setting.set1)
-        self.iterSet.text = setting.iter.kor()
+        detailView.detailName.text = name
+        detailView.detailDay.text = day
+        detailView.detailDday.text = item.getDdayString(dday: Int(dday)!, set1: setting.set1)
+        detailView.iterSet.text = setting.iter.kor()
         
     }
+    
     
     @IBAction func edit(_ sender: Any) {
 
@@ -111,4 +121,84 @@ class DetailViewController: UIViewController {
 
     }
 
+}
+
+class DetailView: UIView {
+    let view = UIView()
+    let detailName: UILabel = {
+        let label = UILabel()
+        label.text = "name"
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    let detailDay: UILabel = {
+        let label = UILabel()
+        label.text = "day"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let detailDday: UILabel = {
+        let label = UILabel()
+        label.text = "dday"
+        label.font = UIFont.systemFont(ofSize: 30)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    let iterSet: UILabel = {
+        let label = UILabel()
+        label.text = "iterSet"
+        label.font = UIFont.systemFont(ofSize: 30)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.loadView()
+    }
+    
+    required init?(coder: NSCoder) {
+       super.init(coder: coder)
+//
+    }
+    
+    private func loadView() {
+
+        addSubview(detailName)
+        addSubview(detailDay)
+        addSubview(detailDday)
+        addSubview(iterSet)
+
+        detailName.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.bottom.equalTo(self.snp.centerY)
+        }
+        detailDay.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.top.equalTo(detailName.snp.bottom)
+        }
+        detailDday.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.top.equalTo(detailDay.snp.bottom)
+        }
+        iterSet.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.top.equalTo(detailDday.snp.bottom)
+        }
+    }
+ 
+    
+    private func makeLabel(str: String) -> UILabel {
+        let label = UILabel()
+        label.text = str
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        return label
+    }
 }

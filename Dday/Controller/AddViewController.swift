@@ -11,10 +11,6 @@ import WidgetKit
 class AddViewController: UIViewController {
     
     let mode = "init"
-    @IBOutlet var showPickerTime: UILabel!
-    @IBOutlet weak var inputname: UITextField!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var datePicker: UIDatePicker!
 
     let headerCellIdentifier = "headerCell"
     let iterIdentifier = "Itercell"
@@ -41,23 +37,95 @@ class AddViewController: UIViewController {
     let notification = DdayNotificationCenter()
 
     let didDismissPostCommentViewController: Notification.Name = Notification.Name("DidDismissPostCommentViewController")
+    
+    let inputname: UITextField = {
+        let textfiled = UITextField()
+        textfiled.translatesAutoresizingMaskIntoConstraints = false
+        textfiled.placeholder = "title".localized()
+        textfiled.keyboardType = .emailAddress
+        textfiled.borderStyle = UITextField.BorderStyle.roundedRect
+        textfiled.autocapitalizationType = .none
+        return textfiled
+    }()
+    
+    let datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .compact
+    
+        return datePicker
+    }()
+    
+    lazy var tableView: UITableView = {
+//        let tableView = UITableView()
+        let tableView = UITableView(frame: self.view.bounds, style: UITableView.Style.plain)
 
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+
+        tableView.alwaysBounceVertical = false
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 50.0
+        
+        tableView.register(IterCell.self, forCellReuseIdentifier: iterIdentifier)
+        tableView.register(HeaderCell.self, forHeaderFooterViewReuseIdentifier: headerCellIdentifier)
+
+        return tableView
+    }()
+    
+    let saveButton: UIButton = {
+        let saveButton = UIButton()
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        saveButton.setTitle("save", for: .normal)
+        saveButton.setTitleColor(.black, for: .normal)
+        
+        return saveButton
+    }()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        
+        view.addSubview(inputname)
+        view.addSubview(datePicker)
+        view.addSubview(tableView)
+        view.addSubview(saveButton)
 
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
+        inputname.delegate = self
 
-        inputname.placeholder = "title".localized()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.alwaysBounceVertical = false
-        
-        tableView.estimatedRowHeight = 50.0
-        tableView.rowHeight = UITableView.automaticDimension
-        
+        settingView()
         loadData()
+    }
+
+    func settingView() {
+        inputname.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 30, left: 10, bottom: 10, right: 10))
+//            make.top.equalTo(view.snp.topMargin)
+//            make.centerX.equalTo(view.snp.centerX)
+        }
+        datePicker.snp.makeConstraints { make in
+            make.edges.equalTo(inputname).inset(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+//            make.centerX.equalTo(view.snp.centerX)
+//            make.top.equalTo(inputname.snp.bottom)
+        }
         
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 500, left: 20, bottom: 50, right: 20))
+//            make.center.equalTo(view.snp.center)
+//            make.top.equalTo(datePicker.snp.bottom)
+        }
+        saveButton.snp.makeConstraints { make in
+            make.centerX.equalTo(view.snp.centerX)
+            make.top.equalTo(tableView.snp.bottom)
+        }
+
+        inputname.addTarget(self, action: #selector(textDidChanged), for: .touchUpInside)
+        datePicker.addTarget(self, action: #selector(changeDatePIcker), for: .touchUpInside)
+        saveButton.addTarget(self, action: #selector(saveDday), for: .touchUpInside)
     }
 
     @objc func handleTap(sender: UITapGestureRecognizer) {
@@ -106,16 +174,17 @@ class AddViewController: UIViewController {
         }
     }
     
-    @IBAction func textDidChanged(_ sender: Any) {
+    @objc func textDidChanged(_ sender: Any) {
         checkMaxLength(textField: inputname, maxLength: 10)
     }
     
-    @IBAction func changeDatePIcker(_ sender: UIDatePicker) {
+    @objc func changeDatePIcker(_ sender: UIDatePicker) {
         let datePickerView = sender
         selectDate = dateFormatter.date(from: dateFormatter.string(from: datePickerView.date))!
     }
     
-    @IBAction func saveDday(_ sender: UIButton) {
+    @objc func saveDday(_ sender: UIButton) {
+        print("save")
 
         if inputname.text == "" {
             inputname.text = "이름 없음"
@@ -224,4 +293,103 @@ extension String {
 }
 protocol SendProtocol {
     func send(date: Date, name: String, setting: Setting, idx: Int)
+}
+
+class AddView: UIView {
+    
+    let showPickerTime: UILabel = {
+        let label = UILabel()
+        label.text = "showPickerTime"
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        return label
+    }()
+    
+    let inputname: UITextField = {
+        let textfiled = UITextField()
+        textfiled.translatesAutoresizingMaskIntoConstraints = false
+        textfiled.placeholder = "title".localized()
+        textfiled.keyboardType = .emailAddress
+
+        textfiled.borderStyle = UITextField.BorderStyle.roundedRect
+        textfiled.autocapitalizationType = .none
+        return textfiled
+    }()
+    
+    let datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .compact
+    
+        return datePicker
+    }()
+
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return tableView
+    }()
+    
+    let saveButton: UIButton = {
+        let saveButton = UIButton()
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+//        saveButton.setTitle("save", for: .normal)
+        saveButton.setTitleColor(.black, for: .normal)
+        
+        return saveButton
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.loadView()
+    }
+    
+    required init?(coder: NSCoder) {
+       super.init(coder: coder)
+//       loadView()
+   }
+
+    private func loadView() {
+
+//        addSubview(showPickerTime)
+        addSubview(inputname)
+        addSubview(datePicker)
+        addSubview(tableView)
+        addSubview(saveButton)
+
+        inputname.snp.makeConstraints { make in
+            make.top.equalTo(self.snp.topMargin)
+            make.centerX.equalTo(self.snp.centerX)
+        }
+        datePicker.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.top.equalTo(inputname.snp.bottom)
+        }
+        tableView.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.top.equalTo(datePicker.snp.bottom)
+        }
+        saveButton.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.top.equalTo(tableView.snp.bottom)
+        }
+    }
+    
+    private func makeView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = .purple
+        return view
+    }
+    
+    private func makeLabel(str: String) -> UILabel {
+        let label = UILabel()
+        label.text = str
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        return label
+    }
+
 }

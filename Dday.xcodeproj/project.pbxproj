@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0300C15C286775B6002A3B85 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300C15B286775B6002A3B85 /* TableViewCell.swift */; };
 		0316CA992861C64500328639 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 0316CA982861C64500328639 /* .swiftlint.yml */; };
 		0319197426D4C36A00E7B7E5 /* DdayModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0319197226D4C36A00E7B7E5 /* DdayModel.xcdatamodeld */; };
 		0319197C26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319197A26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift */; };
@@ -25,7 +26,6 @@
 		036518BD26A5B67B00604A55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518BC26A5B67B00604A55 /* AppDelegate.swift */; };
 		036518BF26A5B67B00604A55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518BE26A5B67B00604A55 /* SceneDelegate.swift */; };
 		036518C126A5B67B00604A55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518C026A5B67B00604A55 /* ViewController.swift */; };
-		036518C426A5B67B00604A55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036518C226A5B67B00604A55 /* Main.storyboard */; };
 		036518C926A5B67D00604A55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036518C726A5B67D00604A55 /* LaunchScreen.storyboard */; };
 		036518D426A5B67D00604A55 /* DdayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036518D326A5B67D00604A55 /* DdayTests.swift */; };
 		0366683C2771C65100EB900C /* RecieveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F81A26B7AA69004DC581 /* RecieveData.swift */; };
@@ -43,8 +43,6 @@
 		036FFDF527676F26000BDBD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 036518C526A5B67D00604A55 /* Assets.xcassets */; };
 		0370DF5126FC4E30000D1DA7 /* ScreenUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF5026FC4E30000D1DA7 /* ScreenUD.swift */; };
 		0370DF5226FC4E30000D1DA7 /* ScreenUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF5026FC4E30000D1DA7 /* ScreenUD.swift */; };
-		0370DF6726FD60C1000D1DA7 /* ScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6626FD60C1000D1DA7 /* ScreenCell.swift */; };
-		0370DF6826FD60C1000D1DA7 /* ScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6626FD60C1000D1DA7 /* ScreenCell.swift */; };
 		0370DF6F2701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */; };
 		0370DF702701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */; };
 		0377EAE7286034F100CEA034 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0377EAE6286034F100CEA034 /* ItemCell.swift */; };
@@ -106,6 +104,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0300C15B286775B6002A3B85 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		03132FC926F86A6700A086AE /* DdayModel v2-1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DdayModel v2-1.xcdatamodel"; sourceTree = "<group>"; };
 		0316CA982861C64500328639 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		0319193126CFB47B00E7B7E5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -128,7 +127,6 @@
 		036518BC26A5B67B00604A55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		036518BE26A5B67B00604A55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		036518C026A5B67B00604A55 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		036518C326A5B67B00604A55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		036518C526A5B67D00604A55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		036518C826A5B67D00604A55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		036518CA26A5B67D00604A55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 		0367F84E26C11C2D004DC581 /* IterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterCell.swift; sourceTree = "<group>"; };
 		0367F85326C11C45004DC581 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		0370DF5026FC4E30000D1DA7 /* ScreenUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenUD.swift; sourceTree = "<group>"; };
-		0370DF6626FD60C1000D1DA7 /* ScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCell.swift; sourceTree = "<group>"; };
 		0370DF6D2701AAC3000D1DA7 /* DdayModel_idx_version.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DdayModel_idx_version.xcdatamodel; sourceTree = "<group>"; };
 		0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model.xcmappingmodel; sourceTree = "<group>"; };
 		0377EAE6286034F100CEA034 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
@@ -216,6 +213,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0300C15A28677366002A3B85 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				0300C15B286775B6002A3B85 /* TableViewCell.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		0319193026CFB47B00E7B7E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,7 +251,6 @@
 				0316CA982861C64500328639 /* .swiftlint.yml */,
 				038E95EC276369DC00B7BE6C /* WidgetData.swift */,
 				039492E32760E4C2005630A8 /* AppGroup.swift */,
-				0370DF6626FD60C1000D1DA7 /* ScreenCell.swift */,
 				03BCDBB726F86BA5005FC05A /* Model2-1.xcmappingmodel */,
 				03191A8226D4DF4C00E7B7E5 /* widgetExtension.entitlements */,
 				0370DF6E2701AB5C000D1DA7 /* Model.xcmappingmodel */,
@@ -312,11 +316,11 @@
 		036668392771C54600EB900C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0300C15A28677366002A3B85 /* Setting */,
 				0377EAED2861A4A800CEA034 /* AddView */,
 				0377EAE5286034C200CEA034 /* Item */,
 				0366683E2771C67900EB900C /* AddCell */,
 				036518C726A5B67D00604A55 /* LaunchScreen.storyboard */,
-				036518C226A5B67B00604A55 /* Main.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -439,6 +443,7 @@
 				036518B726A5B67B00604A55 /* Resources */,
 				0319194126CFB47E00E7B7E5 /* Embed App Extensions */,
 				0316CA952861C55500328639 /* ShellScript */,
+				7E705D1EECC56ADC39125D1B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -477,6 +482,7 @@
 				036518D626A5B67D00604A55 /* Sources */,
 				036518D726A5B67D00604A55 /* Frameworks */,
 				036518D826A5B67D00604A55 /* Resources */,
+				8C0B599755F3873DA1EF7A2F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -553,7 +559,6 @@
 				036518C926A5B67D00604A55 /* LaunchScreen.storyboard in Resources */,
 				0366689B2779747600EB900C /* Localizable.strings in Resources */,
 				036FFDF527676F26000BDBD7 /* Assets.xcassets in Resources */,
-				036518C426A5B67B00604A55 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +595,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		7E705D1EECC56ADC39125D1B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dday/Pods-Dday-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dday/Pods-Dday-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dday/Pods-Dday-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		8046D267015D69C4665CA786 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -633,6 +655,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C0B599755F3873DA1EF7A2F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dday-DdayUITests/Pods-Dday-DdayUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dday-DdayUITests/Pods-Dday-DdayUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dday-DdayUITests/Pods-Dday-DdayUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8C9D389B0F90D2CCD10B7B75 /* [CP] Check Pods Manifest.lock */ = {
@@ -691,7 +730,6 @@
 				03191A6C26D4DC1A00E7B7E5 /* Mywidget.swift in Sources */,
 				0366683D2771C65200EB900C /* Setting.swift in Sources */,
 				0366683C2771C65100EB900C /* RecieveData.swift in Sources */,
-				0370DF6826FD60C1000D1DA7 /* ScreenCell.swift in Sources */,
 				039492E52760E4C2005630A8 /* AppGroup.swift in Sources */,
 				03191A7D26D4DE9800E7B7E5 /* DdayModel.xcdatamodeld in Sources */,
 				0370DF702701AB5C000D1DA7 /* Model.xcmappingmodel in Sources */,
@@ -717,10 +755,10 @@
 				0399EF0326EF8469009E868E /* CalculateDay.swift in Sources */,
 				0377EAEC28605B7F00CEA034 /* Item.swift in Sources */,
 				0367F82326B7B2DF004DC581 /* DetailViewController.swift in Sources */,
-				0370DF6726FD60C1000D1DA7 /* ScreenCell.swift in Sources */,
 				0367F81B26B7AA69004DC581 /* RecieveData.swift in Sources */,
 				0367F84526BFC766004DC581 /* HeaderCell.swift in Sources */,
 				0319197C26D4C5F100E7B7E5 /* Entity+CoreDataClass.swift in Sources */,
+				0300C15C286775B6002A3B85 /* TableViewCell.swift in Sources */,
 				036518BD26A5B67B00604A55 /* AppDelegate.swift in Sources */,
 				039492E42760E4C2005630A8 /* AppGroup.swift in Sources */,
 				03191AD526DB74FD00E7B7E5 /* CoreDataStack.swift in Sources */,
@@ -775,14 +813,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		036518C226A5B67B00604A55 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				036518C326A5B67B00604A55 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		036518C726A5B67D00604A55 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

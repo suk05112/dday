@@ -8,15 +8,51 @@
 import UIKit
 
 class IterCell: UITableViewCell {
-
-    @IBOutlet var iterButtons: [UIButton]!
-
+    
     var indexOfOneAndOnly: Int?
+    var iterButtons: [UIButton] = []
+    var iterButton1: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Week", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        return button
+    }()
+    
+    var iterButton2: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Month", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        return button
+    }()
+    
+    var iterButton3: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Year", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        return button
+    }()
+    
+    private func loadView() {
+        addSubview(iterButton1)
+        addSubview(iterButton2)
+        addSubview(iterButton3)
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        // Initialization code
+        iterButton1.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(50)
+            make.centerY.equalTo(self.snp.centerY)
+        }
+        iterButton1.snp.makeConstraints { make in
+            make.left.equalTo(iterButton1.snp.rightMargin)
+            make.centerY.equalTo(self.snp.centerY)
+        }
+        iterButton1.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(50)
+            make.centerY.equalTo(self.snp.centerY)
+        }
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,24 +62,14 @@ class IterCell: UITableViewCell {
 //        week.setBackgroundColor(.gray, for: .disabled)
     }
     
-    @IBAction func touchButton(_ sender: UIButton) {
-        print("btn touch")
-        if indexOfOneAndOnly != nil {
-            if !sender.isSelected {
-                for index in iterButtons.indices {
-                    iterButtons[index].isSelected = false
-                }
-                sender.isSelected = true
-                indexOfOneAndOnly = iterButtons.firstIndex(of: sender)
-            } else {
-                sender.isSelected = false
-                indexOfOneAndOnly = nil
-            }
-        } else {
-            sender.isSelected = true
-            indexOfOneAndOnly = iterButtons.firstIndex(of: sender)
-        }
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        iterButtons = [iterButton1, iterButton2, iterButton3]
     }
+    
+    required init?(coder: NSCoder) {
+       super.init(coder: coder)
+   }
 
 }
 

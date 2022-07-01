@@ -6,10 +6,24 @@
 //
 
 import UIKit
+import SnapKit
 
 class ScreenSetting: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    let category: UILabel = {
+        let label = UILabel()
+        label.text = "setting"
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
     let headerCellIdentifier = "headerCell"
     let cellInfo: [String] = ["hide".localized(), "sort".localized(), "noti".localized()] // tableview 안내문구
 
@@ -17,14 +31,33 @@ class ScreenSetting: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        tableViewSetting()
+        
+        view.addSubview(category)
+        category.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(30)
+            make.centerX.equalTo(view.snp.centerX)
+        }
+    }
+    
+    func tableViewSetting() {
+        tableView = UITableView(frame: self.view.bounds, style: .plain)
+
+        self.tableView.register(TableViewCell.self, forCellReuseIdentifier: "screenCell")
         tableView.delegate = self
         tableView.dataSource = self
+        view.addSubview(self.tableView)
+        
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0))
+        }
+
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         print("disappear")
         NotificationCenter.default.post(name: didDismissPostCommentViewController, object: nil, userInfo: nil)
-
     }
     
     @objc func switchChanged(_ sender: UISwitch!) {
@@ -61,6 +94,7 @@ class ScreenSetting: UIViewController {
 }
     
 extension ScreenSetting: UITableViewDelegate, UITableViewDataSource {
+
     // table에 몇개의 section이 있을건지 알려줌
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -76,10 +110,11 @@ extension ScreenSetting: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "screenCell", for: indexPath) as! ScreenCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "screenCell", for: indexPath) as! TableViewCell
         
+        cell.selectionStyle = .none
         cell.textLabel!.text = cellInfo[indexPath.row]
-        cell.cellSwitch!.tag = indexPath.row
+        cell.cellSwitch.tag = indexPath.row
         cell.cellSwitch.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
         
         switch cell.cellSwitch.tag {

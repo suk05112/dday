@@ -23,9 +23,11 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.headerCellIdentifier) as! HeaderCell
-        let text = setting[section]
         
+        guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: self.headerCellIdentifier) as? HeaderCell else { fatalError("cell is nill") }
+        
+        let text = setting[section]
+
         print(section)
         cell.textLabel?.text = text
         cell.cellSwitch.tag = section // for detect which row switch Changed
@@ -59,6 +61,7 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
             cell.iterButtons[idx].addTarget(self, action: #selector(self.iterBtnClicked(_:)), for: .touchUpInside)
             cell.iterButtons[idx].isSelected = iterBtnPressed[idx]
         }
+        
         print("버튼 값", iterBtnPressed)
 
         return cell
